@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="bg_card_sign_up">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginHorizontal">20dp</item>
+        <item name="android:layout_marginTop">40dp</item>
+        <item name="android:layout_marginBottom">200dp</item>
+    </style>
+
+    <style name="bg_linear_lyt_authentication">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">40dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="textview_title_authentication">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/default_text_black</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="edittext_authentication">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginHorizontal">15dp</item>
+        <item name="android:inputType">textPersonName</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:background">@drawable/bg_edittext_authentication</item>
+        <item name="android:padding">17dp</item>
+        <item name="android:textColor">@color/default_text_black</item>
+        <item name="android:textColorHint">@color/default_edittext_hint</item>
+    </style>
+
+    <style name="gender_layout_authentication">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginHorizontal">15dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:background">@drawable/bg_edittext_authentication</item>
+        <item name="android:padding">17dp</item>
+    </style>
+
+    <style name="small_title_authentication">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginHorizontal">15dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:textColor">@color/default_text_grey</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+</resources>

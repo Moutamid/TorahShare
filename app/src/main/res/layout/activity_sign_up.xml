@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/default_light_pink"
+    tools:context=".authentication.RegistrationActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/logo_layout" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSignUp"
+                style="@style/bg_card_sign_up"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/default_corner_radius"
+                app:cardElevation="5dp">
+
+                <LinearLayout style="@style/bg_linear_lyt_authentication">
+
+                    <TextView
+                        style="@style/textview_title_authentication"
+                        android:text="Sign up" />
+
+                    <TextView
+                        style="@style/small_title_authentication"
+                        android:layout_marginTop="30dp"
+                        android:text="Full name" />
+
+                    <EditText
+                        android:id="@+id/nameEtSignUp"
+                        style="@style/edittext_authentication"
+                        android:hint="Enter your name" />
+
+                    <TextView
+                        style="@style/small_title_authentication"
+                        android:text="Gender" />
+
+                    <RelativeLayout
+                        android:id="@+id/gender_layout"
+                        style="@style/gender_layout_authentication"
+                        android:hint="Enter your name">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/gender_default_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:text="Select"
+                                    android:textSize="16sp" />
+
+                                <ImageView
+                                    android:id="@+id/gender_arrow"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+                            </RelativeLayout>
+
+                            <TextView
+                                android:id="@+id/gender_male_textview"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:paddingVertical="5dp"
+                                android:text="Male"
+                                android:textSize="16sp"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/gender_female_textview"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="5dp"
+                                android:text="Female"
+                                android:textSize="16sp"
+                                android:visibility="gone" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <TextView
+                        style="@style/small_title_authentication"
+                        android:text="Email" />
+
+                    <EditText
+                        android:id="@+id/emailEtSignUp"
+                        style="@style/edittext_authentication"
+                        android:hint="Enter your email" />
+
+                    <TextView
+                        style="@style/small_title_authentication"
+                        android:text="Password" />
+
+                    <EditText
+                        android:id="@+id/passwordEtSignUp"
+                        style="@style/edittext_authentication"
+                        android:hint="Enter your password" />
+
+                    <LinearLayout
+                        android:id="@+id/password_strength_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        android:weightSum="5">
+
+                        <View
+                            android:id="@+id/password_strength_view_1"
+                            android:layout_width="0dp"
+                            android:layout_height="4dp"
+                            android:layout_weight="1"
+                            android:background="@color/red" />
+
+                        <View
+                            android:id="@+id/password_strength_view_2"
+                            android:layout_width="0dp"
+                            android:layout_height="4dp"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_weight="1"
+                            android:background="@color/darkGrey" />
+
+                        <View
+                            android:id="@+id/password_strength_view_3"
+                            android:layout_width="0dp"
+                            android:layout_height="4dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:background="@color/darkGrey" />
+
+                        <View
+                            android:id="@+id/password_strength_view_4"
+                            android:layout_width="0dp"
+                            android:layout_height="4dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:background="@color/darkGrey" />
+
+                        <TextView
+                            android:id="@+id/password_strength_textview"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Weak"
+                            android:textColor="@color/red"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/signUpBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="30dp"
+                        android:padding="15dp"
+                        android:text="Sign Up"
+                        android:textAllCaps="false"
+                        app:cornerRadius="@dimen/default_corner_radius" />
+
+                    <LinearLayout
+                        android:id="@+id/alreadyHaveAnAccount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Have an account?"
+                            android:textColor="@color/default_text_grey" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" Log In"
+                            android:textColor="@color/default_purple"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardLogin"
+                style="@style/bg_card_sign_up"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/default_corner_radius"
+                app:cardElevation="5dp">
+
+                <LinearLayout style="@style/bg_linear_lyt_authentication">
+
+                    <TextView
+                        style="@style/textview_title_authentication"
+                        android:text="Log in" />
+
+                    <TextView
+                        style="@style/small_title_authentication"
+                        android:layout_marginTop="30dp"
+                        android:text="Email" />
+
+                    <EditText
+                        android:id="@+id/emailEtLogin"
+                        style="@style/edittext_authentication"
+                        android:hint="Enter your email" />
+
+                    <TextView
+                        style="@style/small_title_authentication"
+                        android:text="Password" />
+
+                    <EditText
+                        android:id="@+id/passwordEtLogin"
+                        style="@style/edittext_authentication"
+                        android:hint="Enter your password" />
+
+                    <TextView
+                        android:id="@+id/forgotPasswordBtn"
+                        style="@style/small_title_authentication"
+                        android:gravity="end"
+                        android:text="Forgot password?" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/loginBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="30dp"
+                        android:padding="15dp"
+                        android:text="Log in"
+                        android:textAllCaps="false"
+                        app:cornerRadius="@dimen/default_corner_radius" />
+
+                    <LinearLayout
+                        android:id="@+id/dontHaveAnAccount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Don't have an account?"
+                            android:textColor="@color/default_text_grey" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" Sign up"
+                            android:textColor="@color/default_purple"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/googleLoginBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="30dp"
+                        android:padding="15dp"
+                        app:cardBackgroundColor="@color/default_edittext_grey"
+                        app:cardElevation="0dp"
+                        app:cornerRadius="@dimen/default_corner_radius">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginVertical="10dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_height="30dp"
+                                android:src="@drawable/ic_google" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="10dp"
+                                android:text="Google"
+                                android:textColor="@color/default_text_black"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardForgotPassword"
+                style="@style/bg_card_sign_up"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/default_corner_radius"
+                app:cardElevation="5dp">
+
+                <LinearLayout style="@style/bg_linear_lyt_authentication">
+
+                    <TextView
+                        style="@style/textview_title_authentication"
+                        android:text="Verify Email" />
+
+                    <TextView
+                        style="@style/small_title_authentication"
+                        android:layout_marginTop="30dp"
+                        android:text="Email" />
+
+                    <EditText
+                        android:id="@+id/emailEtForgotPassword"
+                        style="@style/edittext_authentication"
+                        android:hint="Enter your email" />
+
+                    <TextView
+                        style="@style/small_title_authentication"
+                        android:layout_marginTop="30dp"
+                        android:text="We will send you an email along with the instructions to reset your password." />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/codeBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="30dp"
+                        android:padding="15dp"
+                        android:text="Send code"
+                        android:textAllCaps="false"
+                        app:cornerRadius="@dimen/default_corner_radius" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="30dp"
+        android:visibility="gone"
+        android:layout_height="30dp"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_baseline_arrow_back_24" />
+
+</RelativeLayout>
