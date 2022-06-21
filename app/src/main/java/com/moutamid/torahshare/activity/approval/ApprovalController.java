@@ -4,6 +4,7 @@ import static com.moutamid.torahshare.utils.Stash.toast;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.camerakit.CameraKit;
+import com.camerakit.CameraKitView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
@@ -99,18 +102,20 @@ public class ApprovalController {
         });
 
         b.video1placeholder.setOnClickListener(view -> {
+            toast("video1placeholder");
             Intent i = new Intent();
             i.setType("video/*");
             i.setAction(Intent.ACTION_GET_CONTENT);
             activity.startActivityForResult(Intent.createChooser(i, "choose App"), PICK_VIDEO_1);
         });
 
-        b.video2placeholder.setOnClickListener(view -> {
-            Intent i = new Intent();
-            i.setType("video/*");
-            i.setAction(Intent.ACTION_GET_CONTENT);
-            activity.startActivityForResult(Intent.createChooser(i, "choose App"), PICK_VIDEO_2);
-        });
+//        b.galleryBtn.setOnClickListener(view -> {
+//          toast("galleryBtn");
+//            Intent i = new Intent();
+//            i.setType("video/*");
+//            i.setAction(Intent.ACTION_GET_CONTENT);
+//            activity.startActivityForResult(Intent.createChooser(i, "choose App"), activity.CAMERA_PICK);
+//        });
 
         initVideoPlayer();
 
@@ -151,6 +156,7 @@ public class ApprovalController {
                         b.videoView1Layout.setVisibility(View.VISIBLE);
 
                         b.videoView1.setVideoURI(uri);
+                        b.videoView1.start();
                     }
                     if (requestCode == PICK_VIDEO_2) {
                         VIDEO_LINK_2 = downloadLink;
@@ -160,6 +166,7 @@ public class ApprovalController {
                         b.videoView2Layout.setVisibility(View.VISIBLE);
 
                         b.videoView2.setVideoURI(uri);
+                        b.videoView2.start();
                     }
 
                     if (videoCount == 2) {
@@ -175,6 +182,10 @@ public class ApprovalController {
         }
 
     }
+
+    boolean play1 = true;
+    boolean play2 = true;
+    boolean play3 = true;
 
     public void initVideoPlayer() {
         b.videoView1.setOnClickListener(view -> {
@@ -230,6 +241,65 @@ public class ApprovalController {
                 }, 3000);
 
                 b.videoView2.start();
+            }
+        });
+        b.videoViewFinal.setOnClickListener(view -> {
+            if (b.videoPlayBtnFinal.getVisibility() == View.GONE) {
+                b.videoPlayBtnFinal.setVisibility(View.VISIBLE);
+                new Handler().postDelayed(() -> {
+                    b.videoPlayBtnFinal.setVisibility(View.GONE);
+                }, 3000);
+            } else {
+                b.videoPlayBtnFinal.setVisibility(View.GONE);
+            }
+        });
+
+        b.videoPlayBtnFinal.setOnClickListener(view -> {
+            if (b.videoViewFinal.isPlaying()) {
+                // IS PLAYING
+                b.videoPlayBtnFinal.setImageResource(R.drawable.ic_play_btn);
+                b.videoViewFinal.pause();
+
+            } else {
+                // PAUSED OR NOT STARTED
+                b.videoPlayBtnFinal.setImageResource(R.drawable.ic_pause_btn);
+                new Handler().postDelayed(() -> {
+                    b.videoPlayBtnFinal.setVisibility(View.GONE);
+                }, 3000);
+
+                b.videoViewFinal.start();
+            }
+        });
+
+        b.videoView1.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                if (play1) {
+                    play1 = false;
+                    mediaPlayer.pause();
+                }
+            }
+        });
+
+        b.videoView2.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                if (play2) {
+                    play2 = false;
+                    mediaPlayer.pause();
+                }
+            }
+        });
+
+        b.videoViewFinal.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                if (play3) {
+                    b.topIcon.setImageResource(R.drawable.ic_baseline_delete_outline_24);
+                    activity.isDeletable = true;
+                    play3 = false;
+                    mediaPlayer.pause();
+                }
             }
         });
 

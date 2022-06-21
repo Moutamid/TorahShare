@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="default_corner_radius">10dp</dimen>
+    <dimen name="larger_text_size">22sp</dimen>
+    <dimen name="larger_padding">15dp</dimen>
 </resources>

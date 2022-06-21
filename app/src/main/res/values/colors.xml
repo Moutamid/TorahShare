@@ -16,6 +16,9 @@
     <color name="default_edittext_hint">#8F8790</color>
     <color name="default_green">#36B43B</color>
 
+    <color name="blackOlive">#39393F</color>
+    <color name="bg_tag_default">#7cd167</color>
+
     <color name="darkBlue">#292f47</color>
     <color name="lightBlue">#303751</color>
     <color name="lighterBlue">#3c4462</color>

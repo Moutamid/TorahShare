@@ -16,6 +16,7 @@ public class Constants {
     public static final String ADMIN = "admin";
     public static final String VIDEO_APPROVAL_REQUEST = "video_approval_requests";
     public static final String IS_APPROVED = "is_approved";
+    public static final String PUBLIC_POSTS = "public_posts";
 
     public static FirebaseAuth auth() {
         return FirebaseAuth.getInstance();

@@ -1,11 +1,14 @@
 package com.moutamid.torahshare.activity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Scroller;
 
@@ -70,8 +73,6 @@ public class HomeActivity extends AppCompatActivity {
             viewPager.setCurrentItem(2);
             b.bottomBarImageview.setImageResource(R.drawable.ic_bottom_profile);
         });
-
-
     }
 
     private static final String TAG = "HomeActivity";

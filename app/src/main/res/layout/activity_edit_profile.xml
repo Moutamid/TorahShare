@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/default_light_pink"
+    tools:context=".activity.settings.EditProfileActivity">
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:tint="@color/black" />
+
+    <TextView
+        android:id="@+id/topi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Edit profile"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/topi">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSignUp"
+                style="@style/bg_card_sign_up"
+                android:layout_marginBottom="0dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/default_corner_radius"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    style="@style/bg_linear_lyt_authentication"
+                    android:layout_marginBottom="20dp">
+
+                    <TextView
+                        style="@style/textview_title_authentication"
+                        android:text="Edit Profile" />
+
+                    <TextView
+                        style="@style/small_title_authentication"
+                        android:layout_marginTop="30dp"
+                        android:text="Full name" />
+
+                    <EditText
+                        android:id="@+id/nameEtSignUp"
+                        style="@style/edittext_authentication"
+                        android:hint="Enter your name" />
+
+                    <TextView
+                        style="@style/small_title_authentication"
+                        android:layout_marginTop="30dp"
+                        android:text="Phone number" />
+
+                    <EditText
+                        android:id="@+id/numberEtSignUp"
+                        style="@style/edittext_authentication"
+                        android:hint="Enter your phone number"
+                        android:inputType="number" />
+
+                    <TextView
+                        style="@style/small_title_authentication"
+                        android:text="Email" />
+
+                    <EditText
+                        android:id="@+id/emailEtSignUp"
+                        style="@style/edittext_authentication"
+                        android:hint="Enter your email" />
+
+                    <TextView
+                        style="@style/small_title_authentication"
+                        android:text="About me" />
+
+                    <EditText
+                        android:id="@+id/bioEtSignUp"
+                        style="@style/edittext_authentication"
+                        android:hint="Let People Know What Your Account Is All About \n\n"
+                        android:inputType="textMultiLine" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/updateBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="30dp"
+                        android:padding="15dp"
+                        android:text="Update"
+                        android:textAllCaps="false"
+                        app:cornerRadius="@dimen/default_corner_radius" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
