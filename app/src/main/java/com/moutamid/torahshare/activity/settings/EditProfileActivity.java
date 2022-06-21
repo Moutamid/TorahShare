@@ -22,6 +22,7 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(b.getRoot());
 
         b.nameEtSignUp.setText(userModel.name == null ? "" : userModel.name);
+
         b.numberEtSignUp.setText(userModel.number == null ? "" : userModel.number);
 
         b.emailEtSignUp.setText(userModel.email == null ? "" : userModel.email);
