@@ -23,6 +23,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         b.nameEtSignUp.setText(userModel.name == null ? "" : userModel.name);
         b.numberEtSignUp.setText(userModel.number == null ? "" : userModel.number);
+
         b.emailEtSignUp.setText(userModel.email == null ? "" : userModel.email);
 
         b.bioEtSignUp.setText(userModel.bio == null ? "" : userModel.bio);
