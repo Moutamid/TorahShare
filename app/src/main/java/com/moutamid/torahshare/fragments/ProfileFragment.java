@@ -97,7 +97,7 @@ public class ProfileFragment extends Fragment {
             startActivity(new Intent(requireActivity(), SettingsActivity.class));
         });
 
-        /*PostModel postModel = new PostModel();
+        PostModel postModel = new PostModel();
         postModel.name = "Name";
         postModel.date = "25-12-2022";
         postModel.caption = "So the caption is here ressiding with u all along";
@@ -107,9 +107,22 @@ public class ProfileFragment extends Fragment {
         postModel.profile_link = "https://static.remove.bg/remove-bg-web/f68d607e3305b1c23820eab456f9a63968772cfc/assets/start-1abfb4fe2980eabfbbaaa4365a0692539f7cd2725f324f904565a9a744f8e214.jpg";
         postModel.my_uid = Constants.auth().getUid();
 
+        ArrayList<String> followersList = new ArrayList<>();
+        followersList.add("tRnOyVr8YnbauO8cv7UW1THPgT52");
+
+        ArrayList<String> contactsList = new ArrayList<>();
+        contactsList.add("01pFAFCCZMbZrnpdNw1Lnsr3wjW2");
+
+        postModel.followers_list.addAll(followersList);
+        postModel.contacts_list.addAll(contactsList);
+
+        // TODO: CREATE A CHAT APP DATABASE STRUCTURE
+
+        postModel.push_key = Constants.databaseReference().child(Constants.PUBLIC_POSTS).push().getKey();
+
         Constants.databaseReference().child(Constants.PUBLIC_POSTS)
-                .push()
-                .setValue(postModel);*/
+                .child(postModel.push_key)
+                .setValue(postModel);
 
         return b.getRoot();
     }
