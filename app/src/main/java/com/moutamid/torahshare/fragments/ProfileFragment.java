@@ -35,6 +35,8 @@ import com.google.firebase.storage.UploadTask;
 import com.moutamid.torahshare.R;
 import com.moutamid.torahshare.activity.settings.SettingsActivity;
 import com.moutamid.torahshare.databinding.FragmentProfileBinding;
+import com.moutamid.torahshare.model.ChatModel;
+import com.moutamid.torahshare.model.Message;
 import com.moutamid.torahshare.model.PostModel;
 import com.moutamid.torahshare.model.UserModel;
 import com.moutamid.torahshare.utils.Constants;
@@ -68,7 +70,7 @@ public class ProfileFragment extends Fragment {
             Stash.put(Constants.CURRENT_USER_MODEL, userModel);
         }
 
-        b.nameTextview.setText(userModel.name == null ? "" : userModel.name);
+        /*b.nameTextview.setText(userModel.name == null ? "" : userModel.name);
         b.bioTextview.setText(userModel.bio == null ? "" : userModel.bio);
 
         with(requireActivity().getApplicationContext())
@@ -79,7 +81,7 @@ public class ProfileFragment extends Fragment {
                         .error(lighterGrey)
                 )
                 .diskCacheStrategy(DATA)
-                .into(b.profileImageView);
+                .into(b.profileImageView);*/
 
         b.profileImageView.setOnClickListener(view -> {
             Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -97,32 +99,76 @@ public class ProfileFragment extends Fragment {
             startActivity(new Intent(requireActivity(), SettingsActivity.class));
         });
 
+        // THIS IS THE POST WHEN SOMEONE TRIES TO POST SOMETHING
         PostModel postModel = new PostModel();
         postModel.name = "Name";
-        postModel.date = "25-12-2022";
-        postModel.caption = "So the caption is here ressiding with u all along";
+        postModel.date = Stash.getDate();
+        postModel.caption = "So the caption is here residing with u all along";
         postModel.share_count = 0;
         postModel.comment_count = 0;
         postModel.video_link = "https://firebasestorage.googleapis.com/v0/b/sweet-nutrition.appspot.com/o/huitxbozybaymildmqwi.mp4?alt=media&token=e6900e45-6987-4a86-a913-8fa50e453aff";
         postModel.profile_link = "https://static.remove.bg/remove-bg-web/f68d607e3305b1c23820eab456f9a63968772cfc/assets/start-1abfb4fe2980eabfbbaaa4365a0692539f7cd2725f324f904565a9a744f8e214.jpg";
         postModel.my_uid = Constants.auth().getUid();
-
-        ArrayList<String> followersList = new ArrayList<>();
-        followersList.add("tRnOyVr8YnbauO8cv7UW1THPgT52");
-
-        ArrayList<String> contactsList = new ArrayList<>();
-        contactsList.add("01pFAFCCZMbZrnpdNw1Lnsr3wjW2");
-
-        postModel.followers_list.addAll(followersList);
-        postModel.contacts_list.addAll(contactsList);
-
-        // TODO: CREATE A CHAT APP DATABASE STRUCTURE
-
         postModel.push_key = Constants.databaseReference().child(Constants.PUBLIC_POSTS).push().getKey();
 
-        Constants.databaseReference().child(Constants.PUBLIC_POSTS)
-                .child(postModel.push_key)
+        Constants.databaseReference().child(Constants.PUBLIC_POSTS).child(postModel.push_key)
                 .setValue(postModel);
+
+        // THIS WILL CREATE A CHAT ENTRY IN THE DATABASE
+        ChatModel chatModel = new ChatModel();
+        chatModel.other_uid = "tRnOyVr8YnbauO8cv7UW1THPgT52";
+        chatModel.last_message = "Sent a video";
+        chatModel.time = Stash.getDate();
+        chatModel.chat_id = Constants.databaseReference().push().getKey();
+        chatModel.other_name = Constants.NULL;
+        chatModel.other_profile = Constants.NULL;
+        Constants.databaseReference().child(Constants.CHATS)
+                .child(Constants.auth().getUid()).child(chatModel.chat_id)
+                .setValue(chatModel);
+
+        // THIS WILL ADD A ENTRY OF MESSAGE TO CONVERSATION OF THAT USER AND MINE AS WELL
+        Message messageModel = new Message();
+        messageModel.time = Stash.getDate();
+        messageModel.sent_by = Constants.auth().getUid();
+        messageModel.message = "Hi, hello test 1";
+        Constants.databaseReference().child(Constants.CONVERSATIONS)
+                .child(chatModel.chat_id).push().setValue(messageModel);
+
+        Message messageModel2 = new Message();
+        messageModel2.time = Stash.getDate();
+        messageModel2.sent_by = Constants.auth().getUid();
+        messageModel2.message = "Here is a new video for you! (TEST MCG)" + Constants.SEPARATOR + postModel.video_link;
+        Constants.databaseReference().child(Constants.CONVERSATIONS)
+                .child(chatModel.chat_id).push().setValue(messageModel2);
+
+        ChatModel chatModel2 = new ChatModel();
+        chatModel2.other_uid = "01pFAFCCZMbZrnpdNw1Lnsr3wjW2";
+        chatModel2.last_message = "Sent a video";
+        chatModel2.time = Stash.getDate();
+        chatModel2.chat_id = Constants.databaseReference().push().getKey();
+        chatModel2.other_name = Constants.NULL;
+        chatModel2.other_profile = Constants.NULL;
+
+        Constants.databaseReference().child(Constants.CHATS)
+                .child(Constants.auth().getUid()).child(chatModel2.chat_id)
+                .setValue(chatModel2);
+
+        // THIS WILL ADD A ENTRY OF MESSAGE TO CONVERSATION OF THAT USER AND MINE AS WELL
+        Message messageModel3 = new Message();
+        messageModel3.time = Stash.getDate();
+        messageModel3.sent_by = Constants.auth().getUid();
+        messageModel3.message = "Hi, hello test 2";
+
+        Constants.databaseReference().child(Constants.CONVERSATIONS)
+                .child(chatModel2.chat_id).push().setValue(messageModel3);
+
+        Message messageModel4 = new Message();
+        messageModel4.time = Stash.getDate();
+        messageModel4.sent_by = Constants.auth().getUid();
+        messageModel4.message = "Here is a new video for you! (TEST MCG)" + Constants.SEPARATOR + postModel.video_link;
+
+        Constants.databaseReference().child(Constants.CONVERSATIONS)
+                .child(chatModel.chat_id).push().setValue(messageModel4);
 
         return b.getRoot();
     }

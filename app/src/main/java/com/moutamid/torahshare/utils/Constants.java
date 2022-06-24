@@ -17,6 +17,9 @@ public class Constants {
     public static final String VIDEO_APPROVAL_REQUEST = "video_approval_requests";
     public static final String IS_APPROVED = "is_approved";
     public static final String PUBLIC_POSTS = "public_posts";
+    public static final String CHATS = "chats";
+    public static final String CONVERSATIONS = "conversations";
+    public static final String SEPARATOR = "LrDEBoLokW-5mhaT3ys";
 
     public static FirebaseAuth auth() {
         return FirebaseAuth.getInstance();

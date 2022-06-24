@@ -22,6 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TorahShare">
         <activity
+            android:name=".activity.ConversationActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.settings.TermsActivity"
             android:exported="false" />
         <activity

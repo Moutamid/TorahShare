@@ -11,7 +11,9 @@ import com.google.gson.GsonBuilder;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Set;
 
 // THIS IS STASH CLASS WHERE WE HAVE PLACED OUR DATABASE CLASSES TO STORE, RETRIEVE, REMOVE,
@@ -283,5 +285,16 @@ public class Stash {
 
     public static void toast(String data){
         Toast.makeText(instance, data, Toast.LENGTH_SHORT).show();
+    }
+
+    public static String getDate() {
+        try {
+            Date date = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            return sdf.format(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "Error";
     }
 }
