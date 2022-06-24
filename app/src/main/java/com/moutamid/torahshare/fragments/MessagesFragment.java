@@ -126,6 +126,7 @@ public class MessagesFragment extends Fragment {
             return new ViewHolderRightMessage(view);
         }
 
+
         @Override
         public void onBindViewHolder(@NonNull final ViewHolderRightMessage holder, int position) {
 
