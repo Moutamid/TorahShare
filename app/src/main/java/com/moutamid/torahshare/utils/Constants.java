@@ -20,6 +20,7 @@ public class Constants {
     public static final String CHATS = "chats";
     public static final String CONVERSATIONS = "conversations";
     public static final String SEPARATOR = "LrDEBoLokW-5mhaT3ys";
+    public static final String CHAT_MODEL = "chat_model";
 
     public static FirebaseAuth auth() {
         return FirebaseAuth.getInstance();

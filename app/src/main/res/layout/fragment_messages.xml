@@ -118,6 +118,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/conversationRecyclerview"
                 android:layout_width="match_parent"
+                tools:listitem="@layout/layout_chats"
                 android:layout_height="wrap_content" />
 
             <View

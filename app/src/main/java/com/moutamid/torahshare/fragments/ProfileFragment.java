@@ -2,13 +2,13 @@ package com.moutamid.torahshare.fragments;
 
 import static android.app.Activity.RESULT_OK;
 import static android.view.LayoutInflater.from;
-
 import static com.bumptech.glide.Glide.with;
 import static com.bumptech.glide.load.engine.DiskCacheStrategy.DATA;
 import static com.moutamid.torahshare.R.color.lighterGrey;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,9 +22,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -34,9 +36,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.moutamid.torahshare.R;
 import com.moutamid.torahshare.activity.settings.SettingsActivity;
-import com.moutamid.torahshare.databinding.FragmentProfileBinding;
-import com.moutamid.torahshare.model.ChatModel;
-import com.moutamid.torahshare.model.Message;
 import com.moutamid.torahshare.model.PostModel;
 import com.moutamid.torahshare.model.UserModel;
 import com.moutamid.torahshare.utils.Constants;
@@ -45,7 +44,7 @@ import com.moutamid.torahshare.utils.Stash;
 import java.util.ArrayList;
 
 public class ProfileFragment extends Fragment {
-    public FragmentProfileBinding b;
+    public com.moutamid.torahshare.databinding.FragmentProfileBinding b;
 
     public String profileImageUrl;
     UserModel userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
@@ -55,7 +54,7 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        b = FragmentProfileBinding.inflate(inflater, container, false);
+        b = com.moutamid.torahshare.databinding.FragmentProfileBinding.inflate(inflater, container, false);
         if (!isAdded()) return b.getRoot();
 
         // TODO: REMOVE AFTER INSTALL
@@ -69,19 +68,6 @@ public class ProfileFragment extends Fragment {
             userModel.following_count = 0;
             Stash.put(Constants.CURRENT_USER_MODEL, userModel);
         }
-
-        /*b.nameTextview.setText(userModel.name == null ? "" : userModel.name);
-        b.bioTextview.setText(userModel.bio == null ? "" : userModel.bio);
-
-        with(requireActivity().getApplicationContext())
-                .asBitmap()
-                .load(userModel.profile_url == null ? "" : userModel.profile_url)
-                .apply(new RequestOptions()
-                        .placeholder(lighterGrey)
-                        .error(lighterGrey)
-                )
-                .diskCacheStrategy(DATA)
-                .into(b.profileImageView);*/
 
         b.profileImageView.setOnClickListener(view -> {
             Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -99,7 +85,8 @@ public class ProfileFragment extends Fragment {
             startActivity(new Intent(requireActivity(), SettingsActivity.class));
         });
 
-        // THIS IS THE POST WHEN SOMEONE TRIES TO POST SOMETHING
+        /*TODO:
+           // THIS IS THE POST WHEN SOMEONE TRIES TO POST SOMETHING
         PostModel postModel = new PostModel();
         postModel.name = "Name";
         postModel.date = Stash.getDate();
@@ -127,14 +114,14 @@ public class ProfileFragment extends Fragment {
                 .setValue(chatModel);
 
         // THIS WILL ADD A ENTRY OF MESSAGE TO CONVERSATION OF THAT USER AND MINE AS WELL
-        Message messageModel = new Message();
+        MessageModel messageModel = new MessageModel();
         messageModel.time = Stash.getDate();
         messageModel.sent_by = Constants.auth().getUid();
         messageModel.message = "Hi, hello test 1";
         Constants.databaseReference().child(Constants.CONVERSATIONS)
                 .child(chatModel.chat_id).push().setValue(messageModel);
 
-        Message messageModel2 = new Message();
+        MessageModel messageModel2 = new MessageModel();
         messageModel2.time = Stash.getDate();
         messageModel2.sent_by = Constants.auth().getUid();
         messageModel2.message = "Here is a new video for you! (TEST MCG)" + Constants.SEPARATOR + postModel.video_link;
@@ -154,7 +141,7 @@ public class ProfileFragment extends Fragment {
                 .setValue(chatModel2);
 
         // THIS WILL ADD A ENTRY OF MESSAGE TO CONVERSATION OF THAT USER AND MINE AS WELL
-        Message messageModel3 = new Message();
+        MessageModel messageModel3 = new MessageModel();
         messageModel3.time = Stash.getDate();
         messageModel3.sent_by = Constants.auth().getUid();
         messageModel3.message = "Hi, hello test 2";
@@ -162,15 +149,49 @@ public class ProfileFragment extends Fragment {
         Constants.databaseReference().child(Constants.CONVERSATIONS)
                 .child(chatModel2.chat_id).push().setValue(messageModel3);
 
-        Message messageModel4 = new Message();
+        MessageModel messageModel4 = new MessageModel();
         messageModel4.time = Stash.getDate();
         messageModel4.sent_by = Constants.auth().getUid();
         messageModel4.message = "Here is a new video for you! (TEST MCG)" + Constants.SEPARATOR + postModel.video_link;
 
         Constants.databaseReference().child(Constants.CONVERSATIONS)
                 .child(chatModel.chat_id).push().setValue(messageModel4);
-
+*/
         return b.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        try {
+            b.nameTextview.setText(userModel.name == null ? "Null" : userModel.name);
+            b.bioTextview.setText(userModel.bio == null ? "Null" : userModel.bio);
+
+            with(requireActivity().getApplicationContext())
+                    .asBitmap()
+                    .load(userModel.profile_url == null ? "" : userModel.profile_url)
+                    .addListener(new RequestListener<Bitmap>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Bitmap> target, boolean isFirstResource) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(Bitmap resource, Object model, Target<Bitmap> target, DataSource dataSource, boolean isFirstResource) {
+                            b.cameraIcon.setVisibility(View.GONE);
+                            b.profileImageView.setVisibility(View.VISIBLE);
+                            return false;
+                        }
+                    })
+                    .apply(new RequestOptions()
+                            .placeholder(lighterGrey)
+                            .error(lighterGrey)
+                    )
+                    .diskCacheStrategy(DATA)
+                    .into(b.profileImageView);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private ProgressDialog progressDialog;
@@ -208,7 +229,8 @@ public class ProfileFragment extends Fragment {
                                                         Stash.put(Constants.CURRENT_USER_MODEL, userModel);
 
                                                         b.profileImageView.setImageURI(data.getData());
-
+                                                        b.cameraIcon.setVisibility(View.GONE);
+                                                        b.profileImageView.setVisibility(View.VISIBLE);
                                                         progressDialog.dismiss();
                                                         Toast.makeText(getActivity(), "Upload done!", Toast.LENGTH_SHORT).show();
                                                     } else {

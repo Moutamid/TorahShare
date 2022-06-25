@@ -2,12 +2,17 @@ package com.moutamid.torahshare.fragments;
 
 import static android.view.LayoutInflater.from;
 
+import static com.bumptech.glide.Glide.with;
+import static com.bumptech.glide.load.engine.DiskCacheStrategy.DATA;
+import static com.moutamid.torahshare.R.color.lighterGrey;
 import static com.moutamid.torahshare.utils.Stash.toast;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,15 +20,23 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.moutamid.torahshare.R;
+import com.moutamid.torahshare.activity.ConversationActivity;
 import com.moutamid.torahshare.databinding.FragmentMessagesBinding;
 import com.moutamid.torahshare.model.ChatModel;
+import com.moutamid.torahshare.model.UserModel;
 import com.moutamid.torahshare.utils.Constants;
+import com.moutamid.torahshare.utils.Stash;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class MessagesFragment extends Fragment {
@@ -63,11 +76,11 @@ public class MessagesFragment extends Fragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
-
                             tasksArrayList.clear();
 
                             for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                                 ChatModel chatModel = dataSnapshot.getValue(ChatModel.class);
+                                chatModel.push_key = dataSnapshot.getKey();
                                 tasksArrayList.add(chatModel);
                             }
 
@@ -129,14 +142,64 @@ public class MessagesFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull final ViewHolderRightMessage holder, int position) {
+            ChatModel chatModel = tasksArrayList.get(position);
 
-            holder.title.setText(tasksArrayList.get(position).last_message);
+            if (chatModel.other_name.equals(Constants.NULL)) {
+                getUserDetails(chatModel, holder);
+            }
 
-            holder.title.setOnClickListener(view -> {
-                toast(tasksArrayList.get(position).chat_id);
-                // THIS ID WILL BE PASSED TO CONVERSATION ACTIVITY TO FETCH MESSAGES
+            with(requireActivity().getApplicationContext())
+                    .asBitmap()
+                    .load(chatModel.other_profile)
+                    .apply(new RequestOptions()
+                            .placeholder(lighterGrey)
+                            .error(lighterGrey)
+                    )
+                    .diskCacheStrategy(DATA)
+                    .into(holder.profile);
+
+            holder.name.setText(chatModel.other_name);
+            holder.lastMcg.setText(chatModel.last_message);
+            holder.time.setText(chatModel.time);
+
+            holder.parent.setOnClickListener(view -> {
+                Stash.put(Constants.CHAT_MODEL, chatModel);
+                startActivity(new Intent(requireActivity(), ConversationActivity.class));
+
             });
 
+        }
+
+        private void getUserDetails(ChatModel chatModel, ViewHolderRightMessage holder) {
+            Constants.databaseReference().child(Constants.USERS).child(chatModel.other_uid)
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                UserModel model = snapshot.getValue(UserModel.class);
+                                chatModel.other_name = model.name;
+                                chatModel.other_profile = model.profile_url;
+                                Constants.databaseReference().child(Constants.CHATS)
+                                        .child(Constants.auth().getUid())
+                                        .child(chatModel.chat_id).setValue(chatModel);
+
+                                holder.name.setText(model.name);
+                                with(requireActivity().getApplicationContext())
+                                        .asBitmap()
+                                        .load(chatModel.other_profile)
+                                        .apply(new RequestOptions()
+                                                .placeholder(lighterGrey)
+                                                .error(lighterGrey)
+                                        )
+                                        .diskCacheStrategy(DATA)
+                                        .into(holder.profile);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
         }
 
         @Override
@@ -147,12 +210,17 @@ public class MessagesFragment extends Fragment {
         }
 
         public class ViewHolderRightMessage extends RecyclerView.ViewHolder {
-
-            TextView title;
+            TextView lastMcg, name, time;
+            RelativeLayout parent;
+            CircleImageView profile;
 
             public ViewHolderRightMessage(@NonNull View v) {
                 super(v);
-                title = v.findViewById(R.id.text);
+                lastMcg = v.findViewById(R.id.last_mcg);
+                name = v.findViewById(R.id.name);
+                time = v.findViewById(R.id.date);
+                parent = v.findViewById(R.id.parentLayout);
+                profile = v.findViewById(R.id.profile);
 
             }
         }
