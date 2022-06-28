@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="5dp"
                     android:layout_marginStart="5dp"
-                    app:cardBackgroundColor="@color/white"
+                    app:cardBackgroundColor="@color/default_purple"
                     app:cornerRadius="@dimen/default_corner_radius"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/card_share"
@@ -47,7 +47,7 @@
                         android:layout_marginVertical="8dp"
                         android:gravity="center"
                         android:text="Contacts"
-                        android:textColor="@color/default_purple"
+                        android:textColor="@color/white"
                         android:textSize="13sp" />
 
                 </com.google.android.material.card.MaterialCardView>
@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="5dp"
                     android:layout_marginEnd="5dp"
-                    app:cardBackgroundColor="@color/default_purple"
+                    app:cardBackgroundColor="@color/white"
                     app:cornerRadius="@dimen/default_corner_radius"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +71,7 @@
                         android:layout_marginVertical="8dp"
                         android:gravity="center"
                         android:text="Shares"
-                        android:textColor="@color/white"
+                        android:textColor="@color/default_purple"
                         android:textSize="13sp" />
 
                 </com.google.android.material.card.MaterialCardView>

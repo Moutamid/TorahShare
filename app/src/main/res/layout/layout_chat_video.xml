@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="10:40 am"
-        android:textSize="12sp"
-        android:textColor="@color/default_text_grey" />
+        android:textColor="@color/default_text_grey"
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/timeTv_caption_video"
@@ -29,8 +29,10 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/videoViewLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:layout_toStartOf="@id/menuBtn_video_mcg"
@@ -42,6 +44,14 @@
                 android:id="@+id/videoViewMcg"
                 android:layout_width="match_parent"
                 android:layout_height="200dp" />
+
+            <ImageView
+                android:id="@+id/videoPlayBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_play_btn" />
 
         </com.google.android.material.card.MaterialCardView>
 

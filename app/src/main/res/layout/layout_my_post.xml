@@ -79,13 +79,27 @@
             android:text="jakgfjdsghf jksdgfjdsgf sdjfdgjkfds " />
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/videoViewLayout"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="10dp"
-            app:cardBackgroundColor="@color/pink"
-            app:cardCornerRadius="@dimen/default_corner_radius">
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/default_corner_radius"
+            app:cardElevation="0dp">
 
+            <VideoView
+                android:id="@+id/videoView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <ImageView
+                android:id="@+id/videoPlayBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_play_btn" />
 
         </com.google.android.material.card.MaterialCardView>
 

@@ -1,14 +1,11 @@
 package com.moutamid.torahshare.activity;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Scroller;
 
@@ -25,7 +22,7 @@ import com.moutamid.torahshare.activity.approval.ApprovalActivity;
 import com.moutamid.torahshare.databinding.ActivityHomeBinding;
 import com.moutamid.torahshare.fragments.MessagesFragment;
 import com.moutamid.torahshare.fragments.ProfileFragment;
-import com.moutamid.torahshare.fragments.SearchFragment;
+import com.moutamid.torahshare.fragments.search.SearchFragment;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

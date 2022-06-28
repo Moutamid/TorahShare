@@ -2,22 +2,22 @@ package com.moutamid.torahshare.fragments;
 
 import static android.app.Activity.RESULT_OK;
 import static android.view.LayoutInflater.from;
-import static com.bumptech.glide.Glide.*;
 import static com.bumptech.glide.Glide.with;
 import static com.bumptech.glide.load.engine.DiskCacheStrategy.DATA;
 import static com.moutamid.torahshare.R.color.lighterGrey;
-import static com.moutamid.torahshare.utils.Stash.toast;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,13 +25,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.Target;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -45,6 +39,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.moutamid.torahshare.R;
 import com.moutamid.torahshare.activity.settings.SettingsActivity;
+import com.moutamid.torahshare.model.FollowModel;
 import com.moutamid.torahshare.model.PostModel;
 import com.moutamid.torahshare.model.UserModel;
 import com.moutamid.torahshare.utils.Constants;
@@ -68,6 +63,16 @@ public class ProfileFragment extends Fragment {
         b = com.moutamid.torahshare.databinding.FragmentProfileBinding.inflate(inflater, container, false);
         if (!isAdded()) return b.getRoot();
 
+        if (userModel.profile_url.isEmpty() || userModel.profile_url.equals(Constants.NULL)) {
+        } else {
+            b.cameraIcon.setVisibility(View.GONE);
+            b.profileImageView.setVisibility(View.VISIBLE);
+        }
+        with(requireActivity().getApplicationContext())
+                .load(userModel.profile_url)
+                .diskCacheStrategy(DATA)
+                .into(b.profileImageView);
+
         b.poiu.setOnClickListener(view -> {
             Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
             galleryIntent.setType("image/*");
@@ -80,6 +85,14 @@ public class ProfileFragment extends Fragment {
 
         b.settingsBtn.setOnClickListener(view -> {
             startActivity(new Intent(requireActivity(), SettingsActivity.class));
+        });
+
+        b.followersBtn.setOnClickListener(view -> {
+            /
+        });
+
+        b.followingBtn.setOnClickListener(view -> {
+
         });
 
         Constants.databaseReference().child(Constants.PUBLIC_POSTS)
@@ -185,38 +198,12 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        try {
-            b.nameTextview.setText(userModel.name);
-            b.bioTextview.setText(userModel.bio);
+        b.nameTextview.setText(userModel.name);
+        b.bioTextview.setText(userModel.bio);
 
-            b.followersTextview.setText(userModel.followers_count + "");
-            b.followingTextview.setText(userModel.following_count + "");
+        b.followersTextview.setText(userModel.followers_count + "");
+        b.followingTextview.setText(userModel.following_count + "");
 
-            with(requireActivity().getApplicationContext())
-                    .asBitmap()
-                    .load(userModel.profile_url)
-                    .addListener(new RequestListener<Bitmap>() {
-                        @Override
-                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Bitmap> target, boolean isFirstResource) {
-                            return false;
-                        }
-
-                        @Override
-                        public boolean onResourceReady(Bitmap resource, Object model, Target<Bitmap> target, DataSource dataSource, boolean isFirstResource) {
-                            b.cameraIcon.setVisibility(View.GONE);
-                            b.profileImageView.setVisibility(View.VISIBLE);
-                            return false;
-                        }
-                    })
-                    .apply(new RequestOptions()
-                            .placeholder(lighterGrey)
-                            .error(lighterGrey)
-                    )
-                    .diskCacheStrategy(DATA)
-                    .into(b.profileImageView);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     private ProgressDialog progressDialog;
@@ -236,7 +223,6 @@ public class ProfileFragment extends Fragment {
             filePath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
                     filePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri photoUrl) {
@@ -349,6 +335,42 @@ public class ProfileFragment extends Fragment {
             holder.comment_count.setText(postModel.comment_count + "");
 
             holder.minutes.setText(postModel.date);
+
+            Uri uri = Uri.parse(postModel.video_link);
+
+            holder.videoView.setVideoURI(uri);
+            holder.videoView.start();
+            holder.videoView.seekTo(100);
+            holder.videoView.pause();
+
+            holder.videoView.setOnClickListener(view -> {
+                if (holder.playBtn.getVisibility() == View.GONE) {
+                    holder.playBtn.setVisibility(View.VISIBLE);
+                    new Handler().postDelayed(() -> {
+                        holder.playBtn.setVisibility(View.GONE);
+                    }, 3000);
+                } else {
+                    holder.playBtn.setVisibility(View.GONE);
+                }
+            });
+
+            holder.playBtn.setOnClickListener(view -> {
+                if (holder.videoView.isPlaying()) {
+                    // IS PLAYING
+                    holder.playBtn.setImageResource(R.drawable.ic_play_btn);
+                    holder.videoView.pause();
+
+                } else {
+                    // PAUSED OR NOT STARTED
+                    holder.playBtn.setImageResource(R.drawable.ic_pause_btn);
+                    new Handler().postDelayed(() -> {
+                        holder.playBtn.setVisibility(View.GONE);
+                    }, 3000);
+
+                    holder.videoView.start();
+                }
+            });
+
         }
 
         @Override
@@ -362,6 +384,8 @@ public class ProfileFragment extends Fragment {
             CircleImageView profile;
             TextView name, time, caption, share_count, comment_count, minutes;
             MaterialCardView parent;
+            VideoView videoView;
+            ImageView playBtn;
 
             public ViewHolderRightMessage(@NonNull View v) {
                 super(v);
@@ -373,6 +397,8 @@ public class ProfileFragment extends Fragment {
                 comment_count = v.findViewById(R.id.comments_count_post);
                 minutes = v.findViewById(R.id.minutes_post);
                 parent = v.findViewById(R.id.parent_post);
+                videoView = v.findViewById(R.id.videoView);
+                playBtn = v.findViewById(R.id.videoPlayBtn);
 
             }
         }

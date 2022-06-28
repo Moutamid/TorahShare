@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_search_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_search_item"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/default_profile" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/profile_search_item"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name_search_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="Avia Lecamen"
+            android:textColor="@color/default_text_black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/bio_search_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="akhfgajkgf akjsgfjsgf jhgfhjfg jhdgfsdhgf djsfhgjdhgf sjfgjdgf sjdfgsdjfhgsdj fjsdhgfjdgf jhgfhjfg jgjhg"
+            android:textColor="@color/default_text_grey" />
+
+    </LinearLayout>
+
+</RelativeLayout>

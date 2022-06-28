@@ -22,6 +22,11 @@ public class Constants {
     public static final String SEPARATOR = "LrDEBoLokW-5mhaT3ys";
     public static final String CHAT_MODEL = "chat_model";
     public static final String DEFAULT_PROFILE_URL = "https://firebasestorage.googleapis.com/v0/b/sweet-nutrition.appspot.com/o/Frame%201888.png?alt=media&token=a9609231-27b3-4b53-854b-957455b6613d";
+    public static final String SPONSORED_ACCOUNTS = "sponsored_accounts";
+    public static final String FOLLOWING = "following";
+    public static final String FOLLOWERS = "followers";
+    public static final String FOLLOWERS_LIST = "followers_list";
+    public static final String FOLLOWING_LIST = "following_list";
 
     public static FirebaseAuth auth() {
         return FirebaseAuth.getInstance();

@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Rect;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -156,7 +158,6 @@ public class ConversationActivity extends AppCompatActivity {
     private RecyclerViewAdapterMessages adapter;
 
     private void initRecyclerView() {
-
         conversationRecyclerView = b.conversationRecyclerview;
         //conversationRecyclerView.addItemDecoration(new DividerItemDecoration(conversationRecyclerView.getContext(), DividerItemDecoration.VERTICAL));
         adapter = new RecyclerViewAdapterMessages();
@@ -321,7 +322,37 @@ public class ConversationActivity extends AppCompatActivity {
 
                     viewHolderVideo.videoView.setVideoURI(uri);
                     viewHolderVideo.videoView.start();
-//                    viewHolderVideo.videoView.pause();
+                    viewHolderVideo.videoView.seekTo(100);
+                    viewHolderVideo.videoView.pause();
+
+                    viewHolderVideo.videoView.setOnClickListener(view -> {
+                        if (viewHolderVideo.playBtn.getVisibility() == View.GONE) {
+                            viewHolderVideo.playBtn.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(() -> {
+                                viewHolderVideo.playBtn.setVisibility(View.GONE);
+                            }, 3000);
+                        } else {
+                            viewHolderVideo.playBtn.setVisibility(View.GONE);
+                        }
+                    });
+
+                    viewHolderVideo.playBtn.setOnClickListener(view -> {
+                        if (viewHolderVideo.videoView.isPlaying()) {
+                            // IS PLAYING
+                            viewHolderVideo.playBtn.setImageResource(R.drawable.ic_play_btn);
+                            viewHolderVideo.videoView.pause();
+
+                        } else {
+                            // PAUSED OR NOT STARTED
+                            viewHolderVideo.playBtn.setImageResource(R.drawable.ic_pause_btn);
+                            new Handler().postDelayed(() -> {
+                                viewHolderVideo.playBtn.setVisibility(View.GONE);
+                            }, 3000);
+
+                            viewHolderVideo.videoView.start();
+                        }
+                    });
+
                     break;
             }
         }
@@ -351,7 +382,7 @@ public class ConversationActivity extends AppCompatActivity {
         }
 
         public class ViewHolderVideo extends RecyclerView.ViewHolder {
-            ImageView menuBtn;
+            ImageView menuBtn, playBtn;
             VideoView videoView;
             TextView caption, time;
 
@@ -361,6 +392,7 @@ public class ConversationActivity extends AppCompatActivity {
                 time = v.findViewById(R.id.timeTv_video);
                 menuBtn = v.findViewById(R.id.menuBtn_video_mcg);
                 videoView = v.findViewById(R.id.videoViewMcg);
+                playBtn = v.findViewById(R.id.videoPlayBtn);
             }
         }
     }

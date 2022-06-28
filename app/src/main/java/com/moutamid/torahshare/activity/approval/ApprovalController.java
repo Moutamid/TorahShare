@@ -156,6 +156,7 @@ public class ApprovalController {
                         b.videoView1Layout.setVisibility(View.VISIBLE);
 
                         b.videoView1.setVideoURI(uri);
+                        b.videoView1.seekTo(100);
                         b.videoView1.start();
                     }
                     if (requestCode == PICK_VIDEO_2) {
