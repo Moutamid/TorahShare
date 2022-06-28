@@ -306,6 +306,14 @@ public class RegistrationActivity extends AppCompatActivity {
             model.email = user.getEmail();
             model.gender = Constants.GENDER_MALE;
             model.isApproved = false;
+
+            model.uid = user.getUid();
+            model.number = "000000000";
+            model.bio = Constants.NULL;
+            model.profile_url = Constants.DEFAULT_PROFILE_URL;
+            model.followers_count = 0;
+            model.following_count = 0;
+
             Constants.databaseReference().child(Constants.USERS)
                     .child(Constants.auth().getUid())
                     .addListenerForSingleValueEvent(new ValueEventListener() {

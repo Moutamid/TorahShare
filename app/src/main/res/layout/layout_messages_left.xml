@@ -2,19 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="10dp">
+    android:layout_marginTop="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_toStartOf="@+id/timeTv"
+        android:layout_toStartOf="@+id/timeTv_mcg_left"
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/profile"
+            android:id="@+id/profile_mcg_left"
             android:layout_gravity="bottom"
             android:src="@drawable/ic_play_btn" />
 
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:layout_marginStart="5dp"
-            android:id="@+id/mcg"
+            android:id="@+id/mcg_left"
             android:background="@drawable/bg_left_mcg"
             android:padding="10dp"
             android:text="jsagjhsgfjhg fjdsgfdshgfjdshgf jdhgfdshgfjhds fj" />
@@ -31,11 +31,12 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/timeTv"
+        android:id="@+id/timeTv_mcg_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:textSize="12sp"
         android:layout_marginHorizontal="20dp"
         android:text="10:40 am"
         android:textColor="@color/default_text_grey" />

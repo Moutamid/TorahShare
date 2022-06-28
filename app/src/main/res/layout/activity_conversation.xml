@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/default_light_pink"
     android:layout_height="match_parent"
+    android:background="@color/default_light_pink"
     tools:context=".activity.ConversationActivity">
 
     <RelativeLayout
@@ -16,23 +16,22 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="40dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/backbtn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center_vertical"
-                android:id="@+id/backbtn"
                 android:src="@drawable/ic_baseline_arrow_back_24"
                 app:tint="@color/white" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="50dp"
                 android:id="@+id/profileimage"
+                android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="15dp"
@@ -54,7 +53,6 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="20dp"
             android:src="@drawable/ic_baseline_more_vert_24"
@@ -62,29 +60,68 @@
 
     </RelativeLayout>
 
-    <androidx.core.widget.NestedScrollView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/conversationRecyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ppp"
+        android:layout_below="@id/iop"
+        android:layout_marginBottom="5dp"
+        app:stackFromEnd="true"
+        tools:itemCount="4"
+        tools:listitem="@layout/layout_messages_left" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/ppp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/iop">
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="20dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/default_corner_radius"
+        app:cardElevation="0dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/conversationRecyclerview"
-                tools:listitem="@layout/layout_messages"
-                tools:itemCount="4"
+            <EditText
+                android:id="@+id/messageEt"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/sendBtn"
+                android:background="@color/white"
+                android:hint="Enter your message"
+                android:inputType="textMultiLine"
+                android:paddingVertical="10dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="10dp"
+                android:textColor="@color/default_text_black" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="200dp" />
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/sendBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/default_purple"
+                app:cardCornerRadius="@dimen/default_corner_radius"
+                app:cardElevation="0dp">
 
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:src="@drawable/ic_send" />
 
-    </androidx.core.widget.NestedScrollView>
+            </com.google.android.material.card.MaterialCardView>
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </RelativeLayout>

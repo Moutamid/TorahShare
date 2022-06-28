@@ -180,6 +180,13 @@ public class RegistrationController {
                             activity.model.gender = b.genderDefaultText.getText().toString();
                             activity.model.isApproved = false;
 
+                            activity.model.uid = Constants.auth().getUid();
+                            activity.model.number = "000000000";
+                            activity.model.bio = Constants.NULL;
+                            activity.model.profile_url = Constants.DEFAULT_PROFILE_URL;
+                            activity.model.followers_count = 0;
+                            activity.model.following_count = 0;
+
                             Stash.put(Constants.CURRENT_USER_MODEL, activity.model);
                             uploadUserInfoToDatabase();
                         } else {

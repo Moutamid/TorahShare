@@ -2,9 +2,11 @@ package com.moutamid.torahshare.fragments;
 
 import static android.app.Activity.RESULT_OK;
 import static android.view.LayoutInflater.from;
+import static com.bumptech.glide.Glide.*;
 import static com.bumptech.glide.Glide.with;
 import static com.bumptech.glide.load.engine.DiskCacheStrategy.DATA;
 import static com.moutamid.torahshare.R.color.lighterGrey;
+import static com.moutamid.torahshare.utils.Stash.toast;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,6 +16,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,7 +25,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
@@ -31,6 +36,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -42,6 +51,8 @@ import com.moutamid.torahshare.utils.Constants;
 import com.moutamid.torahshare.utils.Stash;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileFragment extends Fragment {
     public com.moutamid.torahshare.databinding.FragmentProfileBinding b;
@@ -57,25 +68,11 @@ public class ProfileFragment extends Fragment {
         b = com.moutamid.torahshare.databinding.FragmentProfileBinding.inflate(inflater, container, false);
         if (!isAdded()) return b.getRoot();
 
-        // TODO: REMOVE AFTER INSTALL
-        if (Stash.getBoolean("aa", false)) {
-            Stash.put("aa", false);
-            userModel.uid = Constants.auth().getUid();
-            userModel.number = Constants.NULL;
-            userModel.bio = Constants.NULL;
-            userModel.profile_url = Constants.NULL;
-            userModel.followers_count = 0;
-            userModel.following_count = 0;
-            Stash.put(Constants.CURRENT_USER_MODEL, userModel);
-        }
-
-        b.profileImageView.setOnClickListener(view -> {
+        b.poiu.setOnClickListener(view -> {
             Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
             galleryIntent.setType("image/*");
             startActivityForResult(galleryIntent, 1001);
         });
-
-        initRecyclerView();
 
         progressDialog = new ProgressDialog(requireContext());
         progressDialog.setCancelable(false);
@@ -84,6 +81,31 @@ public class ProfileFragment extends Fragment {
         b.settingsBtn.setOnClickListener(view -> {
             startActivity(new Intent(requireActivity(), SettingsActivity.class));
         });
+
+        Constants.databaseReference().child(Constants.PUBLIC_POSTS)
+                .orderByChild("my_uid").equalTo(Constants.auth().getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+
+                            postsArraylist.clear();
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+                                PostModel postModel = dataSnapshot.getValue(PostModel.class);
+                                postsArraylist.add(postModel);
+                            }
+
+                            initRecyclerView();
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
         /*TODO:
            // THIS IS THE POST WHEN SOMEONE TRIES TO POST SOMETHING
@@ -164,12 +186,15 @@ public class ProfileFragment extends Fragment {
     public void onResume() {
         super.onResume();
         try {
-            b.nameTextview.setText(userModel.name == null ? "Null" : userModel.name);
-            b.bioTextview.setText(userModel.bio == null ? "Null" : userModel.bio);
+            b.nameTextview.setText(userModel.name);
+            b.bioTextview.setText(userModel.bio);
+
+            b.followersTextview.setText(userModel.followers_count + "");
+            b.followingTextview.setText(userModel.following_count + "");
 
             with(requireActivity().getApplicationContext())
                     .asBitmap()
-                    .load(userModel.profile_url == null ? "" : userModel.profile_url)
+                    .load(userModel.profile_url)
                     .addListener(new RequestListener<Bitmap>() {
                         @Override
                         public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Bitmap> target, boolean isFirstResource) {
@@ -258,7 +283,6 @@ public class ProfileFragment extends Fragment {
     private RecyclerViewAdapterMessages adapter;
 
     private void initRecyclerView() {
-
         conversationRecyclerView = b.profileRecyclerView;
         //conversationRecyclerView.addItemDecoration(new DividerItemDecoration(conversationRecyclerView.getContext(), DividerItemDecoration.VERTICAL));
         adapter = new RecyclerViewAdapterMessages();
@@ -302,25 +326,53 @@ public class ProfileFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull final ViewHolderRightMessage holder, int position) {
+            PostModel postModel = postsArraylist.get(position);
 
-            //            holder.title.setText("");
+            with(requireActivity().getApplicationContext())
+                    .asBitmap()
+                    .load(postModel.profile_link)
+                    .apply(new RequestOptions()
+                            .placeholder(lighterGrey)
+                            .error(R.drawable.default_profile)
+                    )
+                    .diskCacheStrategy(DATA)
+                    .into(holder.profile);
 
+            holder.name.setText(postModel.name);
+
+            holder.time.setText(postModel.date);
+
+            holder.caption.setText(postModel.caption);
+
+            holder.share_count.setText(postModel.share_count + "");
+
+            holder.comment_count.setText(postModel.comment_count + "");
+
+            holder.minutes.setText(postModel.date);
         }
 
         @Override
         public int getItemCount() {
-            //            if (tasksArrayList == null)
-            return 10;
-            //            return tasksArrayList.size();
+            if (postsArraylist == null)
+                return 0;
+            return postsArraylist.size();
         }
 
         public class ViewHolderRightMessage extends RecyclerView.ViewHolder {
-
-            //            TextView title;
+            CircleImageView profile;
+            TextView name, time, caption, share_count, comment_count, minutes;
+            MaterialCardView parent;
 
             public ViewHolderRightMessage(@NonNull View v) {
                 super(v);
-                //                title = v.findViewById(R.id.titleTextview);
+                profile = v.findViewById(R.id.profile_image_post);
+                name = v.findViewById(R.id.name_post);
+                time = v.findViewById(R.id.time_post);
+                caption = v.findViewById(R.id.caption_post);
+                share_count = v.findViewById(R.id.shares_count_post);
+                comment_count = v.findViewById(R.id.comments_count_post);
+                minutes = v.findViewById(R.id.minutes_post);
+                parent = v.findViewById(R.id.parent_post);
 
             }
         }

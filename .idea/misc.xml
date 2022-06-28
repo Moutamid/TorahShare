@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/bg_edittext_authentication.xml" value="0.123" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/bg_left_mcg.xml" value="0.1255" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/bg_right_mcg.xml" value="0.1255" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/bg_sample_tag.xml" value="0.1255" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/dot.xml" value="0.1255" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/splash_background.xml" value="0.123" />
@@ -23,8 +24,11 @@
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/fragment_messages.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/fragment_profile.xml" value="0.1871345029239766" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/fragment_search.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_chat_video.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_chats.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_messages.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_messages_left.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_messages_right.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_my_post.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/logo_layout.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/view_sample_input_tag.xml" value="0.2" />

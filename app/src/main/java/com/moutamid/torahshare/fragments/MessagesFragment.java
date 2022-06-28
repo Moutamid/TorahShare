@@ -20,8 +20,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -153,7 +151,7 @@ public class MessagesFragment extends Fragment {
                     .load(chatModel.other_profile)
                     .apply(new RequestOptions()
                             .placeholder(lighterGrey)
-                            .error(lighterGrey)
+                            .error(R.drawable.default_profile)
                     )
                     .diskCacheStrategy(DATA)
                     .into(holder.profile);
@@ -189,7 +187,7 @@ public class MessagesFragment extends Fragment {
                                         .load(chatModel.other_profile)
                                         .apply(new RequestOptions()
                                                 .placeholder(lighterGrey)
-                                                .error(lighterGrey)
+                                                .error(R.drawable.default_profile)
                                         )
                                         .diskCacheStrategy(DATA)
                                         .into(holder.profile);
@@ -220,7 +218,7 @@ public class MessagesFragment extends Fragment {
                 name = v.findViewById(R.id.name);
                 time = v.findViewById(R.id.date);
                 parent = v.findViewById(R.id.parentLayout);
-                profile = v.findViewById(R.id.profile);
+                profile = v.findViewById(R.id.profile_mcg_left);
 
             }
         }

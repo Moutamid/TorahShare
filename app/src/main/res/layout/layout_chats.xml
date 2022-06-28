@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile"
+        android:id="@+id/profile_mcg_left"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_centerVertical="true"
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginStart="15dp"
-        android:layout_toEndOf="@id/profile"
+        android:layout_toEndOf="@id/profile_mcg_left"
         android:orientation="vertical">
 
         <TextView
