@@ -187,6 +187,7 @@
                     android:id="@+id/profileRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    tools:itemCount="1"
                     tools:listitem="@layout/layout_my_post" />
 
                 <View

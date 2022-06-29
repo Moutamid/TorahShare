@@ -8,9 +8,9 @@
     tools:context=".activity.settings.SettingsActivity">
 
     <ImageView
+        android:id="@+id/backBtn"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:id="@+id/backBtn"
         android:layout_margin="20dp"
         android:src="@drawable/ic_baseline_arrow_back_24"
         app:tint="@color/black" />
@@ -42,11 +42,11 @@
                 android:text="Management" />
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/editProfileBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
-                android:id="@+id/editProfileBtn"
                 android:padding="17dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/default_corner_radius"
@@ -83,12 +83,12 @@
                 android:text="About Application" />
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/termsBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
                 android:padding="17dp"
-                android:id="@+id/termsBtn"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/default_corner_radius"
                 app:cardElevation="0dp">
@@ -119,11 +119,11 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/privacyPolicyBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:padding="17dp"
-                android:id="@+id/privacyPolicyBtn"
                 app:cardBackgroundColor="@color/white"
                 app:cardElevation="0dp">
 
@@ -153,12 +153,12 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/disclaimerBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:padding="17dp"
                 app:cardBackgroundColor="@color/white"
-                android:id="@+id/disclaimerBtn"
                 app:cardCornerRadius="@dimen/default_corner_radius"
                 app:cardElevation="0dp">
 
@@ -215,8 +215,8 @@
                         android:textColor="@color/default_text_grey" />
 
                     <CheckBox
-                        android:layout_width="wrap_content"
                         android:id="@+id/noContactOptionCheckBox"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true" />
@@ -226,11 +226,11 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/changePasswordBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:padding="17dp"
-                android:id="@+id/changePasswordBtn"
                 app:cardBackgroundColor="@color/white"
                 app:cardElevation="0dp">
 
@@ -287,9 +287,9 @@
                         android:textColor="@color/default_text_grey" />
 
                     <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/languageSwitch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/languageSwitch"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="20dp" />
@@ -304,12 +304,12 @@
                 android:text="Preferences" />
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/logoutBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
                 android:padding="17dp"
-                android:id="@+id/logoutBtn"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/default_corner_radius"
                 app:cardElevation="0dp">
@@ -339,6 +339,9 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
 
         </LinearLayout>
 

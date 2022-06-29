@@ -95,6 +95,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Stash.put(Constants.MY_PASSWORD, charSequence.toString());
                 if (charSequence.toString().isEmpty()) {
                     b.passwordStrengthLayout.setVisibility(View.GONE);
                 } else {

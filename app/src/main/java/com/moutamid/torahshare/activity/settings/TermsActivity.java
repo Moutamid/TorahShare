@@ -15,6 +15,8 @@ public class TermsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         b = ActivityTermsBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
-
+        b.backBtn.setOnClickListener(view -> {
+            finish();
+        });
     }
 }

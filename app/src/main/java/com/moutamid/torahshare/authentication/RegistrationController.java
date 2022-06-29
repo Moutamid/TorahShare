@@ -93,6 +93,7 @@ public class RegistrationController {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            Stash.put(Constants.MY_PASSWORD, passwordStr);
                             Constants.databaseReference().child(Constants.USERS)
                                     .child(Constants.auth().getUid())
                                     .addListenerForSingleValueEvent(new ValueEventListener() {

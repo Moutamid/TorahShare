@@ -19,10 +19,12 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.moutamid.torahshare.R;
 import com.moutamid.torahshare.activity.approval.ApprovalActivity;
+import com.moutamid.torahshare.authentication.RegistrationActivity;
 import com.moutamid.torahshare.databinding.ActivityHomeBinding;
 import com.moutamid.torahshare.fragments.MessagesFragment;
 import com.moutamid.torahshare.fragments.ProfileFragment;
 import com.moutamid.torahshare.fragments.search.SearchFragment;
+import com.moutamid.torahshare.utils.Constants;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -39,6 +41,10 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         b = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
+        if (Constants.auth().getCurrentUser() == null) {
+            startActivity(new Intent(this, RegistrationActivity.class));
+            return;
+        }
 
         viewPager = findViewById(R.id.main_view_pager);
 

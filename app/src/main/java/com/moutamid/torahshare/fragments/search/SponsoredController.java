@@ -210,7 +210,7 @@ public class SponsoredController {
             holder.unFollowBtn.setOnClickListener(view -> {
                 holder.unFollowBtn.setVisibility(View.GONE);
                 holder.followBtn.setVisibility(View.VISIBLE);
-/
+
                 Constants.databaseReference().child(Constants.USERS)
                         .child(Constants.auth().getUid())
                         .child(Constants.FOLLOWING)

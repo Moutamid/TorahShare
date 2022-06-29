@@ -27,6 +27,8 @@ public class Constants {
     public static final String FOLLOWERS = "followers";
     public static final String FOLLOWERS_LIST = "followers_list";
     public static final String FOLLOWING_LIST = "following_list";
+    public static final String PARAMS = "params";
+    public static final String MY_PASSWORD = "my_password";
 
     public static FirebaseAuth auth() {
         return FirebaseAuth.getInstance();

@@ -6,6 +6,7 @@ import static com.bumptech.glide.Glide.with;
 import static com.bumptech.glide.load.engine.DiskCacheStrategy.DATA;
 import static com.moutamid.torahshare.R.color.lighterGrey;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -14,6 +15,8 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +41,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.moutamid.torahshare.R;
+import com.moutamid.torahshare.activity.FollowListActivity;
 import com.moutamid.torahshare.activity.settings.SettingsActivity;
 import com.moutamid.torahshare.model.FollowModel;
 import com.moutamid.torahshare.model.PostModel;
@@ -88,11 +92,37 @@ public class ProfileFragment extends Fragment {
         });
 
         b.followersBtn.setOnClickListener(view -> {
-            /
+            startActivity(new Intent(requireActivity(), FollowListActivity.class)
+                    .putExtra(Constants.PARAMS, Constants.FOLLOWERS));
         });
 
         b.followingBtn.setOnClickListener(view -> {
+            startActivity(new Intent(requireActivity(), FollowListActivity.class)
+                    .putExtra(Constants.PARAMS, Constants.FOLLOWING));
+        });
 
+        b.bioTextview.setOnClickListener(view -> {
+            Dialog dialog = new Dialog(requireActivity());
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.dialog_bio_text);
+            dialog.setCancelable(true);
+            WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+            layoutParams.copyFrom(dialog.getWindow().getAttributes());
+            layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+            layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+            TextView textView = dialog.findViewById(R.id.bioTextViewDialog);
+            textView.setText(b.bioTextview.getText().toString());
+
+            dialog.findViewById(R.id.crossBtnDialog).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // CODE HERE
+                    dialog.dismiss();
+                }
+            });
+            dialog.show();
+            dialog.getWindow().setAttributes(layoutParams);
         });
 
         Constants.databaseReference().child(Constants.PUBLIC_POSTS)

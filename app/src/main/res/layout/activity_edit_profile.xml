@@ -88,6 +88,7 @@
                     <EditText
                         android:id="@+id/bioEtSignUp"
                         style="@style/edittext_authentication"
+                        android:gravity="top"
                         android:hint="Let People Know What Your Account Is All About \n\n"
                         android:inputType="textMultiLine" />
 

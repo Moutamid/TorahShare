@@ -1,9 +1,12 @@
 package com.moutamid.torahshare.activity.settings;
 
+import static com.moutamid.torahshare.utils.Stash.toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.CompoundButton;
 
 import com.moutamid.torahshare.R;
 import com.moutamid.torahshare.databinding.ActivitySettingsBinding;
@@ -30,6 +33,25 @@ public class SettingsActivity extends AppCompatActivity {
 
         b.termsBtn.setOnClickListener(view -> {
             startActivity(new Intent(SettingsActivity.this, TermsActivity.class));
+        });
+
+        b.privacyPolicyBtn.setOnClickListener(view -> {
+            toast("Coming soon!");
+        });
+
+        b.disclaimerBtn.setOnClickListener(view -> {
+            toast("Coming soon!");
+        });
+
+        b.changePasswordBtn.setOnClickListener(view -> {
+            startActivity(new Intent(SettingsActivity.this, TermsActivity.class));
+        });
+
+        b.noContactOptionCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                toast("Coming soon!");
+            }
         });
 
         b.logoutBtn.setOnClickListener(view -> {

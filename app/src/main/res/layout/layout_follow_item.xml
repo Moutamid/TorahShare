@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_search_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_follow_item"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/default_profile" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@id/fff"
+        android:layout_toEndOf="@id/profile_follow_item"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name_follow_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="Avia Lecamen"
+            android:textColor="@color/default_text_black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/bio_follow_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="akhfgajkgf akjsgfjsgf jhgfhjfg jhdgfsdhgf djsfhgjdhgf sjfgjdgf sjdfgsdjfhgsdj fjsdhgfjdgf jhgfhjfg jgjhg"
+            android:textColor="@color/default_text_grey" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/fff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/followBtn_follow_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Follow"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/unFollowBtn_follow_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Unfollow"
+            android:textAllCaps="false"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
