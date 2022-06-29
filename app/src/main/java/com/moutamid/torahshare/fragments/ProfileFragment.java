@@ -9,6 +9,7 @@ import static com.moutamid.torahshare.R.color.lighterGrey;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -228,6 +229,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
         b.nameTextview.setText(userModel.name);
         b.bioTextview.setText(userModel.bio);
 

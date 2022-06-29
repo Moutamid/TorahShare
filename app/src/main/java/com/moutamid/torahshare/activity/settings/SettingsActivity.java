@@ -50,7 +50,19 @@ public class SettingsActivity extends AppCompatActivity {
         b.noContactOptionCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                toast("Coming soon!");
+                if (b){
+                    // FEMALE
+                    Constants.databaseReference().child(Constants.USERS)
+                            .child(Constants.auth().getUid())
+                            .child("gender")
+                            .setValue(Constants.GENDER_FEMALE);
+                }else {
+                    // MALE
+                    Constants.databaseReference().child(Constants.USERS)
+                            .child(Constants.auth().getUid())
+                            .child("gender")
+                            .setValue(Constants.GENDER_MALE);
+                }
             }
         });
 
