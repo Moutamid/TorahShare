@@ -174,6 +174,7 @@ public class ProfileFragment extends Fragment {
         chatModel.time = Stash.getDate();
         chatModel.chat_id = Constants.databaseReference().push().getKey();
         chatModel.other_name = Constants.NULL;
+        chatModel.is_contact = false;
         chatModel.other_profile = Constants.NULL;
         Constants.databaseReference().child(Constants.CHATS)
                 .child(Constants.auth().getUid()).child(chatModel.chat_id)
@@ -200,6 +201,7 @@ public class ProfileFragment extends Fragment {
         chatModel2.time = Stash.getDate();
         chatModel2.chat_id = Constants.databaseReference().push().getKey();
         chatModel2.other_name = Constants.NULL;
+        chatModel2.is_contact = false;
         chatModel2.other_profile = Constants.NULL;
 
         Constants.databaseReference().child(Constants.CHATS)

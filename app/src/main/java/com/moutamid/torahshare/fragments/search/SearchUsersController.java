@@ -6,6 +6,7 @@ import static com.bumptech.glide.load.engine.DiskCacheStrategy.DATA;
 import static com.moutamid.torahshare.R.color.lighterGrey;
 import static com.moutamid.torahshare.utils.Stash.toast;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
@@ -22,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.moutamid.torahshare.R;
+import com.moutamid.torahshare.activity.ProfileActivity;
 import com.moutamid.torahshare.databinding.FragmentSearchBinding;
 import com.moutamid.torahshare.model.SearchModel;
 import com.moutamid.torahshare.utils.Constants;
@@ -116,7 +118,9 @@ public class SearchUsersController {
             holder.bio.setText(model.bio);
 
             holder.parent.setOnClickListener(view -> {
-                toast(model.uid);
+//                toast(model.uid);
+                fragment.startActivity(new Intent(fragment.requireContext(), ProfileActivity.class)
+                        .putExtra(Constants.PARAMS, model.uid));
             });
 
         }

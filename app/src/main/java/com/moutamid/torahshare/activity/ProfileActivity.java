@@ -4,6 +4,7 @@ import static android.view.LayoutInflater.from;
 import static com.bumptech.glide.Glide.with;
 import static com.bumptech.glide.load.engine.DiskCacheStrategy.DATA;
 import static com.moutamid.torahshare.R.color.lighterGrey;
+import static com.moutamid.torahshare.utils.Stash.toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,11 +20,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +35,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.moutamid.torahshare.R;
 import com.moutamid.torahshare.databinding.ActivityProfileBinding;
 import com.moutamid.torahshare.fragments.ProfileFragment;
+import com.moutamid.torahshare.model.ContactRequestModel;
 import com.moutamid.torahshare.model.FollowModel;
 import com.moutamid.torahshare.model.PostModel;
 import com.moutamid.torahshare.model.UserModel;
@@ -62,6 +67,9 @@ public class ProfileActivity extends AppCompatActivity {
         progressDialog.show();
 
         String other_uid = getIntent().getStringExtra(Constants.PARAMS);
+
+        if (Stash.getBoolean(other_uid + Constants.CONTACT_REQUESTS))
+            b.contactBtn.setVisibility(View.GONE);
 
         Constants.databaseReference().child(Constants.USERS).child(other_uid)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -165,9 +173,44 @@ public class ProfileActivity extends AppCompatActivity {
             });
 
             dialog.findViewById(R.id.sendBtn).setOnClickListener(view1 -> {
+                EditText editText = dialog.findViewById(R.id.messageEt);
 
+                String text = editText.getText().toString();
 
+                if (text.isEmpty())
+                    return;
 
+                ContactRequestModel requestModel = new ContactRequestModel();
+                requestModel.requester_uid = Constants.auth().getUid();
+                requestModel.requester_mcg = text;
+                requestModel.push_key = Constants.databaseReference().child(Constants.USERS)
+                        .child(userModel.uid).child(Constants.CONTACT_REQUESTS).push().getKey();
+
+                ProgressDialog progressDialog;
+                progressDialog = new ProgressDialog(ProfileActivity.this);
+                progressDialog.setCancelable(false);
+                progressDialog.setMessage("Loading...");
+                progressDialog.show();
+
+                Constants.databaseReference().child(Constants.USERS)
+                        .child(userModel.uid)
+                        .child(Constants.CONTACT_REQUESTS)
+                        .child(requestModel.push_key)
+                        .setValue(requestModel)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                progressDialog.dismiss();
+                                if (task.isSuccessful()) {
+                                    dialog.dismiss();
+                                    b.contactBtn.setVisibility(View.GONE);
+                                    Stash.put(userModel.uid + Constants.CONTACT_REQUESTS, true);
+                                    toast("Request sent!");
+                                } else {
+                                    toast(task.getException().getMessage());
+                                }
+                            }
+                        });
             });
 
             dialog.show();

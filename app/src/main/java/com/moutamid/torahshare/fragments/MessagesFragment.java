@@ -43,6 +43,8 @@ public class MessagesFragment extends Fragment {
     public MessagesFragment() {
     }
 
+    private boolean is_contact = true;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         b = FragmentMessagesBinding.inflate(inflater, container, false);
@@ -57,6 +59,8 @@ public class MessagesFragment extends Fragment {
             b.cardShare.setCardBackgroundColor(getResources().getColor(R.color.white));
             b.textViewShare.setTextColor(getResources().getColor(R.color.default_purple));
 
+            is_contact = true;
+
         });
 
         b.cardShare.setOnClickListener(view -> {
@@ -66,6 +70,8 @@ public class MessagesFragment extends Fragment {
             b.cardContacts.setCardBackgroundColor(getResources().getColor(R.color.white));
             b.textViewContacts.setTextColor(getResources().getColor(R.color.default_purple));
 
+            is_contact = false;
+
         });
 
         Constants.databaseReference().child(Constants.CHATS)
@@ -74,12 +80,18 @@ public class MessagesFragment extends Fragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
-                            tasksArrayList.clear();
+                            followersChatArrayList.clear();
+                            contactsChatArrayList.clear();
 
                             for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                                 ChatModel chatModel = dataSnapshot.getValue(ChatModel.class);
                                 chatModel.push_key = dataSnapshot.getKey();
-                                tasksArrayList.add(chatModel);
+
+                                if (chatModel.is_contact) {
+                                    contactsChatArrayList.add(chatModel);
+                                } else {
+                                    followersChatArrayList.add(chatModel);
+                                }
                             }
 
                             initRecyclerView();
@@ -96,7 +108,8 @@ public class MessagesFragment extends Fragment {
         return b.getRoot();
     }
 
-    private ArrayList<ChatModel> tasksArrayList = new ArrayList<>();
+    private ArrayList<ChatModel> followersChatArrayList = new ArrayList<>();
+    private ArrayList<ChatModel> contactsChatArrayList = new ArrayList<>();
 
     private RecyclerView conversationRecyclerView;
     private RecyclerViewAdapterMessages adapter;
@@ -140,7 +153,12 @@ public class MessagesFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull final ViewHolderRightMessage holder, int position) {
-            ChatModel chatModel = tasksArrayList.get(position);
+            ChatModel chatModel;
+            if (is_contact) {
+                chatModel = contactsChatArrayList.get(position);
+            } else {
+                chatModel = followersChatArrayList.get(position);
+            }
 
             if (chatModel.other_name.equals(Constants.NULL)) {
                 getUserDetails(chatModel, holder);
@@ -202,9 +220,15 @@ public class MessagesFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            if (tasksArrayList == null)
-                return 0;
-            return tasksArrayList.size();
+            if (is_contact) {
+                if (contactsChatArrayList == null)
+                    return 0;
+                return contactsChatArrayList.size();
+            } else {
+                if (followersChatArrayList == null)
+                    return 0;
+                return followersChatArrayList.size();
+            }
         }
 
         public class ViewHolderRightMessage extends RecyclerView.ViewHolder {

@@ -2,6 +2,7 @@ package com.moutamid.torahshare.fragments.search;
 
 import static android.view.LayoutInflater.from;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.moutamid.torahshare.R;
+import com.moutamid.torahshare.activity.ProfileActivity;
 import com.moutamid.torahshare.databinding.FragmentSearchBinding;
 import com.moutamid.torahshare.model.PostModel;
 import com.moutamid.torahshare.utils.Constants;
@@ -100,6 +102,11 @@ public class SearchVideosController {
 
             viewHolderVideo.caption.setText(model.caption);
             viewHolderVideo.time.setText(model.name);
+
+            viewHolderVideo.time.setOnClickListener(view -> {
+                fragment.startActivity(new Intent(fragment.requireContext(), ProfileActivity.class)
+                        .putExtra(Constants.PARAMS, model.my_uid));
+            });
 
             Uri uri = Uri.parse(model.video_link);
 

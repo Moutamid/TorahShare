@@ -6,11 +6,13 @@ import static com.bumptech.glide.load.engine.DiskCacheStrategy.DATA;
 import static com.moutamid.torahshare.R.color.lighterGrey;
 import static com.moutamid.torahshare.utils.Stash.toast;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -24,6 +26,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.moutamid.torahshare.R;
+import com.moutamid.torahshare.activity.ProfileActivity;
 import com.moutamid.torahshare.databinding.FragmentSearchBinding;
 import com.moutamid.torahshare.model.FollowModel;
 import com.moutamid.torahshare.model.SponsoredAccountsModel;
@@ -252,6 +255,11 @@ public class SponsoredController {
                         .setValue(myFollowModel);
             });
 
+            holder.parent.setOnClickListener(view -> {
+                fragment.startActivity(new Intent(fragment.requireContext(), ProfileActivity.class)
+                        .putExtra(Constants.PARAMS, model.uid));
+            });
+
         }
 
         @Override
@@ -268,9 +276,11 @@ public class SponsoredController {
             MaterialButton followBtn;
             VideoView videoView1, videoView2;
             ImageView playBtn1, playBtn2;
+            RelativeLayout parent;
 
             public ViewHolderRightMessage(@NonNull View v) {
                 super(v);
+                parent = v.findViewById(R.id.iiii);
                 unFollowBtn = v.findViewById(R.id.unFollowBtn_sponsored_layout);
                 profile = v.findViewById(R.id.profileImage_sponsored);
                 name = v.findViewById(R.id.name_sponsored_layout);
