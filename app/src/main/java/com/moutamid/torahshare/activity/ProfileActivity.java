@@ -197,7 +197,7 @@ public class ProfileActivity extends AppCompatActivity {
                         .child(Constants.CONTACT_REQUESTS)
                         .child(requestModel.push_key)
                         .setValue(requestModel)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {/
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 progressDialog.dismiss();
@@ -381,16 +381,3 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

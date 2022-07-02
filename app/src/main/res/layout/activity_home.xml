@@ -7,8 +7,9 @@
     android:background="@color/default_light_pink"
     tools:context=".activity.HomeActivity">
 
-    <view class="com.moutamid.torahshare.activity.HomeActivity$NonSwipableViewPager"
+    <view
         android:id="@+id/main_view_pager"
+        class="com.moutamid.torahshare.activity.HomeActivity$NonSwipableViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="75dp" />

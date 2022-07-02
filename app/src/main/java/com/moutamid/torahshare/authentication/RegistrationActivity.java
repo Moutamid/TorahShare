@@ -326,7 +326,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                 UserModel userModel = snapshot.getValue(UserModel.class);
                                 Stash.put(Constants.CURRENT_USER_MODEL, userModel);
                                 controller.progressDialog.dismiss();
-                                onCompleteListener();
+                                onCompleteMethod();
                             }
                         }
 

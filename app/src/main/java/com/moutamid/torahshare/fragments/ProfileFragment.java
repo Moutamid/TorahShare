@@ -225,6 +225,38 @@ public class ProfileFragment extends Fragment {
         Constants.databaseReference().child(Constants.CONVERSATIONS)
                 .child(chatModel.chat_id).push().setValue(messageModel4);
 */
+
+//        TODO: REMOVE THESE BELOW MODELS AND MODELS
+        UserModel userModel3 = new UserModel();
+        userModel3.name = "Test user 1";
+        userModel3.gender = Constants.GENDER_MALE;
+        userModel3.email = "test1@gmail.com";
+        userModel3.uid = "01pFAFCCZMbZrnpdNw1Lnsr3wjW2";
+        userModel3.number = "0123456789";
+        userModel3.bio = "My bio is only an example of how others bio will look like";
+        userModel3.profile_url = "https://static.remove.bg/remove-bg-web/f68d607e3305b1c23820eab456f9a63968772cfc/assets/start-1abfb4fe2980eabfbbaaa4365a0692539f7cd2725f324f904565a9a744f8e214.jpg";
+        userModel3.followers_count = 0;
+        userModel3.following_count = 0;
+
+        UserModel userModel34 = new UserModel();
+        userModel34.name = "Test user 2";
+        userModel34.gender = Constants.GENDER_FEMALE;
+        userModel34.email = "test2@gmail.com";
+        userModel34.uid = "tRnOyVr8YnbauO8cv7UW1THPgT52";
+        userModel34.number = "0123456789";
+        userModel34.bio = "This is the second bio example for the display";
+        userModel34.profile_url = "https://static.remove.bg/remove-bg-web/f68d607e3305b1c23820eab456f9a63968772cfc/assets/start-1abfb4fe2980eabfbbaaa4365a0692539f7cd2725f324f904565a9a744f8e214.jpg";
+        userModel34.followers_count = 0;
+        userModel34.following_count = 0;
+
+        Constants.databaseReference().child(Constants.USERS)
+                .child(userModel3.uid)
+                .setValue(userModel3);
+
+        Constants.databaseReference().child(Constants.USERS)
+                .child(userModel34.uid)
+                .setValue(userModel34);
+
         return b.getRoot();
     }
 

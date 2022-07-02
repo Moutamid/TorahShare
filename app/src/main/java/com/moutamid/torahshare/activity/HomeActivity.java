@@ -17,6 +17,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.moutamid.torahshare.R;
 import com.moutamid.torahshare.activity.approval.ApprovalActivity;
 import com.moutamid.torahshare.authentication.RegistrationActivity;
@@ -24,7 +27,10 @@ import com.moutamid.torahshare.databinding.ActivityHomeBinding;
 import com.moutamid.torahshare.fragments.MessagesFragment;
 import com.moutamid.torahshare.fragments.ProfileFragment;
 import com.moutamid.torahshare.fragments.search.SearchFragment;
+import com.moutamid.torahshare.model.ApprovalRequestModel;
+import com.moutamid.torahshare.model.ContactRequestModel;
 import com.moutamid.torahshare.utils.Constants;
+import com.moutamid.torahshare.utils.Stash;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -45,6 +51,7 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(new Intent(this, RegistrationActivity.class));
             return;
         }
+
 
         viewPager = findViewById(R.id.main_view_pager);
 
@@ -76,6 +83,36 @@ public class HomeActivity extends AppCompatActivity {
             viewPager.setCurrentItem(2);
             b.bottomBarImageview.setImageResource(R.drawable.ic_bottom_profile);
         });
+
+        Constants.databaseReference().child(Constants.USERS)
+                .child(Constants.auth().getUid())
+                .child(Constants.CONTACT_REQUESTS)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            int count = 1;
+
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                count++;
+                                ContactRequestModel contactRequestModel = dataSnapshot.getValue(ContactRequestModel.class);
+
+                                Stash.put(Constants.CURRENT_CONTACT_REQUEST, contactRequestModel);
+
+                                if (count == 3)
+                                    break;
+                            }
+
+                            startActivity(new Intent(HomeActivity.this, ContactRequestsActivity.class));
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
     }
 
     private static final String TAG = "HomeActivity";

@@ -30,6 +30,7 @@ public class Constants {
     public static final String PARAMS = "params";
     public static final String MY_PASSWORD = "my_password";
     public static final String CONTACT_REQUESTS = "contact_requests";
+    public static final String CURRENT_CONTACT_REQUEST = "current_contact_request";
 
     public static FirebaseAuth auth() {
         return FirebaseAuth.getInstance();
