@@ -60,7 +60,7 @@ public class MessagesFragment extends Fragment {
             b.textViewShare.setTextColor(getResources().getColor(R.color.default_purple));
 
             is_contact = true;
-
+            adapter.notifyDataSetChanged();
         });
 
         b.cardShare.setOnClickListener(view -> {
@@ -71,6 +71,7 @@ public class MessagesFragment extends Fragment {
             b.textViewContacts.setTextColor(getResources().getColor(R.color.default_purple));
 
             is_contact = false;
+            adapter.notifyDataSetChanged();
 
         });
 

@@ -227,7 +227,7 @@ public class ProfileFragment extends Fragment {
 */
 
 //        TODO: REMOVE THESE BELOW MODELS AND MODELS
-        UserModel userModel3 = new UserModel();
+        /*UserModel userModel3 = new UserModel();
         userModel3.name = "Test user 1";
         userModel3.gender = Constants.GENDER_MALE;
         userModel3.email = "test1@gmail.com";
@@ -255,7 +255,7 @@ public class ProfileFragment extends Fragment {
 
         Constants.databaseReference().child(Constants.USERS)
                 .child(userModel34.uid)
-                .setValue(userModel34);
+                .setValue(userModel34);*/
 
         return b.getRoot();
     }

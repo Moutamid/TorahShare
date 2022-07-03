@@ -1,44 +1,20 @@
 package com.moutamid.torahshare.fragments.search;
 
-import static android.view.LayoutInflater.from;
-import static com.bumptech.glide.Glide.with;
-import static com.bumptech.glide.load.engine.DiskCacheStrategy.DATA;
-import static com.moutamid.torahshare.R.color.lighterGrey;
 import static com.moutamid.torahshare.utils.Stash.toast;
 
-import android.net.Uri;
+import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.VideoView;
+import android.view.inputmethod.InputMethodManager;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.request.RequestOptions;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
-import com.moutamid.torahshare.R;
 import com.moutamid.torahshare.databinding.FragmentSearchBinding;
-import com.moutamid.torahshare.model.PostModel;
-import com.moutamid.torahshare.model.SearchModel;
 import com.moutamid.torahshare.utils.Constants;
-
-import java.util.ArrayList;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SearchFragment extends Fragment {
 
@@ -160,6 +136,20 @@ public class SearchFragment extends Fragment {
 
         searchVideosController.fetchVideosList();
 
+        b.filterCardView.requestFocus();
+
         return b.getRoot();
     }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
 }

@@ -197,7 +197,7 @@ public class ProfileActivity extends AppCompatActivity {
                         .child(Constants.CONTACT_REQUESTS)
                         .child(requestModel.push_key)
                         .setValue(requestModel)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {/
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 progressDialog.dismiss();
@@ -241,6 +241,30 @@ public class ProfileActivity extends AppCompatActivity {
 
                     }
                 });
+
+        b.bioTextview.setOnClickListener(view -> {
+            Dialog dialog = new Dialog(ProfileActivity.this);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.dialog_bio_text);
+            dialog.setCancelable(true);
+            WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+            layoutParams.copyFrom(dialog.getWindow().getAttributes());
+            layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+            layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+            TextView textView = dialog.findViewById(R.id.bioTextViewDialog);
+            textView.setText(b.bioTextview.getText().toString());
+
+            dialog.findViewById(R.id.crossBtnDialog).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // CODE HERE
+                    dialog.dismiss();
+                }
+            });
+            dialog.show();
+            dialog.getWindow().setAttributes(layoutParams);
+        });
     }
 
 

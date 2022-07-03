@@ -1,8 +1,12 @@
 package com.moutamid.torahshare.utils;
 
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.moutamid.torahshare.R;
 
 public class Constants {
     public static final String IS_LOGGED_IN = "isloggedin";
@@ -31,6 +35,7 @@ public class Constants {
     public static final String MY_PASSWORD = "my_password";
     public static final String CONTACT_REQUESTS = "contact_requests";
     public static final String CURRENT_CONTACT_REQUEST = "current_contact_request";
+    public static final String REPORTED_MESSAGES = "reported_messages";
 
     public static FirebaseAuth auth() {
         return FirebaseAuth.getInstance();
