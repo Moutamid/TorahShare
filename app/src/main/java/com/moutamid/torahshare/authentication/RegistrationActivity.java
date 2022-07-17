@@ -306,7 +306,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
             model.email = user.getEmail();
             model.gender = Constants.GENDER_MALE;
-            model.isApproved = false;
+            model.is_approved = false;
 
             model.uid = user.getUid();
             model.number = "000000000";

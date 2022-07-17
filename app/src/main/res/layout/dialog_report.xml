@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="15dp"
-                android:text="Send request"
+                android:text="Report"
                 android:textAllCaps="false"
                 app:cornerRadius="@dimen/default_corner_radius" />
 

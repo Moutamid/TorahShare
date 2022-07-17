@@ -156,6 +156,33 @@
 
         </RelativeLayout>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/chooseContactBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="Choose contact"
+            android:textColor="@color/default_purple"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:backgroundTint="@color/default_light_pink"
+            app:cornerRadius="@dimen/default_corner_radius" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/containerFlexBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:layout_marginHorizontal="10dp"
+            app:alignContent="stretch"
+            app:alignItems="stretch"
+            app:flexWrap="wrap">
+            <!--            android:padding="16dp"-->
+
+        </com.google.android.flexbox.FlexboxLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/nextBtn"

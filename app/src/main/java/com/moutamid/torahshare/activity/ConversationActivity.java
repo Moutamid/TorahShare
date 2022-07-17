@@ -5,43 +5,52 @@ import static com.bumptech.glide.load.engine.DiskCacheStrategy.DATA;
 import static com.moutamid.torahshare.R.color.lighterGrey;
 import static com.moutamid.torahshare.utils.Stash.toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.flexbox.FlexboxLayout;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.moutamid.torahshare.R;
 import com.moutamid.torahshare.databinding.ActivityConversationBinding;
 import com.moutamid.torahshare.model.ChatModel;
+import com.moutamid.torahshare.model.FollowModel;
 import com.moutamid.torahshare.model.MessageModel;
 import com.moutamid.torahshare.model.MessageReportModel;
+import com.moutamid.torahshare.model.PostModel;
 import com.moutamid.torahshare.model.UserModel;
 import com.moutamid.torahshare.utils.Constants;
 import com.moutamid.torahshare.utils.Stash;
@@ -54,10 +63,6 @@ import com.tonyodev.fetch2.NetworkType;
 import com.tonyodev.fetch2.Priority;
 import com.tonyodev.fetch2.Request;
 import com.tonyodev.fetch2core.DownloadBlock;
-import com.tonyodev.fetch2core.Func;
-
-import org.jetbrains.annotations.NotNull;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +82,13 @@ public class ConversationActivity extends AppCompatActivity {
     TextView downloadedDataTv;
     TextView cancelBtn;
     ProgressBar progressBar;
+    FlexboxLayout container;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getChosenContactsList();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,6 +204,172 @@ public class ConversationActivity extends AppCompatActivity {
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.dialog_rehare);
             dialog.setCancelable(true);
+
+            VideoView videoView = dialog.findViewById(R.id.videoView_reshare_dialog);
+            CheckBox followersCheckBox = dialog.findViewById(R.id.followersCheckBox_reshare);
+            CheckBox contactCheckBox = dialog.findViewById(R.id.contactsCheckBox_reshare);
+            MaterialButton chooseContactBtn = dialog.findViewById(R.id.chooseContactBtn);
+            MaterialButton reShareBtn = dialog.findViewById(R.id.reshareBtn);
+            container = dialog.findViewById(R.id.containerFlexBox);
+            ImageView playBtn = dialog.findViewById(R.id.videoPlayBtn_reshare);
+
+            reShareBtn.setOnClickListener(view2 -> {
+                if (!contactCheckBox.isChecked() || !followersCheckBox.isChecked())
+                    return;
+
+                ProgressDialog progressDialog;
+                progressDialog = new ProgressDialog(ConversationActivity.this);
+                progressDialog.setCancelable(false);
+                progressDialog.setMessage("Loading...");
+                progressDialog.show();
+
+                PostModel postModel = new PostModel();
+                postModel.name = myUserModel.name;
+                postModel.date = Stash.getDate();
+                postModel.caption = currentSelectedMessageModel.message;
+                postModel.share_count = 0;
+                postModel.comment_count = 0;
+                postModel.video_link = currentVideoUrl;
+                postModel.profile_link = myUserModel.profile_url;
+                postModel.my_uid = Constants.auth().getUid();
+                postModel.push_key = Constants.databaseReference().child(Constants.PUBLIC_POSTS).push().getKey();
+
+                Constants.databaseReference().child(Constants.PUBLIC_POSTS).child(postModel.push_key)
+                        .setValue(postModel);
+
+                if (followersCheckBox.isChecked()) {
+                    ArrayList<FollowModel> followingList = Stash.getArrayList(Constants.FOLLOWING_LIST, FollowModel.class);
+                    for (FollowModel followModel : followingList) {
+                        // THIS WILL CREATE A CHAT ENTRY IN MY DATABASE CHILD
+                        ChatModel chatModel = new ChatModel();
+                        chatModel.other_uid = followModel.uid;
+                        chatModel.last_message = "Sent a video";
+                        chatModel.time = Stash.getDate();
+                        chatModel.chat_id = Constants.databaseReference().push().getKey();
+                        chatModel.other_name = followModel.name;
+                        chatModel.is_contact = false;
+                        chatModel.other_profile = followModel.profile_url;
+                        Constants.databaseReference().child(Constants.CHATS)
+                                .child(Constants.auth().getUid()).child(chatModel.chat_id)
+                                .setValue(chatModel);
+
+                        // // THIS WILL UPDATE LAST MESSAGE TO OTHER USER MODEL
+                        ChatModel other_chatModel = new ChatModel();
+                        other_chatModel.other_uid = Constants.auth().getUid();
+                        other_chatModel.last_message = "Sent a video";
+                        other_chatModel.time = chatModel.time;
+                        other_chatModel.chat_id = chatModel.chat_id;
+                        other_chatModel.other_name = myUserModel.name;
+                        other_chatModel.is_contact = chatModel.is_contact;
+                        other_chatModel.other_profile = myUserModel.profile_url;
+                        Constants.databaseReference().child(Constants.CHATS)
+                                .child(chatModel.other_uid).child(chatModel.chat_id)
+                                .setValue(chatModel);
+
+                        // THIS WILL ADD A ENTRY OF MESSAGE TO CONVERSATION OF THAT USER AND MINE AS WELL
+                        MessageModel messageModel2 = new MessageModel();
+                        messageModel2.time = Stash.getDate();
+                        messageModel2.sent_by = Constants.auth().getUid();
+                        messageModel2.message = "Here is a new video for you!" + Constants.SEPARATOR + postModel.video_link;
+                        Constants.databaseReference().child(Constants.CONVERSATIONS)
+                                .child(chatModel.chat_id).push().setValue(messageModel2);
+
+                    }
+                }
+
+                if (contactCheckBox.isChecked()) {
+                    ArrayList<ChatModel> list_text = Stash.getArrayList(Constants.CHOSEN_CONTACTS_LIST, ChatModel.class);
+                    for (ChatModel followModel : list_text) {
+                        // THIS WILL CREATE A CHAT ENTRY IN MY DATABASE CHILD
+                        ChatModel chatModel = new ChatModel();
+                        chatModel.other_uid = followModel.other_uid;
+                        chatModel.last_message = "Sent a video";
+                        chatModel.time = Stash.getDate();
+                        chatModel.chat_id = Constants.databaseReference().push().getKey();
+                        chatModel.other_name = followModel.other_name;
+                        chatModel.is_contact = false;
+                        chatModel.other_profile = followModel.other_profile;
+                        Constants.databaseReference().child(Constants.CHATS)
+                                .child(Constants.auth().getUid()).child(chatModel.chat_id)
+                                .setValue(chatModel);
+
+                        // // THIS WILL UPDATE LAST MESSAGE TO OTHER USER MODEL
+                        ChatModel other_chatModel = new ChatModel();
+                        other_chatModel.other_uid = Constants.auth().getUid();
+                        other_chatModel.last_message = "Sent a video";
+                        other_chatModel.time = chatModel.time;
+                        other_chatModel.chat_id = chatModel.chat_id;
+                        other_chatModel.other_name = myUserModel.name;
+                        other_chatModel.is_contact = chatModel.is_contact;
+                        other_chatModel.other_profile = myUserModel.profile_url;
+                        Constants.databaseReference().child(Constants.CHATS)
+                                .child(chatModel.other_uid).child(chatModel.chat_id)
+                                .setValue(chatModel);
+
+                        // THIS WILL ADD A ENTRY OF MESSAGE TO CONVERSATION OF THAT USER AND MINE AS WELL
+                        MessageModel messageModel2 = new MessageModel();
+                        messageModel2.time = Stash.getDate();
+                        messageModel2.sent_by = Constants.auth().getUid();
+                        messageModel2.message = "Here is a new video for you!" + Constants.SEPARATOR + postModel.video_link;
+                        Constants.databaseReference().child(Constants.CONVERSATIONS)
+                                .child(chatModel.chat_id).push().setValue(messageModel2);
+
+                    }
+                }
+
+                progressDialog.dismiss();
+                toast("Done");
+                dialog.dismiss();
+            });
+
+            Uri uri = Uri.parse(currentVideoUrl);
+
+            videoView.setVideoURI(uri);
+            // TODO: 7/12/2022  videoView.start();
+//            videoView.seekTo(100);
+//            videoView.pause();
+
+            videoView.setOnClickListener(view5 -> {
+                if (playBtn.getVisibility() == View.GONE) {
+                    playBtn.setVisibility(View.VISIBLE);
+                    new Handler().postDelayed(() -> {
+                        playBtn.setVisibility(View.GONE);
+                    }, 3000);
+                } else {
+                    playBtn.setVisibility(View.GONE);
+                }
+            });
+
+            playBtn.setOnClickListener(view6 -> {
+                if (videoView.isPlaying()) {
+                    // IS PLAYING
+                    playBtn.setImageResource(R.drawable.ic_play_btn);
+                    videoView.pause();
+
+                } else {
+                    // PAUSED OR NOT STARTED
+                    playBtn.setImageResource(R.drawable.ic_pause_btn);
+                    new Handler().postDelayed(() -> {
+                        playBtn.setVisibility(View.GONE);
+                    }, 3000);
+
+                    videoView.start();
+                }
+            });
+            getChosenContactsList();
+            contactCheckBox.setOnCheckedChangeListener((compoundButton, b) -> {
+                if (b) {
+                    chooseContactBtn.setVisibility(View.VISIBLE);
+                    container.setVisibility(View.VISIBLE);
+                } else {
+                    chooseContactBtn.setVisibility(View.GONE);
+                    container.setVisibility(View.GONE);
+                }
+            });
+
+            chooseContactBtn.setOnClickListener(view2 -> {
+                startActivity(new Intent(ConversationActivity.this, ChooseContactsActivity.class));
+            });
 
             dialog.findViewById(R.id.crossBtnDialog_reshare).setOnClickListener(view22 -> {
                 dialog.dismiss();
@@ -317,6 +495,29 @@ public class ConversationActivity extends AppCompatActivity {
         });
     }
 
+    private void getChosenContactsList() {
+        if (container == null)
+            return;
+        LinearLayout.LayoutParams buttonLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        buttonLayoutParams.setMargins(5, 5, 5, 5);
+//        ArrayList<String> list_text = Stash.getArrayList(Constants.CHOSEN_CONTACTS_LIST, String.class);
+        ArrayList<ChatModel> list_text = Stash.getArrayList(Constants.CHOSEN_CONTACTS_LIST, ChatModel.class);
+        for (int i = 0; i < list_text.size(); i++) {
+            final TextView tv = new TextView(getApplicationContext());
+            tv.setText(list_text.get(i).other_name);
+            tv.setHeight(100);
+            tv.setTextSize(16.0f);
+            tv.setGravity(Gravity.CENTER);
+            tv.setTextColor(getResources().getColor(R.color.default_text_black));//Color.parseColor("#000000")
+            tv.setBackground(getResources().getDrawable(R.drawable.rounded_text_view));
+            tv.setId(i + 1);
+            tv.setLayoutParams(buttonLayoutParams);
+            tv.setTag(i + 1);
+            tv.setPadding(20, 10, 20, 10);
+            container.addView(tv);
+        }
+    }
+
     private void showReportDialog(String mcg) {
         Dialog dialog = new Dialog(ConversationActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -336,7 +537,7 @@ public class ConversationActivity extends AppCompatActivity {
         dialog.findViewById(R.id.cancelBtn_report).setOnClickListener(view -> {
             dialog.dismiss();
         });
-        dialog.findViewById(R.id.sendRequestBtn_report).setOnClickListener(view -> {
+        dialog.findViewById(R.id.sendBtn_report).setOnClickListener(view -> {
             EditText reasonEt = dialog.findViewById(R.id.messageEt_report);
             String reasonStr = reasonEt.getText().toString();
 
@@ -530,9 +731,9 @@ public class ConversationActivity extends AppCompatActivity {
                     Uri uri = Uri.parse(parts[1]);
 
                     viewHolderVideo.videoView.setVideoURI(uri);
-                    viewHolderVideo.videoView.start();
+                    /*TODO: viewHolderVideo.videoView.start();
                     viewHolderVideo.videoView.seekTo(100);
-                    viewHolderVideo.videoView.pause();
+                    viewHolderVideo.videoView.pause();*/
 
                     viewHolderVideo.videoView.setOnClickListener(view -> {
                         if (viewHolderVideo.playBtn.getVisibility() == View.GONE) {

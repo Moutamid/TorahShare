@@ -339,9 +339,9 @@ public class ProfileActivity extends AppCompatActivity {
             Uri uri = Uri.parse(postModel.video_link);
 
             holder.videoView.setVideoURI(uri);
-            holder.videoView.start();
+            /*TODO holder.videoView.start();
             holder.videoView.seekTo(100);
-            holder.videoView.pause();
+            holder.videoView.pause();*/
 
             holder.videoView.setOnClickListener(view -> {
                 if (holder.playBtn.getVisibility() == View.GONE) {

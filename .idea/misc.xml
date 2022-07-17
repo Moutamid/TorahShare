@@ -3,18 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/bg_camera.xml" value="0.135" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/bg_edittext_authentication.xml" value="0.123" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/bg_layyyyy.xml" value="0.135" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/bg_left_mcg.xml" value="0.1255" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/bg_right_mcg.xml" value="0.1255" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/bg_sample_tag.xml" value="0.1255" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/bg_time_stamp_camera.xml" value="0.135" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/dot.xml" value="0.1255" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.135" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/ic_comment.xml" value="0.1" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/rounded_text_view.xml" value="0.135" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/splash_background.xml" value="0.123" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/square.xml" value="0.1255" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/square_default.xml" value="0.1255" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_approval.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_approval2.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_camera.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_change_password.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_choose_contacts.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_contact_requests.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_conversation.xml" value="0.22" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_edit_profile.xml" value="0.1859375" />
@@ -25,6 +32,9 @@
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_settings.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_sign_up.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_terms.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_upload_post.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_upload_post_preview.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/camera_preview.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/dialog_bio_text.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/dialog_caption_layout.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/dialog_contact_request.xml" value="0.2" />
@@ -37,6 +47,7 @@
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/fragment_search.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_chat_video.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_chats.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_choose_contacts.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_follow_item.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_messages.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_messages_left.xml" value="0.2" />
@@ -44,9 +55,12 @@
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_my_post.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_search_item.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_sponsored_accounts.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layyyy.xml" value="0.19895833333333332" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/logo_layout.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/popup.xml" value="0.22" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/popup_conversation.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/terms_layout.xml" value="0.21875" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/video_uploaded.xml" value="0.14921875" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/view_sample_input_tag.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/view_sample_tag.xml" value="0.2" />
       </map>

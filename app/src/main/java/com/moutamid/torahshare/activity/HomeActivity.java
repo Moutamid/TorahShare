@@ -21,14 +21,14 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.moutamid.torahshare.R;
-import com.moutamid.torahshare.activity.approval.ApprovalActivity;
+import com.moutamid.torahshare.activity.addbutton.ApprovalActivity2;
 import com.moutamid.torahshare.authentication.RegistrationActivity;
 import com.moutamid.torahshare.databinding.ActivityHomeBinding;
 import com.moutamid.torahshare.fragments.MessagesFragment;
 import com.moutamid.torahshare.fragments.ProfileFragment;
 import com.moutamid.torahshare.fragments.search.SearchFragment;
-import com.moutamid.torahshare.model.ApprovalRequestModel;
 import com.moutamid.torahshare.model.ContactRequestModel;
+import com.moutamid.torahshare.model.UserModel;
 import com.moutamid.torahshare.utils.Constants;
 import com.moutamid.torahshare.utils.Stash;
 
@@ -64,12 +64,13 @@ public class HomeActivity extends AppCompatActivity {
         setupViewPager(viewPager);
 
         b.addBottomBarBtn.setOnClickListener(view -> {
-//            UserModel userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
-//            if (userModel.isApproved) {
-//                 USER IS APPROVED
-//            } else {
-            startActivity(new Intent(HomeActivity.this, ApprovalActivity.class));
-//            }
+            UserModel userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
+            if (userModel.is_approved) {
+//                USER IS APPROVED
+                startActivity(new Intent(HomeActivity.this, UploadPostActivity.class));
+            } else {
+                startActivity(new Intent(HomeActivity.this, ApprovalActivity2.class));
+            }
         });
         b.searchBottomBarBtn.setOnClickListener(view -> {
             viewPager.setCurrentItem(0);

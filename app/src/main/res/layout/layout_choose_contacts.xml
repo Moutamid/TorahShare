@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/parentLayout"
+    android:layout_height="wrap_content">
+
+    <CheckBox
+        android:id="@+id/contacts_checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="15dp"
+        android:layout_centerVertical="true"
+        android:buttonTint="@color/green" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_mcg_left"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_toEndOf="@+id/contacts_checkBox"
+        android:layout_centerVertical="true"
+        android:layout_marginVertical="20dp"
+        android:src="@drawable/default_profile" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@id/profile_mcg_left"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Abraham Levic"
+            android:textColor="@color/default_text_black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/last_mcg_contacts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Very inspiring" />
+
+    </LinearLayout>
+
+</RelativeLayout>

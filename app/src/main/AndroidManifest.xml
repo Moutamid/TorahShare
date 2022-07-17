@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.moutamid.torahshare">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
@@ -20,8 +21,21 @@
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.TorahShare">
+        android:supportsRtl="false"
+        android:theme="@style/Theme.TorahShare"
+        tools:replace="android:supportsRtl">
+        <activity
+            android:name=".activity.UploadPostPreviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.addbutton.ApprovalActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".activity.UploadPostActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ChooseContactsActivity"
+            android:exported="true" />
         <activity
             android:name=".activity.ContactRequestsActivity"
             android:exported="false" />

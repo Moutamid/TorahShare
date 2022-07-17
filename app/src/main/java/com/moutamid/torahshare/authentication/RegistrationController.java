@@ -179,7 +179,7 @@ public class RegistrationController {
                             activity.model.name = b.nameEtSignUp.getText().toString();
                             activity.model.email = b.emailEtSignUp.getText().toString();
                             activity.model.gender = b.genderDefaultText.getText().toString();
-                            activity.model.isApproved = false;
+                            activity.model.is_approved = false;
 
                             activity.model.uid = Constants.auth().getUid();
                             activity.model.number = "000000000";

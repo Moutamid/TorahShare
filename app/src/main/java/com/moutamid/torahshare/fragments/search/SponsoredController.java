@@ -133,9 +133,9 @@ public class SponsoredController {
             // VIDEO VIEW 1
             Uri uri = Uri.parse(model.video_link_1);
             holder.videoView1.setVideoURI(uri);
-            holder.videoView1.start();
+            /*TODO holder.videoView1.start();
             holder.videoView1.seekTo(100);
-            holder.videoView1.pause();
+            holder.videoView1.pause();*/
 
             holder.videoView1.setOnClickListener(view -> {
                 if (holder.playBtn1.getVisibility() == View.GONE) {
@@ -169,8 +169,8 @@ public class SponsoredController {
             // VIDEO VIEW 2
             Uri uri2 = Uri.parse(model.video_link_2);
             holder.videoView2.setVideoURI(uri2);
-            holder.videoView2.start();
-            holder.videoView2.pause();
+            /*TODO holder.videoView2.start();
+            holder.videoView2.pause();*/
 
             holder.videoView2.setOnClickListener(view -> {
                 if (holder.playBtn2.getVisibility() == View.GONE) {

@@ -36,6 +36,10 @@ public class Constants {
     public static final String CONTACT_REQUESTS = "contact_requests";
     public static final String CURRENT_CONTACT_REQUEST = "current_contact_request";
     public static final String REPORTED_MESSAGES = "reported_messages";
+    public static final String CHOSEN_CONTACTS_LIST = "chosen_contacts_list";
+    public static final String CURRENT_POST_MODEL = "current_post_model";
+    public static final String IS_CONTACT_CHECKED = "IS_CONTACT_CHECKED";
+    public static final String IS_FOLLOWER_CHECKED = "IS_FOLLOWER_CHECKED";
 
     public static FirebaseAuth auth() {
         return FirebaseAuth.getInstance();
