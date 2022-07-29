@@ -19,9 +19,8 @@ public class ApprovalActivity extends AppCompatActivity {
 //    String link = "https://firebasestorage.googleapis.com/v0/b/sweet-nutrition.appspot.com/o/huitxbozybaymildmqwi.mp4?alt=media&token=e6900e45-6987-4a86-a913-8fa50e453aff";
 
     private ActivityApprovalBinding b;
-    public ApprovalController approvalController;
-    public CameraController cameraController;
-
+    /*public ApprovalController approvalController;
+    public CameraController cameraController;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +28,7 @@ public class ApprovalActivity extends AppCompatActivity {
         b = ActivityApprovalBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
 
-        Constants.databaseReference().child(Constants.USERS)
+        /*Constants.databaseReference().child(Constants.USERS)
                 .child(Constants.auth().getUid())
                 .child(Constants.IS_APPROVED)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -58,7 +57,7 @@ public class ApprovalActivity extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
-                });
+                });*/
 
 
         /*b.camera.addVideoRecordStoppedListener(isSuccess -> {

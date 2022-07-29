@@ -98,6 +98,10 @@
         app:cardCornerRadius="@dimen/default_corner_radius"
         app:cardElevation="10dp">
 
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -121,7 +125,7 @@
                 android:layout_marginTop="20dp"
                 android:text="I am aware that ...\n1. Any video posted or shared in this application must consist solely of Torah content such as a Dvar Torah, a Torah concept or idea, or any type of Torah-based inspiration.\n2. Do not upload a video containing women at all.\n3. Content that is subject to disagreement among the ultra-Orthodox (chareidi) public should not be uploaded at all.\n4. In any doubt whether the video complies with the rules should not be uploaded.\n5. Any video posted or shared that does not meet the above criteria may result in temporary or permanent suspension of users."
                 android:textColor="@color/default_text_grey"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -192,6 +196,8 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -325,7 +331,7 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginEnd="20dp"
-                        android:background="@color/darkBlue" />
+                        />
 
                 </LinearLayout>
 

@@ -154,106 +154,112 @@
         android:layout_height="match_parent"
         android:visibility="gone">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/applyBtn"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <include layout="@layout/logo_layout" />
-
-            <TextView
-                style="@style/textview_title_authentication"
-                android:layout_marginTop="20dp"
-                android:text="Approval Form" />
-
-            <TextView
-                style="@style/small_title_authentication"
-                android:layout_marginHorizontal="50dp"
-                android:gravity="center"
-                android:text="Please upload 2 examples of the content you are planning to upload to the app." />
-
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="190dp"
-                android:layout_marginTop="20dp">
+                android:layout_height="wrap_content"
+                android:layout_above="@id/applyBtn"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/video1placeholder"
+                <include layout="@layout/logo_layout" />
+
+                <TextView
+                    style="@style/textview_title_authentication"
+                    android:layout_marginTop="20dp"
+                    android:text="Approval Form" />
+
+                <TextView
+                    style="@style/small_title_authentication"
+                    android:layout_marginHorizontal="50dp"
+                    android:gravity="center"
+                    android:text="Please upload 2 examples of the content you are planning to upload to the app." />
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="190dp"
-                    android:src="@drawable/empty_placeholder" />
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/videoView1Layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="20dp"
-                    android:visibility="gone"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="@dimen/default_corner_radius"
-                    app:cardElevation="0dp">
-
-                    <VideoView
-                        android:id="@+id/videoView1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                    android:layout_marginTop="20dp">
 
                     <ImageView
-                        android:id="@+id/videoPlayBtn1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_play_btn" />
+                        android:id="@+id/video1placeholder"
+                        android:layout_width="match_parent"
+                        android:layout_height="190dp"
+                        android:src="@drawable/empty_placeholder" />
 
-                </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/videoView1Layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="20dp"
+                        android:visibility="gone"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/default_corner_radius"
+                        app:cardElevation="0dp">
 
-            </RelativeLayout>
+                        <VideoView
+                            android:id="@+id/videoView1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="190dp"
-                android:layout_marginTop="20dp">
+                        <ImageView
+                            android:id="@+id/videoPlayBtn1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_play_btn" />
 
-                <ImageView
-                    android:id="@+id/video2placeholder"
+                    </com.google.android.material.card.MaterialCardView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="190dp"
-                    android:src="@drawable/empty_placeholder" />
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/videoView2Layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="20dp"
-                    android:visibility="gone"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="@dimen/default_corner_radius"
-                    app:cardElevation="0dp">
-
-                    <VideoView
-                        android:id="@+id/videoView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                    android:layout_marginTop="20dp">
 
                     <ImageView
-                        android:id="@+id/videoPlayBtn2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_play_btn" />
+                        android:id="@+id/video2placeholder"
+                        android:layout_width="match_parent"
+                        android:layout_height="190dp"
+                        android:src="@drawable/empty_placeholder" />
 
-                </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/videoView2Layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="20dp"
+                        android:visibility="gone"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/default_corner_radius"
+                        app:cardElevation="0dp">
 
-            </RelativeLayout>
+                        <VideoView
+                            android:id="@+id/videoView2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                        <ImageView
+                            android:id="@+id/videoPlayBtn2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_play_btn" />
 
-        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/applyBtn"

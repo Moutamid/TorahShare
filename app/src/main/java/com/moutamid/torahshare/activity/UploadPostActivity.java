@@ -8,6 +8,9 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
@@ -17,6 +20,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.TextureView;
@@ -115,16 +119,39 @@ public class UploadPostActivity extends AppCompatActivity implements LifecycleOw
         b = ActivityUploadPostBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
 
-        /*b.topIcon.setOnClickListener(view -> {
-            if (isDeletable) {
+        b.topIcon.setOnClickListener(view -> {
+//            if (isDeletable) {
 //                b.previewLayout.setVisibility(View.GONE);
-                b.cameraLayout.setVisibility(View.VISIBLE);
-                b.topIcon.setImageResource(R.drawable.ic_baseline_close_24);
-            } else {
-                finish();
-            }
+//                b.cameraLayout.setVisibility(View.VISIBLE);
+//                b.topIcon.setImageResource(R.drawable.ic_baseline_close_24);
+//            } else {
+            finish();
+//            }
 
-        });*/
+        });
+
+        // Find the last picture
+        String[] projection = new String[]{
+                MediaStore.Images.ImageColumns._ID,
+                MediaStore.Images.ImageColumns.DATA,
+                MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME,
+                MediaStore.Images.ImageColumns.DATE_TAKEN,
+                MediaStore.Images.ImageColumns.MIME_TYPE
+        };
+        final Cursor cursor = getContentResolver()
+                .query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, null,
+                        null, MediaStore.Images.ImageColumns.DATE_TAKEN + " DESC");
+
+        // Put it in the image view
+        if (cursor.moveToFirst()) {
+//            final ImageView imageView = (ImageView) findViewById(R.id.pictureView);
+            String imageLocation = cursor.getString(1);
+            File imageFile = new File(imageLocation);
+            if (imageFile.exists()) {   // TODO: is there a better way to do this?
+                Bitmap bm = BitmapFactory.decodeFile(imageLocation);
+                b.galleryBtn.setImageBitmap(bm);
+            }
+        }
 
         b.videoViewFinal.setOnClickListener(view -> {
             if (b.videoPlayBtnFinal.getVisibility() == View.GONE) {
@@ -287,6 +314,7 @@ public class UploadPostActivity extends AppCompatActivity implements LifecycleOw
 
         return true;
     }
+
     MaterialButton next_button;
     ImageView imageView;
 
@@ -512,7 +540,7 @@ public class UploadPostActivity extends AppCompatActivity implements LifecycleOw
     public void uploadImage(Uri imageUri) {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
-         ProgressDialog progressDialog2;
+        ProgressDialog progressDialog2;
         progressDialog2 = new ProgressDialog(UploadPostActivity.this);
         progressDialog2.setCancelable(false);
         progressDialog2.setMessage("Loading...");
