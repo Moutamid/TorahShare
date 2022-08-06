@@ -39,6 +39,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MessagesFragment extends Fragment {
     public FragmentMessagesBinding b;
+    UserModel userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
 
     public MessagesFragment() {
     }
@@ -51,6 +52,12 @@ public class MessagesFragment extends Fragment {
 
         if (!isAdded())
             return b.getRoot();
+
+        if (userModel.gender.equals(Constants.GENDER_FEMALE)){
+            b.maleHeader.setVisibility(View.GONE);
+            b.femaleTopHeader.setVisibility(View.VISIBLE);
+            is_contact = false;
+        }
 
         b.cardContacts.setOnClickListener(view -> {
             b.cardContacts.setCardBackgroundColor(getResources().getColor(R.color.default_purple));

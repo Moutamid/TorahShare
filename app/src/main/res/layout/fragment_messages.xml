@@ -14,6 +14,7 @@
         android:background="@color/default_purple">
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/maleHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -80,6 +81,19 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <TextView
+            android:id="@+id/femaleTopHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
+            android:text="Shares"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -118,8 +132,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/conversationRecyclerview"
                 android:layout_width="match_parent"
-                tools:listitem="@layout/layout_chats"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/layout_chats" />
 
             <View
                 android:layout_width="match_parent"

@@ -12,6 +12,7 @@ import android.widget.Scroller;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -45,6 +46,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         b = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
         if (Constants.auth().getCurrentUser() == null) {
@@ -65,6 +67,11 @@ public class HomeActivity extends AppCompatActivity {
 
         b.addBottomBarBtn.setOnClickListener(view -> {
             UserModel userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
+            if (userModel.gender.equals(Constants.GENDER_FEMALE)){
+                startActivity(new Intent(HomeActivity.this, WomanApprovalActivity.class));
+                return;
+            }
+
             if (userModel.is_approved) {
 //                USER IS APPROVED
                 startActivity(new Intent(HomeActivity.this, UploadPostActivity.class));

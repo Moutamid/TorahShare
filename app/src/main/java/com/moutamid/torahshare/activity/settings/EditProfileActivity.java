@@ -5,6 +5,7 @@ import static com.moutamid.torahshare.utils.Stash.toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.moutamid.torahshare.databinding.ActivityEditProfileBinding;
 import com.moutamid.torahshare.model.UserModel;
@@ -22,6 +23,11 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         b = ActivityEditProfileBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
+
+        if (userModel.gender.equals(Constants.GENDER_FEMALE)){
+            b.bioEtSignUp.setVisibility(View.GONE);
+            b.bioTitle.setVisibility(View.GONE);
+        }
 
         b.nameEtSignUp.setText(userModel.name == null ? "" : userModel.name);
 

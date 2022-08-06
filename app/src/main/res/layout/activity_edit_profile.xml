@@ -88,6 +88,7 @@
                         android:hint="Enter your email" />
 
                     <TextView
+                        android:id="@+id/bioTitle"
                         style="@style/small_title_authentication"
                         android:text="About me" />
 

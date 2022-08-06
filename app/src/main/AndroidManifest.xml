@@ -25,6 +25,9 @@
         android:theme="@style/Theme.TorahShare"
         tools:replace="android:supportsRtl">
         <activity
+            android:name=".activity.WomanApprovalActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.UploadPostPreviewActivity"
             android:exported="false" />
         <activity

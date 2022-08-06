@@ -34,6 +34,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -59,6 +60,7 @@ public class ProfileFragment extends Fragment {
 
     public String profileImageUrl;
     UserModel userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
+    private ArrayList<FollowModel> followingList = Stash.getArrayList(Constants.FOLLOWING_LIST, FollowModel.class);
 
     public ProfileFragment() {
     }
@@ -91,6 +93,11 @@ public class ProfileFragment extends Fragment {
         b.settingsBtn.setOnClickListener(view -> {
             startActivity(new Intent(requireActivity(), SettingsActivity.class));
         });
+
+        if (userModel.gender.equals(Constants.GENDER_FEMALE)){
+            initRecyclerVieww();
+            return b.getRoot();
+        }
 
         b.followersBtn.setOnClickListener(view -> {
             startActivity(new Intent(requireActivity(), FollowListActivity.class)
@@ -268,6 +275,7 @@ public class ProfileFragment extends Fragment {
         b.bioTextview.setText(userModel.bio);
 
         b.followersTextview.setText(userModel.followers_count + "");
+        b.totalCountTextView.setText(userModel.followers_count + "");
         b.followingTextview.setText(userModel.following_count + "");
 
     }
@@ -466,6 +474,129 @@ public class ProfileFragment extends Fragment {
                 videoView = v.findViewById(R.id.videoView);
                 playBtn = v.findViewById(R.id.videoPlayBtn);
 
+            }
+        }
+
+    }
+
+    private RecyclerView conversationRecyclerVieww;
+    private RecyclerViewAdapterMessagess adapterr;
+
+    private void initRecyclerVieww() {
+        conversationRecyclerVieww = b.followersrecyclerView;
+        adapterr = new RecyclerViewAdapterMessagess();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
+        conversationRecyclerVieww.setLayoutManager(linearLayoutManager);
+        conversationRecyclerVieww.setHasFixedSize(true);
+        conversationRecyclerVieww.setNestedScrollingEnabled(false);
+        conversationRecyclerVieww.setAdapter(adapterr);
+
+        //    if (adapter.getItemCount() != 0) {
+        //        noChatsLayout.setVisibility(View.GONE);
+        //        chatsRecyclerView.setVisibility(View.VISIBLE);
+        //    }
+    }
+
+    private class RecyclerViewAdapterMessagess extends RecyclerView.Adapter
+            <RecyclerViewAdapterMessagess.ViewHolderRightMessage> {
+
+        @NonNull
+        @Override
+        public RecyclerViewAdapterMessagess.ViewHolderRightMessage onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_follow_item, parent, false);
+            return new RecyclerViewAdapterMessagess.ViewHolderRightMessage(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull final RecyclerViewAdapterMessagess.ViewHolderRightMessage holder, int position) {
+            FollowModel followModel = followingList.get(position);
+
+            with(requireActivity().getApplicationContext())
+                    .asBitmap()
+                    .load(followModel.profile_url)
+                    .apply(new RequestOptions()
+                            .placeholder(lighterGrey)
+                            .error(R.drawable.default_profile)
+                    )
+                    .diskCacheStrategy(DATA)
+                    .into(holder.profile);
+
+            holder.name.setText(followModel.name);
+            holder.bio.setText(followModel.bio);
+
+            if (!followModel.value) {
+                holder.followBtn.setVisibility(View.VISIBLE);
+                holder.unFollowBtn.setVisibility(View.GONE);
+            }
+
+            holder.unFollowBtn.setOnClickListener(view -> {
+//                if (isFollowers)
+//                    return;
+                holder.unFollowBtn.setVisibility(View.GONE);
+                holder.followBtn.setVisibility(View.VISIBLE);
+                followingList.get(position).value = false;
+
+                Constants.databaseReference().child(Constants.USERS)
+                        .child(Constants.auth().getUid())
+                        .child(Constants.FOLLOWING)
+                        .child(followModel.uid)
+                        .removeValue();
+
+                Constants.databaseReference().child(Constants.USERS)
+                        .child(followModel.uid)
+                        .child(Constants.FOLLOWERS)
+                        .child(Constants.auth().getUid())
+                        .removeValue();
+            });
+
+            holder.followBtn.setOnClickListener(view -> {
+//                if (isFollowers)
+//                    return;
+                holder.followBtn.setVisibility(View.GONE);
+                holder.unFollowBtn.setVisibility(View.VISIBLE);
+
+                followingList.get(position).value = true;
+
+                FollowModel myFollowModel = new FollowModel();
+                myFollowModel.name = userModel.name;
+                myFollowModel.uid = userModel.uid;
+                myFollowModel.bio = userModel.bio;
+                myFollowModel.profile_url = userModel.profile_url;
+
+                Constants.databaseReference().child(Constants.USERS)
+                        .child(Constants.auth().getUid())
+                        .child(Constants.FOLLOWING)
+                        .child(followModel.uid)
+                        .setValue(followModel);
+
+                Constants.databaseReference().child(Constants.USERS)
+                        .child(followModel.uid)
+                        .child(Constants.FOLLOWERS)
+                        .child(Constants.auth().getUid())
+                        .setValue(myFollowModel);
+            });
+
+        }
+
+        @Override
+        public int getItemCount() {
+            if (followingList == null)
+                return 0;
+            return followingList.size();
+        }
+
+        public class ViewHolderRightMessage extends RecyclerView.ViewHolder {
+            CircleImageView profile;
+            TextView name, bio, unFollowBtn;
+            MaterialButton followBtn;
+
+            public ViewHolderRightMessage(@NonNull View v) {
+                super(v);
+                profile = v.findViewById(R.id.profile_follow_item);
+                name = v.findViewById(R.id.name_follow_item);
+                bio = v.findViewById(R.id.bio_follow_item);
+                unFollowBtn = v.findViewById(R.id.unFollowBtn_follow_item);
+                followBtn = v.findViewById(R.id.followBtn_follow_item);
             }
         }
 
