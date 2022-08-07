@@ -51,6 +51,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 toast("Number is empty!");
                 return;
             }
+
             if (email.isEmpty()){
                 toast("Email is empty!");
                 return;
