@@ -59,7 +59,8 @@ public class ProfileFragment extends Fragment {
     public com.moutamid.torahshare.databinding.FragmentProfileBinding b;
 
     public String profileImageUrl;
-    UserModel userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
+    UserModel userModel;
+
     private ArrayList<FollowModel> followingList = Stash.getArrayList(Constants.FOLLOWING_LIST, FollowModel.class);
 
     public ProfileFragment() {
@@ -69,6 +70,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         b = com.moutamid.torahshare.databinding.FragmentProfileBinding.inflate(inflater, container, false);
         if (!isAdded()) return b.getRoot();
+        userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
 
         if (userModel == null)
             return b.getRoot();

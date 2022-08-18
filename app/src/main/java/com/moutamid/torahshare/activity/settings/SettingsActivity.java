@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CompoundButton;
+import android.widget.TextView;
 
 import com.moutamid.torahshare.R;
 import com.moutamid.torahshare.databinding.ActivitySettingsBinding;
@@ -83,12 +84,28 @@ public class SettingsActivity extends AppCompatActivity {
                 if (b) {
                     Stash.put(Constants.CURRENT_LANGUAGE, "iw");
                     changeLanguage("iw");
+                    recreate();
                 } else {
                     Stash.put(Constants.CURRENT_LANGUAGE, "en");
                     changeLanguage("en");
+                    recreate();
                 }
             }
         });
+
+       /*TODO: Decibel
+           double amplitudeDb = 1.87687;
+        TextView maxValue = new TextView(SettingsActivity.this);
+
+        double highestAmplitude = 0;
+
+        if (amplitudeDb > highestAmplitude)
+            highestAmplitude = amplitudeDb;
+
+
+        // TO BE CALLED WHEN THE STOP BUTTON IS PRESSED
+        maxValue.setText(highestAmplitude + "");    */
+
     }
 
     public void changeLanguage(String lang) {

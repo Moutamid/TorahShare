@@ -40,7 +40,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MessagesFragment extends Fragment {
     public FragmentMessagesBinding b;
-    UserModel userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
+    UserModel userModel;
 
     public MessagesFragment() {
     }
@@ -53,6 +53,7 @@ public class MessagesFragment extends Fragment {
 
         if (!isAdded())
             return b.getRoot();
+        userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
 
         if (userModel != null)
             if (userModel.gender != null)

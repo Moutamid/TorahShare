@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.util.Log;
 import android.util.Patterns;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -103,15 +104,20 @@ public class RegistrationController {
                                                 UserModel userModel = snapshot.getValue(UserModel.class);
                                                 Stash.put(Constants.CURRENT_USER_MODEL, userModel);
                                                 activity.onCompleteMethod();
+                                            }else {
+                                                progressDialog.dismiss();
+                                                Toast.makeText(activity, "Data doesn't exist!", Toast.LENGTH_SHORT).show();
                                             }
                                         }
 
                                         @Override
                                         public void onCancelled(@NonNull DatabaseError error) {
-
+                                            progressDialog.dismiss();
+                                            Toast.makeText(activity, error.toException().getMessage(), Toast.LENGTH_SHORT).show();
                                         }
                                     });
                         } else {
+                            progressDialog.dismiss();
                             toast(task.getException().getMessage());
                         }
                     }
