@@ -24,6 +24,7 @@ public class Constants {
     public static final String DEFAULT_PROFILE_URL = "https://firebasestorage.googleapis.com/v0/b/sweet-nutrition.appspot.com/o/Frame%2061.png?alt=media&token=005cac52-987d-4b49-9bce-8d14fe56b4aa";
     public static final String SPONSORED_ACCOUNTS = "sponsored_accounts";
     public static final String FOLLOWING = "following";
+
     public static final String FOLLOWERS = "followers";
     public static final String FOLLOWERS_LIST = "followers_list";
     public static final String FOLLOWING_LIST = "following_list";
