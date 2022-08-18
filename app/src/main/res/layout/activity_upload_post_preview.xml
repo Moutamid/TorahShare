@@ -31,7 +31,7 @@
             <TextView
                 style="@style/textview_title_authentication"
                 android:layout_marginTop="20dp"
-                android:text="Successfully shared"
+                android:text="@string/successfully_shared"
                 android:textColor="@color/default_green" />
 
             <TextView
@@ -40,7 +40,7 @@
                 android:layout_marginHorizontal="50dp"
                 android:layout_marginTop="40dp"
                 android:gravity="center_horizontal"
-                android:text="Your video is successfully shared"
+                android:text="@string/your_video_is_successfully_shared"
                 android:textColor="@color/default_text_black" />
 
             <com.google.android.material.button.MaterialButton
@@ -51,7 +51,7 @@
                 android:layout_marginTop="50dp"
                 android:elevation="0dp"
                 android:padding="15dp"
-                android:text="Back to home"
+                android:text="@string/back_to_home"
                 android:textAllCaps="false"
                 app:cornerRadius="@dimen/default_corner_radius"
                 app:elevation="0dp" />
@@ -85,7 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Settings"
+                android:text="@string/settingss"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -107,7 +107,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:gravity="start"
-                    android:text="Video"
+                    android:text="@string/video"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -118,7 +118,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="10dp"
                     android:gravity="start"
-                    android:text="Uploaded"
+                    android:text="@string/uploaded"
                     android:textColor="@color/green"
                     android:textSize="17sp" />
 
@@ -147,7 +147,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="20dp"
                     android:gravity="start"
-                    android:text="Thumbnail"
+                    android:text="@string/thumbnail"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -158,7 +158,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="10dp"
                     android:gravity="start"
-                    android:text="Added"
+                    android:text="@string/added"
                     android:textColor="@color/green"
                     android:textSize="17sp" />
 
@@ -175,7 +175,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text="  Photo.jpg"
+                        android:text="@string/photo_jpg"
                         android:textColor="@color/black" />
 
                 </com.google.android.material.card.MaterialCardView>
@@ -186,7 +186,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="20dp"
                     android:gravity="start"
-                    android:text="Caption"
+                    android:text="@string/caption"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -197,7 +197,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="jhgjhgjhgjhgj"
+                    android:text="@string/jhgjhgjhgjhgj"
                     android:textColor="@color/default_text_grey" />
 
                 <TextView
@@ -206,7 +206,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="20dp"
                     android:gravity="start"
-                    android:text="Tags"
+                    android:text="@string/tags"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -228,7 +228,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="20dp"
                     android:gravity="start"
-                    android:text="Share with"
+                    android:text="@string/share_with"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -240,7 +240,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="10dp"
                     android:gravity="start"
-                    android:text="All Followers"
+                    android:text="@string/all_followers"
                     android:textColor="@color/black"
                     android:textSize="17sp"
                     android:textStyle="bold" />
@@ -252,7 +252,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="10dp"
                     android:gravity="start"
-                    android:text="Contacts"
+                    android:text="@string/contacts"
                     android:textColor="@color/black"
                     android:textSize="17sp"
                     android:textStyle="bold" />
@@ -280,7 +280,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="10dp"
             android:padding="15dp"
-            android:text="Reshare"
+            android:text="@string/reshare"
             android:textAllCaps="false"
             app:cornerRadius="@dimen/default_corner_radius" />
 

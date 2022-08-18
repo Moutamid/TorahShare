@@ -29,26 +29,27 @@
 
                     <TextView
                         style="@style/textview_title_authentication"
-                        android:text="Sign up" />
+                        android:text="@string/sign_up" />
 
                     <TextView
                         style="@style/small_title_authentication"
                         android:layout_marginTop="30dp"
-                        android:text="Full name" />
+
+                        android:text="@string/full_namee" />
 
                     <EditText
                         android:id="@+id/nameEtSignUp"
                         style="@style/edittext_authentication"
-                        android:hint="Enter your name" />
+                        android:hint="@string/enter_your_namee" />
 
                     <TextView
                         style="@style/small_title_authentication"
-                        android:text="Gender" />
+                        android:text="@string/gender" />
 
                     <RelativeLayout
                         android:id="@+id/gender_layout"
                         style="@style/gender_layout_authentication"
-                        android:hint="Enter your name">
+                        android:hint="@string/enter_your_nameee">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -57,14 +58,18 @@
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_gender"
+                                android:paddingStart="17dp"
+                                android:paddingTop="17dp"
+                                android:paddingEnd="17dp">
 
                                 <TextView
                                     android:id="@+id/gender_default_text"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
-                                    android:text="Select"
+                                    android:text="@string/select"
                                     android:textSize="16sp" />
 
                                 <ImageView
@@ -77,46 +82,56 @@
 
                             </RelativeLayout>
 
-                            <TextView
-                                android:id="@+id/gender_male_textview"
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:paddingVertical="5dp"
-                                android:text="Male"
-                                android:textSize="16sp"
-                                android:visibility="gone" />
+                                android:elevation="5dp"
+                                android:orientation="vertical">
 
-                            <TextView
-                                android:id="@+id/gender_female_textview"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingVertical="5dp"
-                                android:text="Female"
-                                android:textSize="16sp"
-                                android:visibility="gone" />
+                                <TextView
+                                    android:id="@+id/gender_male_textview"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingStart="17dp"
+                                    android:paddingTop="15dp"
+                                    android:paddingEnd="17dp"
+                                    android:text="@string/male"
+                                    android:textSize="16sp"
+                                    android:visibility="gone" />
 
+                                <TextView
+                                    android:id="@+id/gender_female_textview"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingStart="17dp"
+                                    android:paddingTop="15dp"
+                                    android:paddingEnd="17dp"
+                                    android:paddingBottom="17dp"
+                                    android:text="@string/female"
+                                    android:textSize="16sp"
+                                    android:visibility="gone" />
+                            </LinearLayout>
                         </LinearLayout>
 
                     </RelativeLayout>
 
                     <TextView
                         style="@style/small_title_authentication"
-                        android:text="Email" />
+                        android:text="@string/emaile" />
 
                     <EditText
                         android:id="@+id/emailEtSignUp"
                         style="@style/edittext_authentication"
-                        android:hint="Enter your email" />
+                        android:hint="@string/enter_your_emaile" />
 
                     <TextView
                         style="@style/small_title_authentication"
-                        android:text="Password" />
+                        android:text="@string/password" />
 
                     <EditText
                         android:id="@+id/passwordEtSignUp"
                         style="@style/edittext_authentication"
-                        android:hint="Enter your password" />
+                        android:hint="@string/enter_your_password" />
 
                     <LinearLayout
                         android:id="@+id/password_strength_layout"
@@ -166,7 +181,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Weak"
+                            android:text="@string/weak"
                             android:textColor="@color/red"
                             android:textSize="11sp"
                             android:textStyle="bold" />
@@ -180,7 +195,7 @@
                         android:layout_marginHorizontal="15dp"
                         android:layout_marginTop="30dp"
                         android:padding="15dp"
-                        android:text="Sign Up"
+                        android:text="@string/sign_upe"
                         android:textAllCaps="false"
                         app:cornerRadius="@dimen/default_corner_radius" />
 
@@ -196,13 +211,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Have an account?"
+                            android:text="@string/have_an_accounte"
                             android:textColor="@color/default_text_grey" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" Log In"
+                            android:text="@string/log_ine"
                             android:textColor="@color/default_purple"
                             android:textStyle="bold" />
 
@@ -224,32 +239,32 @@
 
                     <TextView
                         style="@style/textview_title_authentication"
-                        android:text="Log in" />
+                        android:text="@string/log_inw" />
 
                     <TextView
                         style="@style/small_title_authentication"
                         android:layout_marginTop="30dp"
-                        android:text="Email" />
+                        android:text="@string/emailq" />
 
                     <EditText
                         android:id="@+id/emailEtLogin"
                         style="@style/edittext_authentication"
-                        android:hint="Enter your email" />
+                        android:hint="@string/enter_your_emailq" />
 
                     <TextView
                         style="@style/small_title_authentication"
-                        android:text="Password" />
+                        android:text="@string/password" />
 
                     <EditText
                         android:id="@+id/passwordEtLogin"
                         style="@style/edittext_authentication"
-                        android:hint="Enter your password" />
+                        android:hint="@string/enter_your_password" />
 
                     <TextView
                         android:id="@+id/forgotPasswordBtn"
                         style="@style/small_title_authentication"
                         android:gravity="end"
-                        android:text="Forgot password?" />
+                        android:text="@string/forgot_password" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/loginBtn"
@@ -258,7 +273,7 @@
                         android:layout_marginHorizontal="15dp"
                         android:layout_marginTop="30dp"
                         android:padding="15dp"
-                        android:text="Log in"
+                        android:text="@string/log_in"
                         android:textAllCaps="false"
                         app:cornerRadius="@dimen/default_corner_radius" />
 
@@ -274,13 +289,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Don't have an account?"
+                            android:text="@string/don_t_have_an_account"
                             android:textColor="@color/default_text_grey" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" Sign up"
+                            android:text="@string/sign_up"
                             android:textColor="@color/default_purple"
                             android:textStyle="bold" />
 
@@ -315,7 +330,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginStart="10dp"
-                                android:text="Google"
+                                android:text="@string/google"
                                 android:textColor="@color/default_text_black"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -340,22 +355,22 @@
 
                     <TextView
                         style="@style/textview_title_authentication"
-                        android:text="Verify Email" />
+                        android:text="@string/verify_email" />
 
                     <TextView
                         style="@style/small_title_authentication"
                         android:layout_marginTop="30dp"
-                        android:text="Email" />
+                        android:text="@string/email" />
 
                     <EditText
                         android:id="@+id/emailEtForgotPassword"
                         style="@style/edittext_authentication"
-                        android:hint="Enter your email" />
+                        android:hint="@string/enter_your_email" />
 
                     <TextView
                         style="@style/small_title_authentication"
                         android:layout_marginTop="30dp"
-                        android:text="We will send you an email along with the instructions to reset your password." />
+                        android:text="@string/we_will_send_you_an_email_along_with_the_instructions_to_reset_your_password" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/codeBtn"
@@ -364,7 +379,7 @@
                         android:layout_marginHorizontal="15dp"
                         android:layout_marginTop="30dp"
                         android:padding="15dp"
-                        android:text="Send code"
+                        android:text="@string/send_code"
                         android:textAllCaps="false"
                         app:cornerRadius="@dimen/default_corner_radius" />
 
@@ -379,9 +394,9 @@
     <ImageView
         android:id="@+id/backBtn"
         android:layout_width="30dp"
-        android:visibility="gone"
         android:layout_height="30dp"
         android:layout_margin="20dp"
-        android:src="@drawable/ic_baseline_arrow_back_24" />
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:visibility="gone" />
 
 </RelativeLayout>

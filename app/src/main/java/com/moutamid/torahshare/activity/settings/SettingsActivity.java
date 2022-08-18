@@ -14,6 +14,8 @@ import com.moutamid.torahshare.startup.SplashActivity;
 import com.moutamid.torahshare.utils.Constants;
 import com.moutamid.torahshare.utils.Stash;
 
+import java.util.Locale;
+
 public class SettingsActivity extends AppCompatActivity {
     private ActivitySettingsBinding b;
 
@@ -50,13 +52,13 @@ public class SettingsActivity extends AppCompatActivity {
         b.noContactOptionCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
+                if (b) {
                     // FEMALE
                     Constants.databaseReference().child(Constants.USERS)
                             .child(Constants.auth().getUid())
                             .child("gender")
                             .setValue(Constants.GENDER_FEMALE);
-                }else {
+                } else {
                     // MALE
                     Constants.databaseReference().child(Constants.USERS)
                             .child(Constants.auth().getUid())
@@ -75,5 +77,31 @@ public class SettingsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        b.languageSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    Stash.put(Constants.CURRENT_LANGUAGE, "iw");
+                    changeLanguage("iw");
+                } else {
+                    Stash.put(Constants.CURRENT_LANGUAGE, "en");
+                    changeLanguage("en");
+                }
+            }
+        });
     }
+
+    public void changeLanguage(String lang) {
+        Locale myLocale;
+        if (lang.equalsIgnoreCase(""))
+            return;
+        myLocale = new Locale(lang);
+        Locale.setDefault(myLocale);
+        android.content.res.Configuration config = new android.content.res.Configuration();
+        config.locale = myLocale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+
+    }
+
 }

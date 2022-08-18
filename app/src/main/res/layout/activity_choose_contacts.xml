@@ -45,7 +45,7 @@
                 android:layout_gravity="center_vertical"
                 android:id="@+id/selectedAllBtn"
                 android:layout_marginEnd="10dp"
-                android:text="Select all"
+                android:text="@string/select_all"
                 android:textColor="@color/white" />
 
             <ImageView
@@ -89,7 +89,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="20dp"
         android:padding="15dp"
-        android:text="Done"
+        android:text="@string/done"
         android:textAllCaps="false"
         app:cornerRadius="@dimen/default_corner_radius" />
 

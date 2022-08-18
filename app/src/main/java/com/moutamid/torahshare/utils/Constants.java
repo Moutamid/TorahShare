@@ -1,12 +1,8 @@
 package com.moutamid.torahshare.utils;
 
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.moutamid.torahshare.R;
 
 public class Constants {
     public static final String IS_LOGGED_IN = "isloggedin";
@@ -25,7 +21,7 @@ public class Constants {
     public static final String CONVERSATIONS = "conversations";
     public static final String SEPARATOR = "LrDEBoLokW-5mhaT3ys";
     public static final String CHAT_MODEL = "chat_model";
-    public static final String DEFAULT_PROFILE_URL = "https://firebasestorage.googleapis.com/v0/b/sweet-nutrition.appspot.com/o/Frame%201888.png?alt=media&token=a9609231-27b3-4b53-854b-957455b6613d";
+    public static final String DEFAULT_PROFILE_URL = "https://firebasestorage.googleapis.com/v0/b/sweet-nutrition.appspot.com/o/Frame%2061.png?alt=media&token=005cac52-987d-4b49-9bce-8d14fe56b4aa";
     public static final String SPONSORED_ACCOUNTS = "sponsored_accounts";
     public static final String FOLLOWING = "following";
     public static final String FOLLOWERS = "followers";
@@ -40,6 +36,7 @@ public class Constants {
     public static final String CURRENT_POST_MODEL = "current_post_model";
     public static final String IS_CONTACT_CHECKED = "IS_CONTACT_CHECKED";
     public static final String IS_FOLLOWER_CHECKED = "IS_FOLLOWER_CHECKED";
+    public static final String CURRENT_LANGUAGE = "CURRENT_LANGUAGE";
 
     public static FirebaseAuth auth() {
         return FirebaseAuth.getInstance();

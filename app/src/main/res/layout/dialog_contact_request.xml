@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Send message request"
+            android:text="@string/send_message_request"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"
-            android:text="Ask the person to approve you, once he approves, then both of you become contacts and can chat and share videos."
+            android:text="@string/ask_the_person_to_approve_you_once_he_approves_then_both_of_you_become_contacts_and_can_chat_and_share_videos"
             android:textColor="@color/default_text_grey"
             android:textSize="16sp" />
 
@@ -47,7 +47,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="40dp"
             android:gravity="start"
-            android:text="Say something that he/she can recognize you."
+            android:text="@string/say_something_that_he_she_can_recognize_you"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:background="@color/white"
-                android:hint="Type.\n\n\n\n"
+                android:hint="@string/type_n_n_n_n"
                 android:inputType="textMultiLine"
                 android:textColor="#8F8790" />
 
@@ -80,7 +80,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
             android:padding="15dp"
-            android:text="Send request"
+            android:text="@string/send_request"
             android:textAllCaps="false"
             app:cornerRadius="@dimen/default_corner_radius" />
 

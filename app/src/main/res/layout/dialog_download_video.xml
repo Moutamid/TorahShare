@@ -28,7 +28,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Downloading... "
+                android:text="@string/downloading"
                 android:textColor="@color/default_text_grey"
                 android:textSize="18sp" />
 
@@ -36,7 +36,7 @@
                 android:id="@+id/downloadProgressTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0%"
+                android:text="@string/_0"
                 android:textColor="@color/default_text_black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -80,7 +80,7 @@
             android:layout_marginTop="100dp"
             android:layout_marginBottom="30dp"
             android:gravity="end"
-            android:text="Cancel download"
+            android:text="@string/cancel_download"
             android:textColor="@color/red" />
 
     </LinearLayout>

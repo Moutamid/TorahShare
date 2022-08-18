@@ -13,10 +13,10 @@
         android:layout_height="wrap_content"
         android:background="@color/default_purple">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/maleHeader"
+        <!--<com.google.android.material.card.MaterialCardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_marginStart="20dp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="20dp"
@@ -47,7 +47,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="8dp"
                         android:gravity="center"
-                        android:text="Contacts"
+                        android:text="@string/contacts"
                         android:textColor="@color/white"
                         android:textSize="13sp" />
 
@@ -71,7 +71,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="8dp"
                         android:gravity="center"
-                        android:text="Shares"
+                        android:text="@string/shares"
                         android:textColor="@color/default_purple"
                         android:textSize="13sp" />
 
@@ -79,7 +79,40 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>-->
+
+        <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
+            android:id="@+id/maleHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/white"
+            android:elevation="2dp"
+            app:borderColor="@color/white"
+            app:borderWidth="4dp"
+            app:position="0"
+            app:radius="10dp"
+            app:selectedBackground="@color/default_purple">
+
+            <com.addisonelliott.segmentedbutton.SegmentedButton
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                app:selectedTextColor="@color/white"
+                app:text="Contact"
+                app:textColor="@color/default_purple" />
+
+            <com.addisonelliott.segmentedbutton.SegmentedButton
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                app:selectedTextColor="@color/grey"
+                app:text="Shares"
+                app:textColor="@color/default_purple" />
+
+        </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
 
         <TextView
             android:id="@+id/femaleTopHeader"
@@ -88,7 +121,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="20dp"
-            android:text="Shares"
+            android:text="@string/shares"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"

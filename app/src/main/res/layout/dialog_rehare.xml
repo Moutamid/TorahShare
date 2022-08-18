@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:text="Resharing video"
+            android:text="@string/resharing_video"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="Share with"
+            android:text="@string/share_withw"
             android:textColor="@color/default_text_black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="20dp"
-                android:text="Followers"
+                android:text="@string/followersq"
                 android:textColor="@color/default_text_black"
                 android:textSize="17sp"
                 android:textStyle="bold" />
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="20dp"
-                android:text="Contacts"
+                android:text="@string/contacts"
                 android:textColor="@color/default_text_black"
                 android:textSize="17sp"
                 android:textStyle="bold" />
@@ -121,7 +121,7 @@
             android:layout_marginHorizontal="15dp"
             android:layout_marginTop="10dp"
             android:padding="10dp"
-            android:text="Choose contact"
+            android:text="@string/choose_contact"
             android:textColor="@color/default_purple"
             android:textSize="12sp"
             android:visibility="gone"
@@ -154,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="15dp"
-                android:text="Reshare"
+                android:text="@string/reshare"
                 android:textAllCaps="false"
                 app:cornerRadius="@dimen/default_corner_radius" />
 

@@ -63,7 +63,7 @@
             android:id="@+id/unFollowBtn_follow_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Unfollow"
+            android:text="@string/unfollow"
             android:textAllCaps="false"
             android:textSize="12sp" />
 

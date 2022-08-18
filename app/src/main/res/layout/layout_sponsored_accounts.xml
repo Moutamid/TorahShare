@@ -67,7 +67,7 @@
                     android:id="@+id/followBtn_sponsored_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Follow"
+                    android:text="@string/follow"
                     android:textAllCaps="false"
                     android:textSize="12sp" />
 
@@ -75,7 +75,7 @@
                     android:id="@+id/unFollowBtn_sponsored_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Unfollow"
+                    android:text="@string/unfollow"
                     android:textAllCaps="false"
                     android:textSize="12sp"
                     android:visibility="gone" />
@@ -105,19 +105,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="100dp" />
 
+                <ImageView
+                    android:id="@+id/videoPlayBtn1_sponsored_layout"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_play_btn" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/videoPlayBtn1_sponsored_layout"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_play_btn" />
 
                     <TextView
                         android:id="@+id/caption1_sponsored_layout"
@@ -129,7 +130,7 @@
                         android:maxLines="2"
                         android:text="kshgfashgf askjgfadgf ksjadgfajkdgf akjsdgfasdgf"
                         android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        android:textSize="10sp" />
 
                 </LinearLayout>
 
@@ -150,19 +151,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="100dp" />
 
+                <ImageView
+                    android:id="@+id/videoPlayBtn2_sponsored_layout"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_play_btn" />
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/videoPlayBtn2_sponsored_layout"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_play_btn" />
 
                     <TextView
                         android:id="@+id/caption2_sponsored_layout"
@@ -174,7 +175,7 @@
                         android:maxLines="2"
                         android:text="kshgfashgf askjgfadgf ksjadgfajkdgf akjsdgfasdgf"
                         android:textColor="@color/white"
-                        android:textSize="12sp" />
+                        android:textSize="10sp" />
 
                 </LinearLayout>
 

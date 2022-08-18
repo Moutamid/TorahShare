@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Profile"
+            android:text="@string/profile"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -88,7 +88,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="No bio found!"
+                        android:text="@string/no_bio_found"
                         android:textColor="@color/default_text_grey" />
 
                 </LinearLayout>
@@ -136,7 +136,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Followers"
+                                android:text="@string/followers"
                                 android:textColor="@color/default_text_grey"
                                 android:textSize="16sp" />
 
@@ -164,7 +164,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Following"
+                                android:text="@string/following"
                                 android:textColor="@color/default_text_grey"
                                 android:textSize="16sp" />
 
@@ -184,7 +184,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
                         android:layout_marginTop="20dp"
-                        android:text="Videos"
+                        android:text="@string/videos"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -214,7 +214,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="20dp"
-                    android:text="TorahShare Policy"
+                    android:text="@string/torahshare_policy"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -223,7 +223,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="For your protection, we do not allow women’s accounts at TorahShare to become contacts or share videos with other users."
+                    android:text="@string/for_your_protection_we_do_not_allow_women_s_accounts_at_torahshare_to_become_contacts_or_share_videos_with_other_users"
                     android:textColor="@color/default_text_grey" />
 
                 <LinearLayout
@@ -237,7 +237,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:text="Following"
+                        android:text="@string/following"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />

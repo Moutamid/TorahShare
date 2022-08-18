@@ -70,6 +70,9 @@ public class ProfileFragment extends Fragment {
         b = com.moutamid.torahshare.databinding.FragmentProfileBinding.inflate(inflater, container, false);
         if (!isAdded()) return b.getRoot();
 
+        if (userModel == null)
+            return b.getRoot();
+
         if (userModel.profile_url.isEmpty() || userModel.profile_url.equals(Constants.NULL)) {
         } else {
             b.cameraIcon.setVisibility(View.GONE);
@@ -94,7 +97,7 @@ public class ProfileFragment extends Fragment {
             startActivity(new Intent(requireActivity(), SettingsActivity.class));
         });
 
-        if (userModel.gender.equals(Constants.GENDER_FEMALE)){
+        if (userModel.gender.equals(Constants.GENDER_FEMALE)) {
             initRecyclerVieww();
             return b.getRoot();
         }

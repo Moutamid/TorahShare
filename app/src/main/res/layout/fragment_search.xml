@@ -45,7 +45,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_toStartOf="@id/filterCardView"
                 android:background="@color/white"
-                android:hint="Search"
+                android:hint="@string/search"
                 android:inputType="textPersonName"
                 android:textColorHint="@color/default_text_grey"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -85,7 +85,7 @@
                             android:id="@+id/filter_selected_textview"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="User" />
+                            android:text="@string/user" />
 
                         <ImageView
                             android:id="@+id/filter_arrow"
@@ -102,7 +102,7 @@
                         android:layout_marginHorizontal="10dp"
                         android:layout_marginBottom="10dp"
                         android:gravity="start"
-                        android:text="Videos"
+                        android:text="@string/videos"
                         android:visibility="gone" />
 
                 </LinearLayout>
@@ -129,7 +129,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
-                android:text="Sponsored accounts"
+                android:text="@string/sponsored_accounts"
                 android:textColor="@color/default_text_black"
                 android:textSize="20sp"
                 android:textStyle="bold" />

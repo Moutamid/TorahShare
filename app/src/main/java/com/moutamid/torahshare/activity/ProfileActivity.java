@@ -90,6 +90,19 @@ public class ProfileActivity extends AppCompatActivity {
                     }
                 });
 
+        Dialog dialog = new Dialog(ProfileActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_comments);
+        dialog.setCancelable(true);
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        layoutParams.copyFrom(dialog.getWindow().getAttributes());
+        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+        layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
+
+//                        dialog.findViewById(R.id.);
+//        dialog.show();
+//        dialog.getWindow().setAttributes(layoutParams);
+
     }
 
     private void setValuesOnViews() {

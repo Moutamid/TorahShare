@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.addisonelliott.segmentedbutton.SegmentedButtonGroup;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -53,13 +54,31 @@ public class MessagesFragment extends Fragment {
         if (!isAdded())
             return b.getRoot();
 
-        if (userModel.gender.equals(Constants.GENDER_FEMALE)){
-            b.maleHeader.setVisibility(View.GONE);
-            b.femaleTopHeader.setVisibility(View.VISIBLE);
-            is_contact = false;
-        }
+        if (userModel != null)
+            if (userModel.gender != null)
+                if (userModel.gender.equals(Constants.GENDER_FEMALE)) {
+                    b.maleHeader.setVisibility(View.GONE);
+                    b.femaleTopHeader.setVisibility(View.VISIBLE);
+                    is_contact = false;
+                }
 
-        b.cardContacts.setOnClickListener(view -> {
+        b.maleHeader.setOnPositionChangedListener(new SegmentedButtonGroup.OnPositionChangedListener() {
+            @Override
+            public void onPositionChanged(int position) {
+                if (position == 0) {
+                    is_contact = true;
+                    if (adapter != null)
+                        adapter.notifyDataSetChanged();
+                }else {
+                    is_contact = false;
+
+                    if (adapter != null)
+                        adapter.notifyDataSetChanged();
+                }
+            }
+        });
+
+        /*b.cardContacts.setOnClickListener(view -> {
             b.cardContacts.setCardBackgroundColor(getResources().getColor(R.color.default_purple));
             b.textViewContacts.setTextColor(getResources().getColor(R.color.white));
 
@@ -83,7 +102,7 @@ public class MessagesFragment extends Fragment {
             if (adapter != null)
                 adapter.notifyDataSetChanged();
 
-        });
+        });*/
 
         Constants.databaseReference().child(Constants.CHATS)
                 .child(Constants.auth().getUid())

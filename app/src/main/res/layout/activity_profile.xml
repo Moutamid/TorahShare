@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Profile"
+            android:text="@string/profile"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -60,7 +60,7 @@
                         android:id="@+id/nameTextview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Chaim chohan"
+                        android:text="@string/chaim_chohan"
                         android:textColor="@color/default_text_black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -70,7 +70,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="No bio found!"
+                        android:text="@string/no_bio_found"
                         android:textColor="@color/default_text_grey" />
 
                 </LinearLayout>
@@ -91,7 +91,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:paddingVertical="15dp"
-                    android:text="Follow"
+                    android:text="@string/follow"
                     app:cornerRadius="@dimen/default_corner_radius" />
 
                 <com.google.android.material.button.MaterialButton
@@ -101,7 +101,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:paddingVertical="15dp"
-                    android:text="Following"
+                    android:text="@string/followingg"
                     android:textColor="#8F8790"
                     android:visibility="gone"
                     app:backgroundTint="@color/default_light_pink"
@@ -116,7 +116,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:paddingVertical="15dp"
-                    android:text="Contact"
+                    android:text="@string/contact"
                     android:textColor="@color/default_purple"
                     app:backgroundTint="@color/white"
                     app:cornerRadius="@dimen/default_corner_radius" />
@@ -150,7 +150,7 @@
                             android:id="@+id/followersTextview"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="5000"
+                            android:text="@string/_5000"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -158,7 +158,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Followers"
+                            android:text="@string/followers"
                             android:textColor="@color/default_text_grey"
                             android:textSize="16sp" />
 
@@ -178,7 +178,7 @@
                             android:id="@+id/followingTextview"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="201"
+                            android:text="@string/_201"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -186,7 +186,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Following"
+                            android:text="@string/followinge"
                             android:textColor="@color/default_text_grey"
                             android:textSize="16sp" />
 
@@ -206,7 +206,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="20dp"
-                    android:text="Videos"
+                    android:text="@string/videos"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />

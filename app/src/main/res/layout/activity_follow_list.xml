@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="Following"
+                android:text="@string/following"
                 android:textColor="@color/default_text_black"
                 android:textSize="18sp" />
 
@@ -53,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="20dp"
-                    android:text="203 Following"
+                    android:text="@string/_203_following"
                     android:textColor="@color/skyBlue"
                     android:textSize="18sp"
                     android:textStyle="bold" />

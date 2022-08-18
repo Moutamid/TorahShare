@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:text="Report this video?"
+            android:text="@string/report_this_video"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:background="@color/white"
-                android:hint="Reason...\n\n\n\n"
+                android:hint="@string/reason_n_n_n_n"
                 android:inputType="textMultiLine"
                 android:textColor="#8F8790" />
 
@@ -67,7 +67,7 @@
                 android:layout_weight="1"
                 android:layout_marginEnd="10dp"
                 android:padding="15dp"
-                android:text="Cancel"
+                android:text="@string/cancel"
                 android:textColor="@color/black"
                 app:backgroundTint="@color/white"
                 app:strokeColor="#8F8790"
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="15dp"
-                android:text="Report"
+                android:text="@string/report"
                 android:textAllCaps="false"
                 app:cornerRadius="@dimen/default_corner_radius" />
 

@@ -26,7 +26,7 @@
         android:layout_marginBottom="20dp"
         android:elevation="0dp"
         android:padding="15dp"
-        android:text="Share"
+        android:text="@string/share"
         android:textAllCaps="false"
         android:visibility="gone"
         app:cornerRadius="@dimen/default_corner_radius"

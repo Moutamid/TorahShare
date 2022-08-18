@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Shares"
+                android:text="@string/shares"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"
-                    android:text="Yousef Kahn"
+                    android:text="@string/yousef_kahn"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="30dp"
-            android:text="Do you want to accept andDo you want to accept andDo you want to accept andDo you want to accept andDo you want to accept and"
+            android:text="@string/do_you_want_to_accept_anddo_you_want_to_accept_anddo_you_want_to_accept_anddo_you_want_to_accept_anddo_you_want_to_accept_and"
             android:textColor="@color/default_text_black" />
 
     </LinearLayout>
@@ -115,13 +115,14 @@
                     android:id="@+id/name2Tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Yousef Kahn"
+
+                    android:text="@string/yousef_kahnr"
                     android:textColor="@color/black" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" sent you a request to"
+                    android:text="@string/sent_you_a_request_to"
                     android:textColor="@color/default_text_grey" />
 
             </LinearLayout>
@@ -130,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="become your contact"
+                android:text="@string/become_your_contact"
                 android:textColor="@color/default_text_grey" />
 
             <TextView
@@ -138,14 +139,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                android:text="Do you want to accept and"
+                android:text="@string/do_you_want_to_accept_and"
                 android:textColor="@color/default_text_grey" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="start a conversation?"
+                android:text="@string/start_a_conversation"
                 android:textColor="@color/default_text_grey" />
 
             <LinearLayout
@@ -162,7 +163,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:paddingVertical="15dp"
-                    android:text="Decline"
+                    android:text="@string/decline"
                     android:textColor="@color/default_purple"
                     app:backgroundTint="@color/white"
                     app:cornerRadius="@dimen/default_corner_radius" />
@@ -174,7 +175,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:paddingVertical="15dp"
-                    android:text="Accept"
+                    android:text="@string/accept"
                     app:cornerRadius="@dimen/default_corner_radius" />
 
             </LinearLayout>

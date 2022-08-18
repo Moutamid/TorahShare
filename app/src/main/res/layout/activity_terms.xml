@@ -24,7 +24,8 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
         android:gravity="start"
-        android:text="Terms and conditions"
+
+        android:text="@string/terms_and_conditionsss"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -38,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
-            android:text="I am aware that ...\n1. Any video posted or shared in this application must consist solely of Torah content such as a Dvar Torah, a Torah concept or idea, or any type of Torah-based inspiration.\n2. Do not upload a video containing women at all.\n3. Content that is subject to disagreement among the ultra-Orthodox (chareidi) public should not be uploaded at all.\n4. In any doubt whether the video complies with the rules should not be uploaded.\n5. Any video posted or shared that does not meet the above criteria may result in temporary or permanent suspension of users."
+            android:text="@string/i_am_aware_that_n1_any_video_posted_or_shared_in_this_application_must_consist_solely_of_torah_content_such_as_a_dvar_torah_a_torah_concept_or_idea_or_any_type_of_torah_based_inspiration_n2_do_not_upload_a_video_containing_women_at_all_n3_content_that_is_subject_to_disagreement_among_the_ultra_orthodox_chareidi_public_should_not_be_uploaded_at_all_n4_in_any_doubt_whether_the_video_complies_with_the_rules_should_not_be_uploaded_n5_any_video_posted_or_shared_that_does_not_meet_the_above_criteria_may_result_in_temporary_or_permanent_suspension_of_userss"
             android:textColor="@color/default_text_grey"
             android:textSize="16sp" />
 

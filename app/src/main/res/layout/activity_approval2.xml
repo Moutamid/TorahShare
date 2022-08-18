@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Upload"
+            android:text="@string/upload"
             android:textColor="@color/default_text_black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="You need to get approved!"
+                android:text="@string/you_need_to_get_approved"
                 android:textColor="@color/default_text_black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -55,7 +55,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="40dp"
                 android:gravity="center"
-                android:text="To be able to upload videos to TorahShare you need to get approved by the admin."
+                android:text="@string/to_be_able_to_upload_videos_to_torahshare_you_need_to_get_approved_by_the_admin"
                 android:textColor="@color/default_text_grey"
                 android:textSize="16sp" />
 
@@ -66,7 +66,7 @@
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="30dp"
                 android:padding="15dp"
-                android:text="Get approved"
+                android:text="@string/get_approved"
                 android:textAllCaps="false"
                 app:cornerRadius="@dimen/default_corner_radius" />
         </LinearLayout>
@@ -90,7 +90,7 @@
             <TextView
                 style="@style/textview_title_authentication"
                 android:layout_marginTop="20dp"
-                android:text="Approval Form" />
+                android:text="@string/approval_form" />
 
             <androidx.cardview.widget.CardView
                 style="@style/bg_card_sign_up"
@@ -103,30 +103,30 @@
                     <TextView
                         style="@style/small_title_authentication"
                         android:layout_marginTop="5dp"
-                        android:text="What is your education?" />
+                        android:text="@string/what_is_your_education" />
 
                     <EditText
                         android:id="@+id/educationEt"
                         style="@style/edittext_authentication"
-                        android:hint="Enter your answer" />
+                        android:hint="@string/enter_your_answer" />
 
                     <TextView
                         style="@style/small_title_authentication"
-                        android:text="What is your occupation?" />
+                        android:text="@string/what_is_your_occupation" />
 
                     <EditText
                         android:id="@+id/occupationEtSignUp"
                         style="@style/edittext_authentication"
-                        android:hint="Enter your answer" />
+                        android:hint="@string/enter_your_answer1" />
 
                     <TextView
                         style="@style/small_title_authentication"
-                        android:text="What religious group do you associate with?" />
+                        android:text="@string/what_religious_group_do_you_associate_with" />
 
                     <EditText
                         android:id="@+id/religionEtSignUp"
                         style="@style/edittext_authentication"
-                        android:hint="Enter your answer" />
+                        android:hint="@string/enter_your_answere" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/nextBtn"
@@ -135,7 +135,7 @@
                         android:layout_marginHorizontal="15dp"
                         android:layout_marginTop="40dp"
                         android:padding="15dp"
-                        android:text="Next"
+                        android:text="@string/next"
                         android:textAllCaps="false"
                         app:cornerRadius="@dimen/default_corner_radius" />
 
@@ -169,13 +169,13 @@
                 <TextView
                     style="@style/textview_title_authentication"
                     android:layout_marginTop="20dp"
-                    android:text="Approval Form" />
+                    android:text="@string/approval_forme" />
 
                 <TextView
                     style="@style/small_title_authentication"
                     android:layout_marginHorizontal="50dp"
                     android:gravity="center"
-                    android:text="Please upload 2 examples of the content you are planning to upload to the app." />
+                    android:text="@string/please_upload_2_examples_of_the_content_you_are_planning_to_upload_to_the_app" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -270,7 +270,7 @@
             android:layout_marginBottom="20dp"
             android:alpha="0.5"
             android:padding="15dp"
-            android:text="Apply"
+            android:text="@string/apply"
             android:textAllCaps="false"
             app:cornerRadius="@dimen/default_corner_radius" />
 
@@ -300,7 +300,7 @@
             <TextView
                 style="@style/textview_title_authentication"
                 android:layout_marginTop="20dp"
-                android:text="Successfully uploaded"
+                android:text="@string/successfully_uploaded"
                 android:textColor="@color/default_green" />
 
             <TextView
@@ -309,7 +309,7 @@
                 android:layout_marginHorizontal="50dp"
                 android:layout_marginTop="40dp"
                 android:gravity="center_horizontal"
-                android:text="thank you for applying for the uploading part of the TorahShare app we are going to do our best to review it and will notify you via"
+                android:text="@string/thank_you_for_applying_for_the_uploading_part_of_the_torahshare_app_we_are_going_to_do_our_best_to_review_it_and_will_notify_you_via"
                 android:textColor="@color/default_text_black" />
 
             <LinearLayout
@@ -321,20 +321,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email: "
+                    android:text="@string/email"
                     android:textColor="@color/default_text_black" />
 
                 <TextView
                     android:id="@+id/emailTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="example@gmail.com"
+                    android:text="@string/example_gmail_com"
                     android:textColor="@color/skyBlue" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" as soon"
+                    android:text="@string/as_soon"
                     android:textColor="@color/default_text_black" />
 
             </LinearLayout>
@@ -343,7 +343,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="as possible!"
+                android:text="@string/as_possible"
                 android:textColor="@color/default_text_black" />
 
         </LinearLayout>
@@ -369,7 +369,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Upload"
+            android:text="@string/uploade"
             android:textColor="@color/default_text_black"
             android:textSize="20sp"
             android:textStyle="bold" />

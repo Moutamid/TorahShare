@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Upload"
+            android:text="@string/upload"
             android:textColor="@color/default_text_black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Notice!"
+                android:text="@string/notice"
                 android:textColor="@color/default_text_black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -54,7 +54,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="40dp"
                 android:gravity="center"
-                android:text="For your protection, we don't allow women to upload videos on TorahShare"
+                android:text="@string/for_your_protection_we_don_t_allow_women_to_upload_videos_on_torahshare"
                 android:textColor="@color/default_text_grey"
                 android:textSize="16sp" />
 
@@ -65,7 +65,7 @@
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="30dp"
                 android:padding="15dp"
-                android:text="Okay"
+                android:text="@string/okay"
                 android:textAllCaps="false"
                 app:cornerRadius="@dimen/default_corner_radius" />
         </LinearLayout>

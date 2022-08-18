@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:gravity="center"
-                    android:text="Edit profile"
+                    android:text="@string/edit_profile"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -55,48 +55,48 @@
 
                     <TextView
                         style="@style/textview_title_authentication"
-                        android:text="Edit Profile" />
+                        android:text="@string/edit_profilew" />
 
                     <TextView
                         style="@style/small_title_authentication"
                         android:layout_marginTop="30dp"
-                        android:text="Full name" />
+                        android:text="@string/full_name" />
 
                     <EditText
                         android:id="@+id/nameEtSignUp"
                         style="@style/edittext_authentication"
-                        android:hint="Enter your name" />
+                        android:hint="@string/enter_your_name" />
 
                     <TextView
                         style="@style/small_title_authentication"
                         android:layout_marginTop="30dp"
-                        android:text="Phone number" />
+                        android:text="@string/phone_number" />
 
                     <EditText
                         android:id="@+id/numberEtSignUp"
                         style="@style/edittext_authentication"
-                        android:hint="Enter your phone number"
+                        android:hint="@string/enter_your_phone_number"
                         android:inputType="number" />
 
                     <TextView
                         style="@style/small_title_authentication"
-                        android:text="Email" />
+                        android:text="@string/emailw" />
 
                     <EditText
                         android:id="@+id/emailEtSignUp"
                         style="@style/edittext_authentication"
-                        android:hint="Enter your email" />
+                        android:hint="@string/enter_your_email" />
 
                     <TextView
                         android:id="@+id/bioTitle"
                         style="@style/small_title_authentication"
-                        android:text="About me" />
+                        android:text="@string/about_me" />
 
                     <EditText
                         android:id="@+id/bioEtSignUp"
                         style="@style/edittext_authentication"
                         android:gravity="top"
-                        android:hint="Let People Know What Your Account Is All About \n\n"
+                        android:hint="@string/let_people_know_what_your_account_is_all_about_n_n"
                         android:inputType="textMultiLine" />
 
                     <com.google.android.material.button.MaterialButton
@@ -106,7 +106,7 @@
                         android:layout_marginHorizontal="15dp"
                         android:layout_marginTop="30dp"
                         android:padding="15dp"
-                        android:text="Update"
+                        android:text="@string/update"
                         android:textAllCaps="false"
                         app:cornerRadius="@dimen/default_corner_radius" />
 

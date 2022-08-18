@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:text="Report"
+                android:text="@string/report"
                 android:textColor="@color/default_text_black" />
 
         </LinearLayout>
@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:text="Reshare"
+                android:text="@string/reshare"
                 android:textColor="@color/default_text_black" />
 
         </LinearLayout>
@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:text="Download"
+                android:text="@string/download"
                 android:textColor="@color/default_text_black" />
 
         </LinearLayout>

@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Write a caption"
+                android:text="@string/write_a_caption"
                 android:textColor="@color/default_text_black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="(Optional)"
+                android:text="@string/optional"
                 android:textColor="@color/default_text_grey"
                 android:textSize="16sp"
                 android:visibility="invisible" />
@@ -51,14 +51,14 @@
         <EditText
             android:id="@+id/captionEt"
             style="@style/edittext_authentication"
-            android:hint="Enter your caption here" />
+            android:hint="@string/enter_your_caption_here" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="Add #Tags"
+            android:text="@string/add_tags"
             android:textColor="@color/default_text_black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="Share with"
+            android:text="@string/share_with"
             android:textColor="@color/default_text_black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="20dp"
-                android:text="Followers"
+                android:text="@string/followers"
                 android:textColor="@color/default_text_black"
                 android:textSize="17sp"
                 android:textStyle="bold" />
@@ -141,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="20dp"
-                android:text="Contacts"
+                android:text="@string/contacts"
                 android:textColor="@color/default_text_black"
                 android:textSize="17sp"
                 android:textStyle="bold" />
@@ -163,7 +163,7 @@
             android:layout_marginHorizontal="15dp"
             android:layout_marginTop="10dp"
             android:padding="10dp"
-            android:text="Choose contact"
+            android:text="@string/choose_contact"
             android:textColor="@color/default_purple"
             android:textSize="12sp"
             android:visibility="gone"
@@ -193,7 +193,7 @@
             android:layout_marginBottom="20dp"
             android:elevation="0dp"
             android:padding="15dp"
-            android:text="Share"
+            android:text="@string/share"
             android:textAllCaps="false"
             app:cornerRadius="@dimen/default_corner_radius"
             app:elevation="0dp" />

@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:gravity="center"
-                    android:text="Settings"
+                    android:text="@string/settings"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -45,7 +45,7 @@
 
             <TextView
                 style="@style/small_title_authentication"
-                android:text="Management" />
+                android:text="@string/management" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/editProfileBtn"
@@ -67,7 +67,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="20dp"
                         android:layout_marginStart="20dp"
-                        android:text="Edit Profile"
+                        android:text="@string/edit_profilel"
                         android:textColor="@color/default_text_grey" />
 
                     <ImageView
@@ -86,7 +86,7 @@
             <TextView
                 style="@style/small_title_authentication"
                 android:layout_marginTop="20dp"
-                android:text="About Application" />
+                android:text="@string/about_application" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/termsBtn"
@@ -108,7 +108,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="20dp"
                         android:layout_marginStart="20dp"
-                        android:text="Terms And Conditions"
+                        android:text="@string/terms_and_conditions"
                         android:textColor="@color/default_text_grey" />
 
                     <ImageView
@@ -142,7 +142,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="20dp"
                         android:layout_marginStart="20dp"
-                        android:text="Privacy Policy"
+                        android:text="@string/privacy_policy"
                         android:textColor="@color/default_text_grey" />
 
                     <ImageView
@@ -177,7 +177,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="20dp"
                         android:layout_marginStart="20dp"
-                        android:text="Disclaimer"
+                        android:text="@string/disclaimer"
                         android:textColor="@color/default_text_grey" />
 
                     <ImageView
@@ -196,7 +196,7 @@
             <TextView
                 style="@style/small_title_authentication"
                 android:layout_marginTop="20dp"
-                android:text="Privacy" />
+                android:text="@string/privacy" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -217,7 +217,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="20dp"
                         android:layout_marginStart="20dp"
-                        android:text="no contact option"
+                        android:text="@string/no_contact_option"
                         android:textColor="@color/default_text_grey" />
 
                     <CheckBox
@@ -249,7 +249,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="20dp"
                         android:layout_marginStart="20dp"
-                        android:text="Change password"
+                        android:text="@string/change_passwords"
                         android:textColor="@color/default_text_grey" />
 
                     <ImageView
@@ -268,7 +268,7 @@
             <TextView
                 style="@style/small_title_authentication"
                 android:layout_marginTop="20dp"
-                android:text="Language" />
+                android:text="@string/language" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -289,7 +289,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="20dp"
                         android:layout_marginStart="20dp"
-                        android:text="Switch to Hebrew"
+                        android:text="@string/switch_to_hebrew"
                         android:textColor="@color/default_text_grey" />
 
                     <androidx.appcompat.widget.SwitchCompat
@@ -307,7 +307,7 @@
             <TextView
                 style="@style/small_title_authentication"
                 android:layout_marginTop="30dp"
-                android:text="Preferences" />
+                android:text="@string/preferences" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/logoutBtn"
@@ -329,7 +329,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="20dp"
                         android:layout_marginStart="20dp"
-                        android:text="Logout"
+                        android:text="@string/logout"
                         android:textColor="@color/default_text_grey" />
 
                     <ImageView
