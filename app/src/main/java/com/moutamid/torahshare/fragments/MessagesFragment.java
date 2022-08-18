@@ -53,6 +53,7 @@ public class MessagesFragment extends Fragment {
 
         if (!isAdded())
             return b.getRoot();
+
         userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
 
         if (userModel != null)
