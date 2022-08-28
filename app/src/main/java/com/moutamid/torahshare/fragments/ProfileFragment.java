@@ -100,6 +100,8 @@ public class ProfileFragment extends Fragment {
         });
 
         if (userModel.gender.equals(Constants.GENDER_FEMALE)) {
+            b.maleLayoutProfile.setVisibility(View.GONE);
+            b.femaleLayoutProfile.setVisibility(View.VISIBLE);
             initRecyclerVieww();
             return b.getRoot();
         }
@@ -275,13 +277,18 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
-        b.nameTextview.setText(userModel.name);
-        b.bioTextview.setText(userModel.bio);
+//        Constants.checkLanguage(requireActivity());
 
-        b.followersTextview.setText(userModel.followers_count + "");
-        b.totalCountTextView.setText(userModel.followers_count + "");
-        b.followingTextview.setText(userModel.following_count + "");
+        userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
+        if (userModel != null) {
+            if (userModel.name != null)
+                b.nameTextview.setText(userModel.name);
+            b.bioTextview.setText(userModel.bio);
+
+            b.followersTextview.setText(userModel.followers_count + "");
+            b.totalCountTextView.setText(userModel.followers_count + "");
+            b.followingTextview.setText(userModel.following_count + "");
+        }
 
     }
 

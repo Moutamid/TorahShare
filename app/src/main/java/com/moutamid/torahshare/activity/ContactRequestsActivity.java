@@ -31,11 +31,9 @@ public class ContactRequestsActivity extends AppCompatActivity {
     ContactRequestModel contactRequestModel;
     UserModel myUserModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
 
-    Animation slide_down = AnimationUtils.loadAnimation(getApplicationContext(),
-            R.anim.slide_down);
+    Animation slide_down;
+    Animation slide_up;
 
-    Animation slide_up = AnimationUtils.loadAnimation(getApplicationContext(),
-            R.anim.slide_up);
     UserModel other_userModel;
 
     @Override
@@ -43,6 +41,12 @@ public class ContactRequestsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         b = ActivityContactRequestsBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
+
+        slide_up = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slide_up);
+        slide_down = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slide_down);
+
 
         b.backBtn.setOnClickListener(view -> {
             finish();

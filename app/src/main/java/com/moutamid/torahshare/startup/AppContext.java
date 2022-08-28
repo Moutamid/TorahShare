@@ -27,7 +27,7 @@ public class AppContext extends Application {
         if (Constants.auth().getCurrentUser() == null)
             return;
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        FirebaseDatabase.getInstance().setPersistenceEnabled(false);
 
         Constants.databaseReference().child(Constants.USERS)
                 .child(Constants.auth().getUid())
@@ -67,6 +67,5 @@ public class AppContext extends Application {
 
                     }
                 });
-
     }
 }

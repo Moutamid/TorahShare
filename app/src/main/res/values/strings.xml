@@ -171,4 +171,9 @@
     <string name="sponsored_accounts">Sponsored accounts</string>
     <string name="unfollow">Unfollow</string>
     <string name="download">Download</string>
+    <string name="weakk">Weak</string>
+    <string name="comments">Comments</string>
+    <string name="write_a_comment">Write a comment</string>
+    <string name="add_tag">Add Tag</string>
+    <string name="video_creator_at_torahshare">Video creator at TorahShare</string>
 </resources>

@@ -6,8 +6,12 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.ImageView;
 import android.widget.Scroller;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,6 +37,9 @@ import com.moutamid.torahshare.model.UserModel;
 import com.moutamid.torahshare.utils.Constants;
 import com.moutamid.torahshare.utils.Stash;
 
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,9 +51,16 @@ public class HomeActivity extends AppCompatActivity {
     private NonSwipableViewPager viewPager;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        Constants.checkLanguage(this);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        Constants.checkLanguage(this);
         b = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
         if (Constants.auth().getCurrentUser() == null) {
@@ -67,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
 
         b.addBottomBarBtn.setOnClickListener(view -> {
             UserModel userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
-            if (userModel.gender.equals(Constants.GENDER_FEMALE)){
+            if (userModel.gender.equals(Constants.GENDER_FEMALE)) {
                 startActivity(new Intent(HomeActivity.this, WomanApprovalActivity.class));
                 return;
             }
@@ -120,7 +134,23 @@ public class HomeActivity extends AppCompatActivity {
 
                     }
                 });
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        KeyboardVisibilityEvent.setEventListener(
+                HomeActivity.this,
+                new KeyboardVisibilityEventListener() {
+                    @Override
+                    public void onVisibilityChanged(boolean isOpen) {
+                        if (isOpen) {
+                            b.bottomBarImageview.setVisibility(View.GONE);
+                        } else {
+                            b.bottomBarImageview.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
+    }
 
+    public ImageView bottomBar() {
+        return b.bottomBarImageview;
     }
 
     private static final String TAG = "HomeActivity";
@@ -169,6 +199,8 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+
+
         if (viewPager.getCurrentItem() == 0) {
             super.onBackPressed();
         } else

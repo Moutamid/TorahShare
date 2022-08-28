@@ -14,6 +14,10 @@
         android:layout_height="match_parent"
         android:visibility="gone">
 
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,6 +63,7 @@
 
         </LinearLayout>
 
+        </androidx.core.widget.NestedScrollView>
         <ImageView
             android:id="@+id/backBtn2"
             android:layout_width="30dp"
@@ -280,7 +285,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="10dp"
             android:padding="15dp"
-            android:text="@string/reshare"
+            android:text="@string/share"
             android:textAllCaps="false"
             app:cornerRadius="@dimen/default_corner_radius" />
 

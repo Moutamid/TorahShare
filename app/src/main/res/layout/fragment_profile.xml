@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
     android:layout_height="match_parent"
     android:background="@color/default_light_pink"
     tools:context=".fragments.ProfileFragment">
@@ -13,7 +14,7 @@
 
         <TextView
             android:id="@+id/hgh"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:text="@string/profile"
@@ -97,6 +98,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:id="@+id/maleLayoutProfile"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 >
@@ -206,6 +208,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:id="@+id/femaleLayoutProfile"
                 android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">

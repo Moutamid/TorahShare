@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -93,7 +94,9 @@ public class RegistrationController {
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d(TAG, "onComplete: sign in completed");
                         if (task.isSuccessful()) {
+                            Log.d(TAG, "onComplete: susseccfull");
                             Stash.put(Constants.MY_PASSWORD, passwordStr);
                             Constants.databaseReference().child(Constants.USERS)
                                     .child(Constants.auth().getUid())
@@ -101,10 +104,12 @@ public class RegistrationController {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                             if (snapshot.exists()){
+                                                Log.d(TAG, "onDataChange: got user data");
                                                 UserModel userModel = snapshot.getValue(UserModel.class);
                                                 Stash.put(Constants.CURRENT_USER_MODEL, userModel);
                                                 activity.onCompleteMethod();
                                             }else {
+                                                Log.d(TAG, "onDataChange: no snapchot");
                                                 progressDialog.dismiss();
                                                 Toast.makeText(activity, "Data doesn't exist!", Toast.LENGTH_SHORT).show();
                                             }
@@ -113,10 +118,12 @@ public class RegistrationController {
                                         @Override
                                         public void onCancelled(@NonNull DatabaseError error) {
                                             progressDialog.dismiss();
+                                            Log.d(TAG, "onCancelled: cancelled error");
                                             Toast.makeText(activity, error.toException().getMessage(), Toast.LENGTH_SHORT).show();
                                         }
                                     });
                         } else {
+                            Log.d(TAG, "onComplete: failed");
                             progressDialog.dismiss();
                             toast(task.getException().getMessage());
                         }
@@ -189,7 +196,11 @@ public class RegistrationController {
 
                             activity.model.uid = Constants.auth().getUid();
                             activity.model.number = "000000000";
-                            activity.model.bio = Constants.NULL;
+                            if (activity.model.gender.equals(Constants.GENDER_FEMALE)) {
+                                activity.model.bio = Constants.NULL;
+                            }else {
+                                activity.model.bio = Constants.DEFAULT_BIO;
+                            }
                             activity.model.profile_url = Constants.DEFAULT_PROFILE_URL;
                             activity.model.followers_count = 0;
                             activity.model.following_count = 0;

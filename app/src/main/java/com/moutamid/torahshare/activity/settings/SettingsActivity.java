@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.moutamid.torahshare.R;
+import com.moutamid.torahshare.activity.HomeActivity;
 import com.moutamid.torahshare.databinding.ActivitySettingsBinding;
 import com.moutamid.torahshare.startup.SplashActivity;
 import com.moutamid.torahshare.utils.Constants;
@@ -26,8 +28,23 @@ public class SettingsActivity extends AppCompatActivity {
         b = ActivitySettingsBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
 
+        if (Stash.getString(Constants.CURRENT_LANGUAGE, "en").equals("en")) {
+            // ENGLISH
+            b.languageSwitch.setChecked(false);
+        } else {
+            //HEBREW
+            b.languageSwitch.setChecked(true);
+        }
+
         b.backBtn.setOnClickListener(view -> {
-            finish();
+            if (Stash.getBoolean(Constants.LANGUAGE_CHANGE, false)) {
+                Intent intent = new Intent(SettingsActivity.this, HomeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                finish();
+                startActivity(intent);
+            } else {
+                finish();
+            }
         });
 
         b.editProfileBtn.setOnClickListener(view -> {
@@ -82,13 +99,19 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
+                    Stash.put(Constants.LANGUAGE_CHANGE, true);
                     Stash.put(Constants.CURRENT_LANGUAGE, "iw");
                     changeLanguage("iw");
-                    recreate();
+                    Intent intent = new Intent(SettingsActivity.this, SettingsActivity.class);
+                    finish();
+                    startActivity(intent);
                 } else {
+                    Stash.put(Constants.LANGUAGE_CHANGE, true);
                     Stash.put(Constants.CURRENT_LANGUAGE, "en");
                     changeLanguage("en");
-                    recreate();
+                    Intent intent = new Intent(SettingsActivity.this, SettingsActivity.class);
+                    finish();
+                    startActivity(intent);
                 }
             }
         });
@@ -108,6 +131,10 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
+/*
+    boolean isChanged = false;
+*/
+
     public void changeLanguage(String lang) {
         Locale myLocale;
         if (lang.equalsIgnoreCase(""))
@@ -121,4 +148,15 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        if (Stash.getBoolean(Constants.LANGUAGE_CHANGE, false)) {
+            Intent intent = new Intent(SettingsActivity.this, HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            finish();
+            startActivity(intent);
+        } else {
+            super.onBackPressed();
+        }
+    }
 }

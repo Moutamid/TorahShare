@@ -138,6 +138,17 @@ public class ApprovalActivity2 extends AppCompatActivity {
             startActivityForResult(Intent.createChooser(i, "choose App"), PICK_VIDEO_2);
         });
 
+        if (Stash.getString(Constants.CURRENT_LANGUAGE, "en").equals("en")) {
+            // ENGLISH
+            b.jjjj.setImageResource(R.drawable.error_placeholder);
+            b.jjjj.setBackgroundResource(R.drawable.error_placeholder);
+        } else {
+            //HEBREW
+            b.jjjj.setImageResource(R.drawable.error_placeholder_iw);
+            b.jjjj.setBackgroundResource(R.drawable.error_placeholder_iw);
+        }
+
+
     }
 
     public void uploadVideo(Uri videoUri, int requestCode) {

@@ -51,7 +51,7 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         b = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
-
+        Constants.log("started");
         controller = new RegistrationController(this, b);
 
         b.genderLayout.setOnClickListener(view -> {
@@ -138,6 +138,7 @@ public class RegistrationActivity extends AppCompatActivity {
         });
 
         b.loginBtn.setOnClickListener(view -> {
+            Log.d(TAG, "onCreate: loginbtn");
             if (controller.checkEditTextLogin())
                 return;
 
@@ -234,8 +235,10 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     public void onCompleteMethod() {
+        Log.d(TAG, "onCompleteMethod: triggered");
+        controller.progressDialog.dismiss();
         Stash.put(Constants.IS_LOGGED_IN, true);
-
+        Log.d(TAG, "onCompleteMethod: should go to home screen");
         Intent intent = new Intent(RegistrationActivity.this, HomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         finish();

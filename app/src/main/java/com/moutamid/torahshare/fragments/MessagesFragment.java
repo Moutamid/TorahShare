@@ -37,7 +37,6 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-
 public class MessagesFragment extends Fragment {
     public FragmentMessagesBinding b;
     UserModel userModel;
@@ -275,10 +274,7 @@ public class MessagesFragment extends Fragment {
                 time = v.findViewById(R.id.date);
                 parent = v.findViewById(R.id.parentLayout);
                 profile = v.findViewById(R.id.profile_mcg_left);
-
             }
         }
-
     }
-
 }

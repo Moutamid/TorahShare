@@ -65,6 +65,7 @@
             android:exported="true" />
         <activity
             android:name=".activity.HomeActivity"
+            android:windowSoftInputMode="adjustNothing"
             android:exported="false" />
         <activity
             android:name=".activity.settings.EditProfileActivity"

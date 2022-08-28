@@ -10,18 +10,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.moutamid.torahshare.R;
+import com.moutamid.torahshare.activity.HomeActivity;
 import com.moutamid.torahshare.databinding.FragmentSearchBinding;
 import com.moutamid.torahshare.utils.Constants;
 
+import java.util.Objects;
+
 public class SearchFragment extends Fragment {
+
+//    private boolean isKeyboardOpen = false;
 
     public SearchFragment() {
     }
 
     public FragmentSearchBinding b;
+
+    /*@Override
+    public void onResume() {
+        super.onResume();
+        Constants.checkLanguage(requireActivity());
+    }*/
 
     SponsoredController sponsoredController;
     SearchUsersController searchUsersController;
@@ -56,6 +69,23 @@ public class SearchFragment extends Fragment {
             b.filterTextview.setVisibility(View.GONE);
             b.filterArrow.setRotation(0);
         });
+
+     /*   b.searchEt.setOnClickListener(view -> {
+//            isKeyboardOpen = true;
+            requireActivity().findViewById(R.id.bottom_bar_imageview)
+                    .setVisibility(View.GONE);
+        });
+
+        b.searchEt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    toast("true");
+                    requireActivity().findViewById(R.id.bottom_bar_imageview)
+                            .setVisibility(View.GONE);
+                }
+            }
+        });*/
 
         b.searchEt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -139,17 +169,6 @@ public class SearchFragment extends Fragment {
         b.filterCardView.requestFocus();
 
         return b.getRoot();
-    }
-
-    public static void hideKeyboard(Activity activity) {
-        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        //Find the currently focused view, so we can grab the correct window token from it.
-        View view = activity.getCurrentFocus();
-        //If no view currently has focus, create a new one, just so we can grab a window token from it
-        if (view == null) {
-            view = new View(activity);
-        }
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
 }
