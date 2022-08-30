@@ -37,7 +37,7 @@
                     android:layout_marginStart="20dp"
                     android:text="@string/write_a_caption"
                     android:textColor="@color/default_text_black"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -46,7 +46,7 @@
                     android:layout_marginStart="5dp"
                     android:text="@string/optional"
                     android:textColor="@color/default_text_grey"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:visibility="invisible" />
 
             </LinearLayout>
@@ -63,7 +63,7 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/add_tags"
                 android:textColor="@color/default_text_black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.card.MaterialCardView
@@ -97,7 +97,7 @@
                 android:layout_marginEnd="20dp"
                 android:text="6/10"
                 android:textColor="@color/default_text_grey"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -106,7 +106,7 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/share_with"
                 android:textColor="@color/default_text_black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <RelativeLayout
@@ -121,7 +121,7 @@
                     android:layout_marginStart="20dp"
                     android:text="@string/followers"
                     android:textColor="@color/default_text_black"
-                    android:textSize="17sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <CheckBox
@@ -146,7 +146,7 @@
                     android:layout_marginStart="20dp"
                     android:text="@string/contacts"
                     android:textColor="@color/default_text_black"
-                    android:textSize="17sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <CheckBox
@@ -168,7 +168,7 @@
                 android:padding="10dp"
                 android:text="@string/choose_contact"
                 android:textColor="@color/default_purple"
-                android:textSize="12sp"
+                android:textSize="11sp"
                 android:visibility="gone"
                 app:backgroundTint="@color/default_light_pink"
                 app:cornerRadius="@dimen/default_corner_radius" />

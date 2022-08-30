@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:textSize="12sp"
+        android:textSize="10sp"
         android:layout_marginHorizontal="20dp"
         android:text="10:40 am"
         android:textColor="@color/default_text_grey" />

@@ -18,7 +18,7 @@
             android:layout_margin="20dp"
             android:text="@string/profile"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -62,7 +62,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/chaim_chohan"
                         android:textColor="@color/default_text_black"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -152,7 +152,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/_5000"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -160,7 +160,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/followers"
                             android:textColor="@color/default_text_grey"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
 
                     </LinearLayout>
@@ -180,7 +180,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/_201"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -188,7 +188,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/followinge"
                             android:textColor="@color/default_text_grey"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
@@ -208,7 +208,7 @@
                     android:layout_marginTop="20dp"
                     android:text="@string/videos"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView

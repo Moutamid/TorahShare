@@ -50,7 +50,7 @@ public class UploadPostPreviewActivity extends AppCompatActivity {
             final TextView tv = new TextView(getApplicationContext());
             tv.setText(postModel.tagsList.get(i));
             tv.setHeight(100);
-            tv.setTextSize(16.0f);
+            tv.setTextSize(14.0f);
             tv.setGravity(Gravity.CENTER);
             tv.setTextColor(getResources().getColor(R.color.default_text_black));//Color.parseColor("#000000")
             tv.setBackground(getResources().getDrawable(R.drawable.rounded_text_view));
@@ -67,7 +67,7 @@ public class UploadPostPreviewActivity extends AppCompatActivity {
             final TextView tv = new TextView(getApplicationContext());
             tv.setText(list_text.get(i).other_name);
             tv.setHeight(100);
-            tv.setTextSize(16.0f);
+            tv.setTextSize(14.0f);
             tv.setGravity(Gravity.CENTER);
             tv.setTextColor(getResources().getColor(R.color.default_text_black));//Color.parseColor("#000000")
             tv.setBackground(getResources().getDrawable(R.drawable.rounded_text_view));

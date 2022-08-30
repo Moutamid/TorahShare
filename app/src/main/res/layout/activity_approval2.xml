@@ -19,7 +19,7 @@
             android:layout_margin="20dp"
             android:text="@string/upload"
             android:textColor="@color/default_text_black"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <ImageView
@@ -45,7 +45,7 @@
                 android:gravity="center"
                 android:text="@string/you_need_to_get_approved"
                 android:textColor="@color/default_text_black"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -57,7 +57,7 @@
                 android:gravity="center"
                 android:text="@string/to_be_able_to_upload_videos_to_torahshare_you_need_to_get_approved_by_the_admin"
                 android:textColor="@color/default_text_grey"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/getApprovedBtn"
@@ -179,13 +179,13 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="190dp"
+                    android:layout_height="180dp"
                     android:layout_marginTop="20dp">
 
                     <ImageView
                         android:id="@+id/video1placeholder"
                         android:layout_width="match_parent"
-                        android:layout_height="190dp"
+                        android:layout_height="180dp"
                         android:src="@drawable/empty_placeholder" />
 
                     <com.google.android.material.card.MaterialCardView
@@ -217,13 +217,13 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="190dp"
+                    android:layout_height="180dp"
                     android:layout_marginTop="20dp">
 
                     <ImageView
                         android:id="@+id/video2placeholder"
                         android:layout_width="match_parent"
-                        android:layout_height="190dp"
+                        android:layout_height="180dp"
                         android:src="@drawable/empty_placeholder" />
 
                     <com.google.android.material.card.MaterialCardView
@@ -371,7 +371,7 @@
             android:layout_margin="20dp"
             android:text="@string/uploade"
             android:textColor="@color/default_text_black"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <ImageView

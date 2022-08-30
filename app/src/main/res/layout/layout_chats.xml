@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:text="Abraham Levic"
             android:textColor="@color/default_text_black"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
@@ -63,7 +63,7 @@
             android:padding="3dp"
             android:text="8"
             android:textColor="@color/default_text_black"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:visibility="invisible" />
 

@@ -132,7 +132,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/sponsored_accounts"
                 android:textColor="@color/default_text_black"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView

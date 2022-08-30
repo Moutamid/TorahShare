@@ -118,7 +118,7 @@ public class ApprovalActivity2 extends AppCompatActivity {
                 b.screen5.setVisibility(View.VISIBLE);
 
                 UserModel userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
-                b.emailTextView.setText(userModel.email);
+                b.emailTextView.setText(" " + userModel.email + "");
                 Stash.put("isDone", true);
             }
 

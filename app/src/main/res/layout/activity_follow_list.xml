@@ -32,7 +32,7 @@
                 android:layout_centerVertical="true"
                 android:text="@string/following"
                 android:textColor="@color/default_text_black"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
         </RelativeLayout>
 
@@ -54,7 +54,7 @@
                     android:layout_marginTop="20dp"
                     android:text="@string/_203_following"
                     android:textColor="@color/skyBlue"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView

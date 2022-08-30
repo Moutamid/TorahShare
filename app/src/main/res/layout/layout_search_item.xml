@@ -27,7 +27,7 @@
             android:maxLines="1"
             android:text="Avia Lecamen"
             android:textColor="@color/default_text_black"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView

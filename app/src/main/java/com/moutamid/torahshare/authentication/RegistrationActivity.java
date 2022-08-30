@@ -70,7 +70,7 @@ public class RegistrationActivity extends AppCompatActivity {
         });
 
         b.genderMaleTextview.setOnClickListener(view -> {
-            b.genderDefaultText.setText(Constants.GENDER_MALE);
+            b.genderDefaultText.setText(getString(R.string.male));
 
             b.genderArrow.setRotation(0);
 
@@ -78,7 +78,7 @@ public class RegistrationActivity extends AppCompatActivity {
             b.genderFemaleTextview.setVisibility(View.GONE);
         });
         b.genderFemaleTextview.setOnClickListener(view -> {
-            b.genderDefaultText.setText(Constants.GENDER_FEMALE);
+            b.genderDefaultText.setText(getString(R.string.female));
 
             b.genderArrow.setRotation(0);
 

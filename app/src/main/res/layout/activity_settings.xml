@@ -38,7 +38,7 @@
                     android:gravity="center"
                     android:text="@string/settings"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
             </RelativeLayout>

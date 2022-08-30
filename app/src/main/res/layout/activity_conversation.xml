@@ -45,7 +45,7 @@
                 android:layout_marginStart="10dp"
                 android:text="@string/adam_jacob"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 

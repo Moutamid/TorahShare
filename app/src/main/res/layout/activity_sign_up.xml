@@ -70,7 +70,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
                                     android:text="@string/select"
-                                    android:textSize="16sp" />
+                                    android:textSize="14sp" />
 
                                 <ImageView
                                     android:id="@+id/gender_arrow"
@@ -96,7 +96,7 @@
                                     android:paddingTop="15dp"
                                     android:paddingEnd="17dp"
                                     android:text="@string/male"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:visibility="gone" />
 
                                 <TextView
@@ -108,7 +108,7 @@
                                     android:paddingEnd="17dp"
                                     android:paddingBottom="17dp"
                                     android:text="@string/female"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:visibility="gone" />
                             </LinearLayout>
                         </LinearLayout>

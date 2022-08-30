@@ -154,7 +154,7 @@ public class MessagesFragment extends Fragment {
         //    int numberOfColumns = 3;
         //int mNoOfColumns = calculateNoOfColumns(getApplicationContext(), 50);
         //  recyclerView.setLayoutManager(new GridLayoutManager(this, mNoOfColumns));
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireActivity().getApplicationContext());
         //linearLayoutManager.setReverseLayout(true);
         conversationRecyclerView.setLayoutManager(linearLayoutManager);
         conversationRecyclerView.setHasFixedSize(true);

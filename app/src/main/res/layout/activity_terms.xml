@@ -27,7 +27,7 @@
 
         android:text="@string/terms_and_conditionsss"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <androidx.core.widget.NestedScrollView
@@ -41,7 +41,7 @@
             android:layout_marginTop="20dp"
             android:text="@string/i_am_aware_that_n1_any_video_posted_or_shared_in_this_application_must_consist_solely_of_torah_content_such_as_a_dvar_torah_a_torah_concept_or_idea_or_any_type_of_torah_based_inspiration_n2_do_not_upload_a_video_containing_women_at_all_n3_content_that_is_subject_to_disagreement_among_the_ultra_orthodox_chareidi_public_should_not_be_uploaded_at_all_n4_in_any_doubt_whether_the_video_complies_with_the_rules_should_not_be_uploaded_n5_any_video_posted_or_shared_that_does_not_meet_the_above_criteria_may_result_in_temporary_or_permanent_suspension_of_userss"
             android:textColor="@color/default_text_grey"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
     </androidx.core.widget.NestedScrollView>
 

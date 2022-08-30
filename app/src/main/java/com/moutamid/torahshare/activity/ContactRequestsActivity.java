@@ -29,7 +29,7 @@ public class ContactRequestsActivity extends AppCompatActivity {
 
     private ActivityContactRequestsBinding b;
     ContactRequestModel contactRequestModel;
-    UserModel myUserModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
+    UserModel myUserModel;
 
     Animation slide_down;
     Animation slide_up;
@@ -41,6 +41,7 @@ public class ContactRequestsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         b = ActivityContactRequestsBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
+        myUserModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
 
         slide_up = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.slide_up);

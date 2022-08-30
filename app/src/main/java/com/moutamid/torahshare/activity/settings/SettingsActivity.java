@@ -64,7 +64,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         b.changePasswordBtn.setOnClickListener(view -> {
-            startActivity(new Intent(SettingsActivity.this, TermsActivity.class));
+            startActivity(new Intent(SettingsActivity.this, ChangePasswordActivity.class));
         });
 
         b.noContactOptionCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

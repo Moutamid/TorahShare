@@ -27,7 +27,7 @@
                 android:gravity="center"
                 android:text="@string/preview_video"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <ImageView
                 android:id="@+id/topIcon2"
@@ -88,118 +88,120 @@
     </RelativeLayout>
 
     <!--    TERMS LAYOUT-->
-    <com.google.android.material.card.MaterialCardView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/termsDialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:visibility="gone"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="@dimen/default_corner_radius"
-        app:cardElevation="10dp">
+        android:visibility="gone">
 
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:orientation="vertical">
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/default_corner_radius"
+            app:cardElevation="10dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/terms_and_conditionss"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/i_am_aware_that_n1_any_video_posted_or_shared_in_this_application_must_consist_solely_of_torah_content_such_as_a_dvar_torah_a_torah_concept_or_idea_or_any_type_of_torah_based_inspiration_n2_do_not_upload_a_video_containing_women_at_all_n3_content_that_is_subject_to_disagreement_among_the_ultra_orthodox_chareidi_public_should_not_be_uploaded_at_all_n4_in_any_doubt_whether_the_video_complies_with_the_rules_should_not_be_uploaded_n5_any_video_posted_or_shared_that_does_not_meet_the_above_criteria_may_result_in_temporary_or_permanent_suspension_of_users"
-                android:textColor="@color/default_text_grey"
-                android:textSize="14sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="30dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/check_unselected"
-                    app:tint="@color/default_text_grey" />
+                android:layout_gravity="bottom"
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:text="@string/i_agree_with_the" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/terms_and_conditionsd"
-                    android:textColor="@color/default_purple"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/terms_and_conditionss"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/i_am_aware_that_n1_any_video_posted_or_shared_in_this_application_must_consist_solely_of_torah_content_such_as_a_dvar_torah_a_torah_concept_or_idea_or_any_type_of_torah_based_inspiration_n2_do_not_upload_a_video_containing_women_at_all_n3_content_that_is_subject_to_disagreement_among_the_ultra_orthodox_chareidi_public_should_not_be_uploaded_at_all_n4_in_any_doubt_whether_the_video_complies_with_the_rules_should_not_be_uploaded_n5_any_video_posted_or_shared_that_does_not_meet_the_above_criteria_may_result_in_temporary_or_permanent_suspension_of_users"
+                    android:textColor="@color/default_text_grey"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="30dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/check_unselected"
+                        app:tint="@color/default_text_grey" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/i_agree_with_the" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/terms_and_conditionsd"
+                        android:textColor="@color/default_purple"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/declineBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_weight="1"
+                        android:elevation="0dp"
+                        android:padding="15dp"
+                        android:text="@string/declinee"
+                        android:textAllCaps="false"
+                        android:textColor="@color/default_purple"
+                        app:backgroundTint="@color/default_edittext_grey"
+                        app:cornerRadius="@dimen/default_corner_radius"
+                        app:elevation="0dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/acceptBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_weight="1"
+                        android:elevation="0dp"
+                        android:padding="15dp"
+                        android:text="@string/acceptt"
+                        android:textAllCaps="false"
+                        app:cornerRadius="@dimen/default_corner_radius"
+                        app:elevation="0dp" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/declineBtn"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_weight="1"
-                    android:elevation="0dp"
-                    android:padding="15dp"
-                    android:text="@string/declinee"
-                    android:textAllCaps="false"
-                    android:textColor="@color/default_purple"
-                    app:backgroundTint="@color/default_edittext_grey"
-                    app:cornerRadius="@dimen/default_corner_radius"
-                    app:elevation="0dp" />
+        </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/acceptBtn"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_weight="1"
-                    android:elevation="0dp"
-                    android:padding="15dp"
-                    android:text="@string/acceptt"
-                    android:textAllCaps="false"
-                    app:cornerRadius="@dimen/default_corner_radius"
-                    app:elevation="0dp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        </androidx.core.widget.NestedScrollView>
-
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.core.widget.NestedScrollView>
 
     <!--    TOP ACTION BAR-->
     <RelativeLayout
@@ -215,7 +217,7 @@
             android:layout_height="wrap_content"
             android:text="@string/videoss"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/topIcon"
@@ -298,7 +300,7 @@
                     android:paddingVertical="10dp"
                     android:text="00:00"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -330,8 +332,7 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="20dp"
-                        />
+                        android:layout_marginEnd="20dp" />
 
                 </LinearLayout>
 

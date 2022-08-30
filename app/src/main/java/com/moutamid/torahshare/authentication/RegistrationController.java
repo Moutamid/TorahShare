@@ -23,6 +23,8 @@ import com.moutamid.torahshare.model.UserModel;
 import com.moutamid.torahshare.utils.Constants;
 import com.moutamid.torahshare.utils.Stash;
 
+import java.util.Locale;
+
 public class RegistrationController {
     private static final String TAG = "RegistrationController";
     private RegistrationActivity activity;
@@ -154,11 +156,11 @@ public class RegistrationController {
 
     public boolean checkEditTextSignUp() {
         if (b.nameEtSignUp.getText().toString().isEmpty()) {
-            toast("Please enter email!");
+            toast("Please enter name!");
             return true;
         }
-        if (b.genderDefaultText.getText().toString().equals(Constants.GENDER_MALE) ||
-                b.genderDefaultText.getText().toString().equals(Constants.GENDER_FEMALE)) {
+        if (b.genderDefaultText.getText().toString().toLowerCase(Locale.ROOT).equals(Constants.GENDER_MALE) ||
+                b.genderDefaultText.getText().toString().toLowerCase(Locale.ROOT).equals(Constants.GENDER_FEMALE)) {
         } else {
             toast("Please select your gender!");
             return true;
@@ -208,6 +210,7 @@ public class RegistrationController {
                             Stash.put(Constants.CURRENT_USER_MODEL, activity.model);
                             uploadUserInfoToDatabase();
                         } else {
+                            progressDialog.dismiss();
                             toast(task.getException().getMessage());
                         }
                     }
