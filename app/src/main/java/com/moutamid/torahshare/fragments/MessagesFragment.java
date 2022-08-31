@@ -34,6 +34,7 @@ import com.moutamid.torahshare.utils.Constants;
 import com.moutamid.torahshare.utils.Stash;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -109,7 +110,7 @@ public class MessagesFragment extends Fragment {
         });*/
 
         Constants.databaseReference().child(Constants.CHATS)
-                .child(Constants.auth().getUid())
+                .child(Objects.requireNonNull(Constants.auth().getUid()))
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

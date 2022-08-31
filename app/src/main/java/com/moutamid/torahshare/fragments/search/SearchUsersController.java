@@ -89,7 +89,8 @@ public class SearchUsersController {
         searchUserRecyclerView = b.searchUserRecyclerview;
         //conversationRecyclerView.addItemDecoration(new DividerItemDecoration(conversationRecyclerView.getContext(), DividerItemDecoration.VERTICAL));
         searchUserAdapter = new RecyclerViewAdapterSearchUser();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(fragment.requireContext());
+        LinearLayoutManager linearLayoutManager =
+                new LinearLayoutManager(fragment.requireActivity().getApplicationContext());
         searchUserRecyclerView.setLayoutManager(linearLayoutManager);
         searchUserRecyclerView.setHasFixedSize(true);
         searchUserRecyclerView.setNestedScrollingEnabled(false);
