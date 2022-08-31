@@ -109,7 +109,7 @@ public class HomeActivity extends AppCompatActivity {
         Constants.databaseReference().child(Constants.USERS)
                 .child(Constants.auth().getUid())
                 .child(Constants.CONTACT_REQUESTS)
-                .addListenerForSingleValueEvent(new ValueEventListener() {
+                .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {

@@ -78,7 +78,16 @@ public class ChooseContactsActivity extends AppCompatActivity {
                                 chatModel.push_key = dataSnapshot.getKey();
 
                                 if (chatModel.is_contact) {
-                                    contactsChatArrayList.add(chatModel);
+
+                                    int count = 0;
+                                    for (int i = 0; i < contactsChatArrayList.size(); i++) {
+                                        if (chatModel.other_uid.equals(chatModel.other_uid)) {
+                                            count++;
+                                        }
+                                    }
+
+                                    if (count != 0)
+                                        contactsChatArrayList.add(chatModel);
                                 }
                             }
 
@@ -145,7 +154,7 @@ public class ChooseContactsActivity extends AppCompatActivity {
                 getUserDetails(chatModel, holder);
             }*/
 
-            if (isSelectedAll){
+            if (isSelectedAll) {
                 holder.checkBox.setChecked(true);
             }
 
@@ -171,7 +180,7 @@ public class ChooseContactsActivity extends AppCompatActivity {
                     ArrayList<ChatModel> contactsList = Stash.getArrayList(Constants.CHOSEN_CONTACTS_LIST, ChatModel.class);
 
                     for (int i = 0; i < contactsList.size(); i++) {
-                        if (contactsList.get(i).push_key.equals(chatModel.push_key)){
+                        if (contactsList.get(i).push_key.equals(chatModel.push_key)) {
                             contactsList.remove(i);
                         }
                     }
@@ -182,7 +191,7 @@ public class ChooseContactsActivity extends AppCompatActivity {
                     ArrayList<ChatModel> contactsList = Stash.getArrayList(Constants.CHOSEN_CONTACTS_LIST, ChatModel.class);
 
                     for (int i = 0; i < contactsList.size(); i++) {
-                        if (contactsList.get(i).push_key.equals(chatModel.push_key)){
+                        if (contactsList.get(i).push_key.equals(chatModel.push_key)) {
                             contactsList.remove(i);
                         }
                     }

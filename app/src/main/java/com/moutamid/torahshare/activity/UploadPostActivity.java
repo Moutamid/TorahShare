@@ -86,7 +86,7 @@ import timerx.StopwatchBuilder;
 @SuppressLint("RestrictedApi")
 public class UploadPostActivity extends AppCompatActivity implements LifecycleOwner {
 
-    private UserModel myUserModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
+    private UserModel myUserModel;
 
     private ActivityUploadPostBinding b;
 
@@ -118,6 +118,7 @@ public class UploadPostActivity extends AppCompatActivity implements LifecycleOw
         super.onCreate(savedInstanceState);
         b = ActivityUploadPostBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
+        myUserModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
 
         b.topIcon.setOnClickListener(view -> {
 //            if (isDeletable) {

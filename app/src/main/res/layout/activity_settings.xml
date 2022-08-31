@@ -296,6 +296,8 @@
                         android:id="@+id/languageSwitch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:trackTint="@color/default_purple"
+                        app:thumbTint="@color/white"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="20dp" />

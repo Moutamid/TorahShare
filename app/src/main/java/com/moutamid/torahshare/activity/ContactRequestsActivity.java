@@ -127,6 +127,12 @@ public class ContactRequestsActivity extends AppCompatActivity {
                     .child(contactRequestModel.requester_uid).child(chatModel.chat_id)
                     .setValue(chatModel);
 
+            Constants.databaseReference().child(Constants.USERS)
+                    .child(Constants.auth().getUid())
+                    .child(Constants.CONTACT_REQUESTS)
+                    .child(contactRequestModel.push_key)
+                    .removeValue();
+
             toast("Request accepted!");
 
             Stash.put(Constants.CHAT_MODEL, chatModel);

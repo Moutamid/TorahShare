@@ -58,7 +58,7 @@ public class UploadPostPreviewActivity extends AppCompatActivity {
             tv.setLayoutParams(buttonLayoutParams);
             tv.setTag(i + 1);
             tv.setPadding(20, 10, 20, 10);
-            b.tagEditTextContacts.addView(tv);
+            b.tagEditText.addView(tv);
         }
 
         ArrayList<ChatModel> list_text = Stash.getArrayList(Constants.CHOSEN_CONTACTS_LIST, ChatModel.class);

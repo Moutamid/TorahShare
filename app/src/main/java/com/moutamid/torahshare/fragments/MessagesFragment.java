@@ -74,7 +74,7 @@ public class MessagesFragment extends Fragment {
                     is_contact = true;
                     if (adapter != null)
                         adapter.notifyDataSetChanged();
-                }else {
+                } else {
                     is_contact = false;
 
                     if (adapter != null)
@@ -122,10 +122,13 @@ public class MessagesFragment extends Fragment {
                                 ChatModel chatModel = dataSnapshot.getValue(ChatModel.class);
                                 chatModel.push_key = dataSnapshot.getKey();
 
-                                if (chatModel.is_contact) {
-                                    contactsChatArrayList.add(chatModel);
-                                } else {
-                                    followersChatArrayList.add(chatModel);
+                                if (!chatModel.other_uid.equals(userModel.uid)) {
+                                    // FILTERING OWN MODEL
+                                    if (chatModel.is_contact) {
+                                        contactsChatArrayList.add(chatModel);
+                                    } else {
+                                        followersChatArrayList.add(chatModel);
+                                    }
                                 }
                             }
 

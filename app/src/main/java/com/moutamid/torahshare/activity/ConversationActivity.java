@@ -124,7 +124,7 @@ public class ConversationActivity extends AppCompatActivity {
         downloadDialog.setCancelable(true);
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
         layoutParams.copyFrom(downloadDialog.getWindow().getAttributes());
-        layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
 
         progressTv = downloadDialog.findViewById(R.id.downloadProgressTv);

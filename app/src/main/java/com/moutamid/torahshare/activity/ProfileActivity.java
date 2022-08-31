@@ -79,8 +79,26 @@ public class ProfileActivity extends AppCompatActivity {
 
                             userModel = snapshot.getValue(UserModel.class);
 
-                            setValuesOnViews();
+                            Constants.databaseReference().child(Constants.USERS)
+                                    .child(Constants.auth().getUid())
+                                    .child(Constants.FOLLOWING)
+                                    .child(userModel.uid)
+                                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            if (snapshot.exists()){
+                                                b.followBtnProfile.setVisibility(View.GONE);
+                                                b.followingBtnProfile.setVisibility(View.VISIBLE);
 
+                                                setValuesOnViews();
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                        }
+                                    });
                         }
                     }
 

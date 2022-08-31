@@ -97,7 +97,8 @@ public class SearchFragment extends Fragment {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 b.crossBtnSearch.setVisibility(View.VISIBLE);
                 b.topTextView.setText("Search Results");
-                if (b.filterTextview.getText().toString().equals(Constants.FILTER_USER)) {
+                if (b.filterSelectedTextview.getText().toString().equals(Constants.FILTER_USER)) {
+//                if (b.filterseTextview.getText().toString().equals(Constants.FILTER_USER)) {
                     if (searchUsersController.isLoaded) {
                         b.sponsoredRecyclerview.setVisibility(View.GONE);
                         b.searchVideosRecyclerview.setVisibility(View.GONE);

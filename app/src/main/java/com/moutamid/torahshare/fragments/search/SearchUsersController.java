@@ -26,7 +26,9 @@ import com.moutamid.torahshare.R;
 import com.moutamid.torahshare.activity.ProfileActivity;
 import com.moutamid.torahshare.databinding.FragmentSearchBinding;
 import com.moutamid.torahshare.model.SearchModel;
+import com.moutamid.torahshare.model.UserModel;
 import com.moutamid.torahshare.utils.Constants;
+import com.moutamid.torahshare.utils.Stash;
 
 import java.util.ArrayList;
 
@@ -37,8 +39,10 @@ public class SearchUsersController {
     private FragmentSearchBinding b;
 
     public boolean isLoaded = false;
+    private UserModel userModel;
 
     public SearchUsersController(SearchFragment fragment, FragmentSearchBinding b) {
+        userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
         this.fragment = fragment;
         this.b = b;
     }
@@ -61,8 +65,13 @@ public class SearchUsersController {
 
                                         } else {
                                             model1.uid = dataSnapshot.getKey();
-                                            searchUserArrayList.add(model1);
-                                            searchUserArrayListAll.add(model1);
+
+                                            if (model1.uid.equals(userModel.uid)) {
+                                                // FILTERING OWN USER MODEL FROM LIST
+                                            } else {
+                                                searchUserArrayList.add(model1);
+                                                searchUserArrayListAll.add(model1);
+                                            }
                                         }
                                 }
                             }

@@ -48,6 +48,7 @@
                 android:layout_margin="15dp"
                 android:background="@color/white"
                 android:hint="@string/reason_n_n_n_n"
+                android:gravity="start|top"
                 android:inputType="textMultiLine"
                 android:textColor="#8F8790" />
 

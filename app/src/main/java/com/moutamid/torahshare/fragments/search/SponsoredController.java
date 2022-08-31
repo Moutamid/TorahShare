@@ -80,7 +80,6 @@ public class SponsoredController {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
-
                             accountsModelArrayList.clear();
 
                             for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
