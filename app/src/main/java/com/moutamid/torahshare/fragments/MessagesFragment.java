@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -143,11 +144,32 @@ public class MessagesFragment extends Fragment {
                     }
                 });
 
+        b.deleteIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (deleteModelsArrayList.size() != 0) {
+
+                    for (ChatModel model : deleteModelsArrayList) {
+                        Constants.databaseReference().child(Constants.CHATS)
+                                .child(Objects.requireNonNull(Constants.auth().getUid()))
+                                .child(model.push_key)
+                                .removeValue();
+                    }
+                    b.menuIcon.setVisibility(View.VISIBLE);
+                    b.deleteIcon.setVisibility(View.GONE);
+                    b.searchButton.setVisibility(View.VISIBLE);
+                    Toast.makeText(requireContext(), "Done", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
+
         return b.getRoot();
     }
 
     private ArrayList<ChatModel> followersChatArrayList = new ArrayList<>();
     private ArrayList<ChatModel> contactsChatArrayList = new ArrayList<>();
+    private ArrayList<ChatModel> deleteModelsArrayList = new ArrayList<>();
 
     private RecyclerView conversationRecyclerView;
     private RecyclerViewAdapterMessages adapter;
@@ -217,9 +239,70 @@ public class MessagesFragment extends Fragment {
             holder.time.setText(chatModel.time);
 
             holder.parent.setOnClickListener(view -> {
+
+                if (chatModel.is_selected) {
+                    holder.parent.setBackgroundResource(R.color.white);
+
+                    if (is_contact) {
+                        contactsChatArrayList.get(holder.getAdapterPosition())
+                                .is_selected = false;
+                    } else {
+                        followersChatArrayList.get(holder.getAdapterPosition())
+                                .is_selected = false;
+                    }
+                    for (int i = 0; i < deleteModelsArrayList.size(); i++) {
+                        if (deleteModelsArrayList.get(i).push_key
+                                .equals(chatModel.push_key)) {
+                            // DELETE FROM DELETE ARRAYLIST
+                            deleteModelsArrayList.remove(i);
+                        }
+                    }
+                    if (deleteModelsArrayList.size() == 0) {
+                        b.menuIcon.setVisibility(View.VISIBLE);
+                        b.deleteIcon.setVisibility(View.GONE);
+                        b.searchButton.setVisibility(View.VISIBLE);
+                    }
+                    return;
+                }
+
                 Stash.put(Constants.CHAT_MODEL, chatModel);
                 startActivity(new Intent(requireActivity(), ConversationActivity.class));
 
+            });
+
+            if (chatModel.is_selected) {
+                holder.parent.setBackgroundResource(R.color.darkGrey);
+            } else {
+                holder.parent.setBackgroundResource(R.color.white);
+            }
+
+            holder.parent.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+
+                    if (chatModel.is_contact) {
+                        contactsChatArrayList.get(holder.getAdapterPosition())
+                                .is_selected = true;
+                    } else {
+                        followersChatArrayList.get(holder.getAdapterPosition())
+                                .is_selected = true;
+                    }
+                    holder.parent.setBackgroundResource(R.color.darkGrey);
+
+                    deleteModelsArrayList.add(chatModel);
+
+                    /*if (userModel.gender.equals(Constants.GENDER_FEMALE)) {
+                        b.femaleTopHeader.setVisibility(View.GONE);
+                    }else {
+                        b.maleHeader.setVisibility(View.GONE);
+                    }*/
+
+                    b.menuIcon.setVisibility(View.GONE);
+                    b.deleteIcon.setVisibility(View.VISIBLE);
+                    b.searchButton.setVisibility(View.GONE);
+
+                    return false;
+                }
             });
 
         }

@@ -226,6 +226,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     onCompleteMethod();
                 } else {
+                    Stash.clearAll();
+                    Constants.auth().signOut();
                     toast(task.getException().getMessage());
                     Log.d(TAG, "onComplete: error " + task.getException().getMessage());
 
@@ -258,6 +260,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
                 firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
+                Stash.clearAll();
+                Constants.auth().signOut();
                 // Google Sign In failed, update UI appropriately
                 controller.progressDialog.dismiss();
                 Toast.makeText(this, "Google sign in failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -280,6 +284,8 @@ public class RegistrationActivity extends AppCompatActivity {
                             FirebaseUser user = Constants.auth().getCurrentUser();
                             updateUI(user);
                         } else {
+                            Stash.clearAll();
+                            Constants.auth().signOut();
                             controller.progressDialog.dismiss();
                             Toast.makeText(RegistrationActivity.this, "Google sign in failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             // If sign in fails, display a message to the user.
@@ -336,9 +342,14 @@ public class RegistrationActivity extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-
+                            Stash.clearAll();
+                            Constants.auth().signOut();
                         }
                     });
+        } else {
+            controller.progressDialog.dismiss();
+            Stash.clearAll();
+            Constants.auth().signOut();
         }
     }
 

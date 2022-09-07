@@ -10,12 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.Adapter;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -117,11 +120,83 @@ public class ProfileActivity extends AppCompatActivity {
         layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
         layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
 
+        initCommentsRecyclerView(dialog);
+
 //                        dialog.findViewById(R.id.);
 //        dialog.show();
 //        dialog.getWindow().setAttributes(layoutParams);
 
     }
+
+    private ArrayList<String> commentsArrayList = new ArrayList<>();
+
+    private RecyclerView commentsRecyclerView;
+    private RecyclerViewAdapterComments commentsAdapter;
+
+    private void initCommentsRecyclerView(Dialog dialog) {
+
+        commentsRecyclerView = dialog.findViewById(R.id.commentsrecyclerView);
+        //conversationRecyclerView.addItemDecoration(new DividerItemDecoration(conversationRecyclerView.getContext(), DividerItemDecoration.VERTICAL));
+        commentsAdapter = new RecyclerViewAdapterComments();
+        //        LinearLayoutManager layoutManagerUserFriends = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
+        //    int numberOfColumns = 3;
+        //int mNoOfColumns = calculateNoOfColumns(getApplicationContext(), 50);
+        //  recyclerView.setLayoutManager(new GridLayoutManager(this, mNoOfColumns));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        //linearLayoutManager.setReverseLayout(true);
+        commentsRecyclerView.setLayoutManager(linearLayoutManager);
+        commentsRecyclerView.setHasFixedSize(true);
+        commentsRecyclerView.setNestedScrollingEnabled(false);
+
+        commentsRecyclerView.setAdapter(commentsAdapter);
+
+        //    if (adapter.getItemCount() != 0) {
+
+        //        noChatsLayout.setVisibility(View.GONE);
+        //        chatsRecyclerView.setVisibility(View.VISIBLE);
+
+        //    }
+
+    }
+
+    private class RecyclerViewAdapterComments extends Adapter
+            <RecyclerViewAdapterComments.ViewHolderRightComments> {
+
+        @NonNull
+        @Override
+        public ViewHolderRightComments onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_comments, parent, false);
+            return new ViewHolderRightComments(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull final ViewHolderRightComments holder, int position) {
+
+            //            holder.title.setText("");
+
+        }
+
+        @Override
+        public int getItemCount() {
+            //            if (tasksArrayList == null)
+            return 0;
+            //            return tasksArrayList.size();
+        }
+
+        public class ViewHolderRightComments extends ViewHolder {
+
+            //            TextView title;
+
+            public ViewHolderRightComments(@NonNull View v) {
+                super(v);
+                //                title = v.findViewById(R.id.titleTextview);
+
+            }
+        }
+
+    }
+
+//    --------------------------------------- OTHER RECYCLERVIEW--------------------
 
     private void setValuesOnViews() {
         if (userModel.gender.equals(Constants.GENDER_FEMALE))
@@ -298,7 +373,6 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-
     private ArrayList<PostModel> postsArraylist = new ArrayList<>();
 
     private RecyclerView conversationRecyclerView;
@@ -324,14 +398,7 @@ public class ProfileActivity extends AppCompatActivity {
         //    }
     }
 
-    /*public static int calculateNoOfColumns(Context context, float columnWidthDp) { // For example columnWidthdp=180
-        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        float screenWidthDp = displayMetrics.widthPixels / displayMetrics.density;
-        int noOfColumns = (int) (screenWidthDp / columnWidthDp + 0.5); // +0.5 for correct rounding to int.
-        return noOfColumns;
-    }*/
-
-    private class RecyclerViewAdapterMessages extends RecyclerView.Adapter
+    private class RecyclerViewAdapterMessages extends Adapter
             <RecyclerViewAdapterMessages.ViewHolderRightMessage> {
 
         @NonNull
@@ -411,7 +478,7 @@ public class ProfileActivity extends AppCompatActivity {
             return postsArraylist.size();
         }
 
-        public class ViewHolderRightMessage extends RecyclerView.ViewHolder {
+        public class ViewHolderRightMessage extends ViewHolder {
             CircleImageView profile;
             TextView name, time, caption, share_count, comment_count, minutes;
             MaterialCardView parent;

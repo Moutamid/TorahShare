@@ -111,6 +111,8 @@ public class RegistrationController {
                                                 Stash.put(Constants.CURRENT_USER_MODEL, userModel);
                                                 activity.onCompleteMethod();
                                             }else {
+                                                Stash.clearAll();
+                                                Constants.auth().signOut();
                                                 Log.d(TAG, "onDataChange: no snapchot");
                                                 progressDialog.dismiss();
                                                 Toast.makeText(activity, "Data doesn't exist!", Toast.LENGTH_SHORT).show();
@@ -120,12 +122,16 @@ public class RegistrationController {
                                         @Override
                                         public void onCancelled(@NonNull DatabaseError error) {
                                             progressDialog.dismiss();
+                                            Stash.clearAll();
+                                            Constants.auth().signOut();
                                             Log.d(TAG, "onCancelled: cancelled error");
                                             Toast.makeText(activity, error.toException().getMessage(), Toast.LENGTH_SHORT).show();
                                         }
                                     });
                         } else {
                             Log.d(TAG, "onComplete: failed");
+                            Stash.clearAll();
+                            Constants.auth().signOut();
                             progressDialog.dismiss();
                             toast(task.getException().getMessage());
                         }
@@ -210,6 +216,8 @@ public class RegistrationController {
                             Stash.put(Constants.CURRENT_USER_MODEL, activity.model);
                             uploadUserInfoToDatabase();
                         } else {
+                            Stash.clearAll();
+                            Constants.auth().signOut();
                             progressDialog.dismiss();
                             toast(task.getException().getMessage());
                         }

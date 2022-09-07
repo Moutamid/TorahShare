@@ -244,40 +244,6 @@
             android:layout_margin="10dp"
             android:background="@drawable/bg_camera">
 
-            <!--<com.camerakit.CameraKitView
-                android:id="@+id/camera"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:keepScreenOn="true"
-                app:camera_facing="back"
-                app:camera_flash="auto"
-                app:camera_focus="continuous"
-                app:camera_permissions="camera" />-->
-
-            <!--<com.priyankvasa.android.cameraviewex.CameraView
-                android:id="@+id/camera"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:keepScreenOn="true"
-                app:aspectRatio="4:3"
-                app:autoFocus="continuous_picture"
-                app:awb="auto"
-                app:cameraMode="single_capture"
-                app:continuousFrameSize="W1440,1080"
-                app:facing="front"
-                app:flash="auto"
-                app:jpegQuality="high"
-                app:noiseReduction="high_quality"
-                app:opticalStabilization="true"
-                app:outputFormat="jpeg"
-                app:pinchToZoom="true"
-                app:shutter="short_time"
-                app:singleCaptureSize="1920,H1080"
-                app:touchToFocus="true"
-                app:zsl="true" />-->
-
             <TextureView
                 android:id="@+id/view_finder"
                 android:layout_width="match_parent"

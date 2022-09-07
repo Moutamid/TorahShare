@@ -35,11 +35,13 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         changeLanguage(Stash.getString(Constants.CURRENT_LANGUAGE, "en"));
-        if (Constants.auth().getCurrentUser() == null) {
-            startActivity(new Intent(this, RegistrationActivity.class));
-        } else {
+        if (Stash.getBoolean(Constants.IS_LOGGED_IN, false)) {
             startActivity(new Intent(this, HomeActivity.class));
+        } else {
+            startActivity(new Intent(this, RegistrationActivity.class));
         }
 
     }
 }
+/*I have added the code for diary items to edit or delete but for some reason it isn't working on my mobiles. I was searching all over the internet but there's nothing i could found to edit those items. Check out if it works on your device or not because i had tested on multiple devices.
+Don't know what to do. I'll research tomorrow again if i found an*/

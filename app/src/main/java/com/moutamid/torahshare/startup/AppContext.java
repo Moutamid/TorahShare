@@ -1,6 +1,7 @@
 package com.moutamid.torahshare.startup;
 
 import android.app.Application;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -35,7 +36,8 @@ public class AppContext extends Application {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
-                            Stash.put(Constants.CURRENT_USER_MODEL, snapshot.getValue(UserModel.class));
+                            UserModel userModel = (UserModel) snapshot.getValue(UserModel.class);
+                            Stash.put(Constants.CURRENT_USER_MODEL, userModel);
 
                             ArrayList<FollowModel> followersArrayList = new ArrayList<>();
                             ArrayList<FollowModel> followingArrayList = new ArrayList<>();
@@ -64,7 +66,7 @@ public class AppContext extends Application {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
+                        Toast.makeText(AppContext.this, "ERROR: " + error.toException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }

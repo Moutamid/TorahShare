@@ -80,16 +80,18 @@ public class HomeActivity extends AppCompatActivity {
         setupViewPager(viewPager);
 
         b.addBottomBarBtn.setOnClickListener(view -> {
-            UserModel userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
-            if (userModel.gender.equals(Constants.GENDER_FEMALE)) {
+            UserModel userModel2 = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
+            if (userModel2.gender.equals(Constants.GENDER_FEMALE)) {
                 startActivity(new Intent(HomeActivity.this, WomanApprovalActivity.class));
                 return;
             }
 
-            if (userModel.is_approved) {
+            if (userModel2.is_approved) {
+                Toast.makeText(this, "approved", Toast.LENGTH_SHORT).show();
 //                USER IS APPROVED
                 startActivity(new Intent(HomeActivity.this, UploadPostActivity.class));
             } else {
+                Toast.makeText(this, "not approved", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(HomeActivity.this, ApprovalActivity2.class));
             }
         });
