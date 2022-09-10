@@ -346,6 +346,13 @@
                 android:text="@string/as_possible"
                 android:textColor="@color/default_text_black" />
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:text="Change email?" />
+
         </LinearLayout>
 
         <ImageView

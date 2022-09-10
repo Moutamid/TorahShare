@@ -30,6 +30,7 @@ import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
@@ -66,14 +67,15 @@ import com.tonyodev.fetch2core.DownloadBlock;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ConversationActivity extends AppCompatActivity {
 
-    ChatModel chatModel = (ChatModel) Stash.getObject(Constants.CHAT_MODEL, ChatModel.class);
+    ChatModel chatModel;
     private ActivityConversationBinding b;
-    UserModel myUserModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
+    UserModel myUserModel;
 
     MessageModel currentSelectedMessageModel = new MessageModel();
     String currentVideoUrl;
@@ -83,6 +85,7 @@ public class ConversationActivity extends AppCompatActivity {
     TextView cancelBtn;
     ProgressBar progressBar;
     FlexboxLayout container;
+    boolean is_selected = false;
 
     @Override
     protected void onResume() {
@@ -95,6 +98,9 @@ public class ConversationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         b = ActivityConversationBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
+
+        myUserModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
+        chatModel = (ChatModel) Stash.getObject(Constants.CHAT_MODEL, ChatModel.class);
 
         FetchConfiguration fetchConfiguration = new FetchConfiguration.Builder(this)
                 .setDownloadConcurrentLimit(3)
@@ -197,6 +203,13 @@ public class ConversationActivity extends AppCompatActivity {
             showReportDialog("Report this video?");
 
         });
+
+        view.findViewById(R.id.comment_btn_popup).setOnClickListener(view1 -> {
+            if (mypopupWindow.isShowing()) mypopupWindow.dismiss();
+
+            // TODO: 9/10/2022 ShowCommentDialog
+        });
+
         view.findViewById(R.id.reshare_btn_popup).setOnClickListener(view1 -> {
             if (mypopupWindow.isShowing()) mypopupWindow.dismiss();
 
@@ -326,8 +339,8 @@ public class ConversationActivity extends AppCompatActivity {
 
             videoView.setVideoURI(uri);
             // TODO: 7/12/2022  videoView.start();
-//            videoView.seekTo(100);
-//            videoView.pause();
+            videoView.pause();
+            videoView.seekTo(1);
 
             videoView.setOnClickListener(view5 -> {
                 if (playBtn.getVisibility() == View.GONE) {
@@ -493,6 +506,28 @@ public class ConversationActivity extends AppCompatActivity {
         mypopupWindow.getContentView().setOnClickListener(v -> {
             if (mypopupWindow.isShowing()) mypopupWindow.dismiss();
         });
+
+        b.deleteIconConversation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (deleteArrayList.size() != 0) {
+
+                    for (MessageModel model : deleteArrayList) {
+                        Constants.databaseReference().child(Constants.CONVERSATIONS)
+                                .child(chatModel.chat_id)
+                                .child(model.push_key)
+                                .removeValue();
+                    }
+//                    b.menuIcon.setVisibility(View.VISIBLE);
+                    b.deleteIconConversation.setVisibility(View.GONE);
+//                    b.searchButton.setVisibility(View.VISIBLE);
+                    Toast.makeText(ConversationActivity.this, "Done", Toast.LENGTH_SHORT).show();
+
+                    deleteArrayList.clear();
+                }
+            }
+        });
+
     }
 
     private void getChosenContactsList() {
@@ -613,6 +648,7 @@ public class ConversationActivity extends AppCompatActivity {
     }
 
     private ArrayList<MessageModel> messagesModelArrayList = new ArrayList<>();
+    private ArrayList<MessageModel> deleteArrayList = new ArrayList<>();
 
     private RecyclerView conversationRecyclerView;
     private RecyclerViewAdapterMessages adapter;
@@ -702,6 +738,9 @@ public class ConversationActivity extends AppCompatActivity {
 
                     viewHolderLeftMcg.mcg.setText(messageModel.message);
                     viewHolderLeftMcg.time.setText(messageModel.time);
+
+                    implementOnDelete(viewHolderLeftMcg.parentLeftMessage, messageModel, holder.getAdapterPosition());
+
                     break;
 
                 case RIGHT_MESSAGE_LAYOUT:
@@ -719,6 +758,9 @@ public class ConversationActivity extends AppCompatActivity {
 
                     viewHolderRightMcg.mcg.setText(messageModel.message);
                     viewHolderRightMcg.time.setText(messageModel.time);
+
+                    implementOnDelete(viewHolderRightMcg.parentRightMessage, messageModel, holder.getAdapterPosition());
+
                     break;
                 case VIDEO_LAYOUT:
                     ViewHolderVideo viewHolderVideo = (ViewHolderVideo) holder;
@@ -731,9 +773,10 @@ public class ConversationActivity extends AppCompatActivity {
                     Uri uri = Uri.parse(parts[1]);
 
                     viewHolderVideo.videoView.setVideoURI(uri);
+                    viewHolderVideo.videoView.pause();
+                    viewHolderVideo.videoView.seekTo(1);
                     /*TODO: viewHolderVideo.videoView.start();
-                    viewHolderVideo.videoView.seekTo(100);
-                    viewHolderVideo.videoView.pause();*/
+                   */
 
                     viewHolderVideo.videoView.setOnClickListener(view -> {
                         if (viewHolderVideo.playBtn.getVisibility() == View.GONE) {
@@ -773,27 +816,77 @@ public class ConversationActivity extends AppCompatActivity {
             }
         }
 
+        private void implementOnDelete(RelativeLayout messageLayout, MessageModel messageModel, int adapterPosition) {
+            if (messageModel.is_selected) {
+                messageLayout.setBackgroundResource(R.color.darkGrey);
+            } else {
+                messageLayout.setBackgroundResource(R.color.white);
+            }
+
+            messageLayout.setOnLongClickListener(view -> {
+                messageLayout.setBackgroundResource(R.color.darkGrey);
+                deleteArrayList.add(messageModel);
+                messagesModelArrayList.get(adapterPosition).is_selected = true;
+
+                b.deleteIconConversation.setVisibility(View.VISIBLE);
+//                        b.deleteCountText.setVisibility(View.VISIBLE);
+//                        b.profileimage.setVisibility(View.INVISIBLE);
+//                        b.nametext.setVisibility(View.INVISIBLE);
+//                        b.deleteCountText.setText(deleteArrayList.size() + " Selected");
+                return false;
+            });
+
+            if (messageModel.is_selected) {
+                messageLayout.setOnClickListener(view -> {
+                    messageLayout.setBackgroundResource(R.color.white);
+                    messagesModelArrayList.get(adapterPosition).is_selected = false;
+                    for (int i = 0; i < deleteArrayList.size(); i++) {
+                        if (deleteArrayList.get(i).push_key
+                                .equals(chatModel.push_key)) {
+                            // DELETE FROM DELETE ARRAYLIST
+                            deleteArrayList.remove(i);
+                        }
+                    }
+                    if (deleteArrayList.size() == 0) {
+                        b.deleteIconConversation.setVisibility(View.GONE);
+//                                b.deleteCountText.setVisibility(View.GONE);
+//                                b.profileimage.setVisibility(View.VISIBLE);
+//                                b.nametext.setVisibility(View.VISIBLE);
+                    }
+//                            else {
+//                                b.deleteCountText.setText(deleteArrayList.size() + " Selected");
+//                            }
+                });
+            } else {
+                messageLayout.setOnClickListener(null);
+            }
+        }
+
         public class ViewHolderLeftMcg extends RecyclerView.ViewHolder {
             CircleImageView profile;
             TextView mcg, time;
+            RelativeLayout parentLeftMessage;
 
             public ViewHolderLeftMcg(View v) {
                 super(v);
                 profile = v.findViewById(R.id.profile_mcg_left);
                 mcg = v.findViewById(R.id.mcg_left);
                 time = v.findViewById(R.id.timeTv_mcg_left);
+                parentLeftMessage = v.findViewById(R.id.parent_left_message);
             }
         }
 
         public class ViewHolderRightMcg extends RecyclerView.ViewHolder {
             CircleImageView profile;
             TextView mcg, time;
+            RelativeLayout parentRightMessage;
 
             public ViewHolderRightMcg(View v) {
                 super(v);
                 profile = v.findViewById(R.id.profile_mcg_right);
                 mcg = v.findViewById(R.id.mcg_right);
                 time = v.findViewById(R.id.timeTv_mcg_right);
+                parentRightMessage = v.findViewById(R.id.parent_right_message);
             }
         }
 

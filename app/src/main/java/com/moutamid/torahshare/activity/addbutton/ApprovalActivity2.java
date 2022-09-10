@@ -186,8 +186,8 @@ public class ApprovalActivity2 extends AppCompatActivity {
                         b.videoView1Layout.setVisibility(View.VISIBLE);
 
                         b.videoView1.setVideoURI(uri);
-                        /*TODO b.videoView1.seekTo(100);
-                        b.videoView1.start();*/
+                        b.videoView1.pause();
+                        b.videoView1.seekTo(1);
                     }
                     if (requestCode == PICK_VIDEO_2) {
                         VIDEO_LINK_2 = downloadLink;
@@ -197,7 +197,8 @@ public class ApprovalActivity2 extends AppCompatActivity {
                         b.videoView2Layout.setVisibility(View.VISIBLE);
 
                         b.videoView2.setVideoURI(uri);
-                        // TODO: 7/12/2022  b.videoView2.start();
+                        b.videoView2.pause();
+                        b.videoView2.seekTo(1);
                     }
 
                     if (videoCount == 2) {

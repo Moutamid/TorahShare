@@ -21,22 +21,22 @@
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/square.xml" value="0.1255" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/drawable/square_default.xml" value="0.1255" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_approval.xml" value="0.2" />
-        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_approval2.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_approval2.xml" value="0.1142857142857143" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_camera.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_change_password.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_choose_contacts.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_contact_requests.xml" value="0.2" />
-        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_conversation.xml" value="0.22" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_conversation.xml" value="0.1142857142857143" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_edit_profile.xml" value="0.1859375" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_follow_list.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_home.xml" value="0.11861544955677501" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_profile.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_settings.xml" value="0.14285714285714285" />
-        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_sign_up.xml" value="0.1142857142857143" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_sign_up.xml" value="0.12008547008547009" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_terms.xml" value="0.2" />
-        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_upload_post.xml" value="0.1142857142857143" />
-        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_upload_post_preview.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_upload_post.xml" value="0.10285714285714286" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_upload_post_preview.xml" value="0.10285714285714286" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/activity_woman_approval.xml" value="0.13229166666666667" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/camera_preview.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/dialog_bio_text.xml" value="0.2" />
@@ -50,13 +50,13 @@
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/fragment_messages.xml" value="0.1142857142857143" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/fragment_profile.xml" value="0.1871345029239766" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/fragment_search.xml" value="0.2" />
-        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_chat_video.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_chat_video.xml" value="0.12571428571428572" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_chats.xml" value="0.1142857142857143" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_choose_contacts.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_comments.xml" value="0.1142857142857143" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_follow_item.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_messages.xml" value="0.2" />
-        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_messages_left.xml" value="0.2" />
+        <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_messages_left.xml" value="0.1142857142857143" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_messages_right.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_my_post.xml" value="0.2" />
         <entry key="..\:/Users/Azan Comp/AndroidStudioProjects/TorahShare/app/src/main/res/layout/layout_search_item.xml" value="0.2" />

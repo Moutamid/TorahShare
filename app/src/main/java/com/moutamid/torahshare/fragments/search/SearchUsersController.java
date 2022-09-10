@@ -66,11 +66,13 @@ public class SearchUsersController {
                                         } else {
                                             model1.uid = dataSnapshot.getKey();
 
-                                            if (model1.uid.equals(userModel.uid)) {
-                                                // FILTERING OWN USER MODEL FROM LIST
-                                            } else {
-                                                searchUserArrayList.add(model1);
-                                                searchUserArrayListAll.add(model1);
+                                            if (model1.uid != null) {
+                                                if (model1.uid.equals(userModel.uid)) {
+                                                    // FILTERING OWN USER MODEL FROM LIST
+                                                } else {
+                                                    searchUserArrayList.add(model1);
+                                                    searchUserArrayListAll.add(model1);
+                                                }
                                             }
                                         }
                                 }

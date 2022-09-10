@@ -87,11 +87,9 @@ public class HomeActivity extends AppCompatActivity {
             }
 
             if (userModel2.is_approved) {
-                Toast.makeText(this, "approved", Toast.LENGTH_SHORT).show();
 //                USER IS APPROVED
                 startActivity(new Intent(HomeActivity.this, UploadPostActivity.class));
             } else {
-                Toast.makeText(this, "not approved", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(HomeActivity.this, ApprovalActivity2.class));
             }
         });

@@ -29,6 +29,18 @@
                 android:src="@drawable/ic_baseline_arrow_back_24"
                 app:tint="@color/white" />
 
+            <TextView
+                android:id="@+id/delete_count_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:text="4 selected"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profileimage"
                 android:layout_width="50dp"
@@ -49,14 +61,32 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="20dp"
-            android:src="@drawable/ic_baseline_more_vert_24"
-            app:tint="@color/white" />
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="20dp"
+                android:visibility="gone"
+                android:id="@+id/delete_icon_conversation"
+                android:src="@drawable/ic_delete_filled"
+                app:tint="@color/white" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/ic_baseline_more_vert_24"
+                app:tint="@color/white" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 
@@ -115,8 +145,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
-                    app:tint="@color/white"
-                    android:src="@drawable/ic_send" />
+                    android:src="@drawable/ic_send"
+                    app:tint="@color/white" />
 
             </com.google.android.material.card.MaterialCardView>
 

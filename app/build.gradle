@@ -7,15 +7,73 @@ apply plugin: 'com.google.firebase.crashlytics'
 android {
     compileSdk 31
 
-    defaultConfig {
+    /*defaultConfig {
         applicationId "com.moutamid.torahshare"
         minSdk 21
         targetSdk 31
         versionCode 1
         versionName "1.0"
-//        multiDexEnabled true
+        multiDexEnabled true
         setProperty("archivesBaseName", "TorahShare-$versionName")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }*/
+
+    def versionPropsFile = file('version.properties')
+    def value = 0
+    Properties versionProps = new Properties()
+    if (!versionPropsFile.exists()) {
+        versionProps['VERSION_PATCH'] = "1"
+        versionProps['VERSION_NUMBER'] = "1"
+        versionProps['VERSION_BUILD'] = "1"
+        versionProps.store(versionPropsFile.newWriter(), null)
+    }
+
+    def runTasks = gradle.startParameter.taskNames
+    if ('assembleRelease' in runTasks) {
+        value = 1
+    }
+
+    def mVersionName = ""
+    def mFileName = ""
+
+    if (versionPropsFile.canRead()) {
+        versionProps.load(new FileInputStream(versionPropsFile))
+
+        versionProps['VERSION_PATCH'] = (versionProps['VERSION_PATCH'].toInteger() + 1).toString()
+        versionProps['VERSION_NUMBER'] = (versionProps['VERSION_NUMBER'].toInteger() + 1).toString()
+        versionProps['VERSION_BUILD'] = (versionProps['VERSION_BUILD'].toInteger() + 1).toString()
+
+        versionProps.store(versionPropsFile.newWriter(), null)
+
+        // 1: change major and minor version here
+        mVersionName = "v1.0.${versionProps['VERSION_PATCH']}"
+        // TODO 2: CHANGE APP-NAME
+        mFileName = "TorahShare-${mVersionName}.apk"
+
+        defaultConfig {
+            minSdk 21
+            targetSdk 31
+            applicationId "com.moutamid.torahshare" // 3: change to your package name
+            versionCode versionProps['VERSION_NUMBER'].toInteger()
+            versionName "${mVersionName} Build: ${versionProps['VERSION_BUILD']}"
+            multiDexEnabled true
+            // TODO 3: CHANGE APP-NAME
+            setProperty("archivesBaseName", "TorahShare-${mVersionName}")
+            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        }
+
+    } else {
+        throw new FileNotFoundException("Could not read version.properties!")
+    }
+
+    if ('assembleRelease' in runTasks) {
+        applicationVariants.all { variant ->
+            variant.outputs.all { output ->
+                if (output.outputFile != null && output.outputFile.name.endsWith('.apk')) {
+                    outputFileName = mFileName
+                }
+            }
+        }
     }
 
     buildTypes {
@@ -63,7 +121,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
 
     // TO GET RID OF MULTI DEX ERRORS
-//    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.multidex:multidex:2.0.1'
 
     // LOTTIE ANIMATIONS
     implementation 'com.airbnb.android:lottie:3.7.0'
@@ -105,4 +163,8 @@ dependencies {
     implementation 'com.github.addisonelliott:SegmentedButton:3.1.9'
 
     implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC3'
+
+    // Dexter Permission Library
+    implementation 'com.karumi:dexter:5.0.0'
+
 }

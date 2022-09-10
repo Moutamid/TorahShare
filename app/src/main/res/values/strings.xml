@@ -18,9 +18,9 @@
     <string name="apply">Apply</string>
     <string name="successfully_uploaded">Successfully uploaded</string>
     <string name="thank_you_for_applying_for_the_uploading_part_of_the_torahshare_app_we_are_going_to_do_our_best_to_review_it_and_will_notify_you_via">thank you for applying for the uploading part of the TorahShare app we are going to do our best to review it and will notify you via</string>
-    <string name="email">Email:</string>
+    <string name="email">Email: </string>
     <string name="example_gmail_com">example@gmail.com</string>
-    <string name="as_soon">as soon</string>
+    <string name="as_soon"> as soon</string>
     <string name="as_possible">as possible!</string>
     <string name="uploade">Upload</string>
     <string name="change_password">Change Password</string>

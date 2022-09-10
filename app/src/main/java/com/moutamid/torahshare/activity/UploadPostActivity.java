@@ -21,6 +21,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.TextureView;
@@ -57,6 +58,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.karumi.dexter.BuildConfig;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 import com.moutamid.torahshare.R;
 import com.moutamid.torahshare.databinding.ActivityUploadPostBinding;
 import com.moutamid.torahshare.model.ChatModel;
@@ -107,7 +115,7 @@ public class UploadPostActivity extends AppCompatActivity implements LifecycleOw
     FlexboxLayout container;
     //CAMERA CODE
     public static final int REQUEST_CODE_PERMISSIONS = 10;
-    public final String[] REQUIRED_PERMISSIONS = {Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO};
+    public final String[] REQUIRED_PERMISSIONS = {Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
     private VideoCapture videoCapture;
 
@@ -121,38 +129,18 @@ public class UploadPostActivity extends AppCompatActivity implements LifecycleOw
         myUserModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
 
         b.topIcon.setOnClickListener(view -> {
-//            if (isDeletable) {
+            if (isDeletable) {
 //                b.previewLayout.setVisibility(View.GONE);
 //                b.cameraLayout.setVisibility(View.VISIBLE);
 //                b.topIcon.setImageResource(R.drawable.ic_baseline_close_24);
-//            } else {
-            finish();
-//            }
+                recreate();
+            } else {
+                finish();
+            }
 
         });
 
-        // Find the last picture
-        String[] projection = new String[]{
-                MediaStore.Images.ImageColumns._ID,
-                MediaStore.Images.ImageColumns.DATA,
-                MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME,
-                MediaStore.Images.ImageColumns.DATE_TAKEN,
-                MediaStore.Images.ImageColumns.MIME_TYPE
-        };
-        final Cursor cursor = getContentResolver()
-                .query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, null,
-                        null, MediaStore.Images.ImageColumns.DATE_TAKEN + " DESC");
-
-        // Put it in the image view
-        if (cursor.moveToFirst()) {
-//            final ImageView imageView = (ImageView) findViewById(R.id.pictureView);
-            String imageLocation = cursor.getString(1);
-            File imageFile = new File(imageLocation);
-            if (imageFile.exists()) {   // TODO: is there a better way to do this?
-                Bitmap bm = BitmapFactory.decodeFile(imageLocation);
-                b.galleryBtn.setImageBitmap(bm);
-            }
-        }
+        getGalleryLastImage();
 
         b.videoViewFinal.setOnClickListener(view -> {
             if (b.videoPlayBtnFinal.getVisibility() == View.GONE) {
@@ -198,6 +186,31 @@ public class UploadPostActivity extends AppCompatActivity implements LifecycleOw
         });
 
         onCreateStarted();
+    }
+
+    private void getGalleryLastImage() {
+        // Find the last picture
+        String[] projection = new String[]{
+                MediaStore.Images.ImageColumns._ID,
+                MediaStore.Images.ImageColumns.DATA,
+                MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME,
+                MediaStore.Images.ImageColumns.DATE_TAKEN,
+                MediaStore.Images.ImageColumns.MIME_TYPE
+        };
+        final Cursor cursor = getContentResolver()
+                .query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, null,
+                        null, MediaStore.Images.ImageColumns.DATE_TAKEN + " DESC");
+
+        // Put it in the image view
+        if (cursor.moveToFirst()) {
+//            final ImageView imageView = (ImageView) findViewById(R.id.pictureView);
+            String imageLocation = cursor.getString(1);
+            File imageFile = new File(imageLocation);
+            if (imageFile.exists()) {   // Is there a better way to do this?
+                Bitmap bm = BitmapFactory.decodeFile(imageLocation);
+                b.galleryBtn.setImageBitmap(bm);
+            }
+        }
     }
 
     //  CAMERA METHODS BELOW
@@ -310,6 +323,10 @@ public class UploadPostActivity extends AppCompatActivity implements LifecycleOw
         }
 
         if (ActivityCompat.checkSelfPermission(UploadPostActivity.this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            return false;
+        }
+
+        if (ActivityCompat.checkSelfPermission(UploadPostActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             return false;
         }
 
@@ -534,6 +551,10 @@ public class UploadPostActivity extends AppCompatActivity implements LifecycleOw
                 } else {
                     b.videoViewFinal.setVideoURI(videoUri);
                 }
+
+                isDeletable = true;
+                b.topIcon.setImageResource(R.drawable.ic_baseline_delete_outline_24);
+
             }
         });
     }
@@ -604,11 +625,12 @@ public class UploadPostActivity extends AppCompatActivity implements LifecycleOw
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (allPermissionsGranted()) {
+                getGalleryLastImage();
                 b.viewFinder.post(() -> {
                     startCamera(CameraX.LensFacing.FRONT);
                 });
             } else {
-                Toast.makeText(this, "Permissions not granted by the user.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "All permissions not granted by the user.", Toast.LENGTH_SHORT).show();
                 finish();
             }
         }

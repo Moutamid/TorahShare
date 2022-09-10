@@ -111,9 +111,10 @@ public class SearchVideosController {
             Uri uri = Uri.parse(model.video_link);
 
             viewHolderVideo.videoView.setVideoURI(uri);
+            viewHolderVideo.videoView.pause();
+            viewHolderVideo.videoView.seekTo(1);
             /*TODO viewHolderVideo.videoView.start();
-            viewHolderVideo.videoView.seekTo(100);
-            viewHolderVideo.videoView.pause();*/
+            */
 
             viewHolderVideo.videoView.setOnClickListener(view -> {
                 if (viewHolderVideo.playBtn.getVisibility() == View.GONE) {

@@ -160,6 +160,7 @@ public class MessagesFragment extends Fragment {
                     b.searchButton.setVisibility(View.VISIBLE);
                     Toast.makeText(requireContext(), "Done", Toast.LENGTH_SHORT).show();
 
+                    deleteModelsArrayList.clear();
                 }
             }
         });

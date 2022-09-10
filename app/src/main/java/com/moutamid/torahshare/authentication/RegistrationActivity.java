@@ -320,10 +320,17 @@ public class RegistrationActivity extends AppCompatActivity {
 
             model.uid = user.getUid();
             model.number = "000000000";
-            model.bio = Constants.NULL;
+            if (model.gender.equals(Constants.GENDER_FEMALE)) {
+                model.bio = Constants.NULL;
+            } else {
+                model.bio = Constants.DEFAULT_BIO;
+            }
+
             model.profile_url = Constants.DEFAULT_PROFILE_URL;
             model.followers_count = 0;
             model.following_count = 0;
+
+            Stash.put(Constants.CURRENT_USER_MODEL, model);
 
             Constants.databaseReference().child(Constants.USERS)
                     .child(Constants.auth().getUid())
