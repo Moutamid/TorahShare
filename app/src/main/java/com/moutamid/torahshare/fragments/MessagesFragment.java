@@ -9,9 +9,13 @@ import static com.moutamid.torahshare.utils.Stash.toast;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,11 +79,15 @@ public class MessagesFragment extends Fragment {
                     is_contact = true;
                     if (adapter != null)
                         adapter.notifyDataSetChanged();
+
+                    b.addContactLayout.setVisibility(View.VISIBLE);
                 } else {
                     is_contact = false;
 
                     if (adapter != null)
                         adapter.notifyDataSetChanged();
+
+                    b.addContactLayout.setVisibility(View.GONE);
                 }
             }
         });
@@ -127,8 +135,10 @@ public class MessagesFragment extends Fragment {
                                     // FILTERING OWN MODEL
                                     if (chatModel.is_contact) {
                                         contactsChatArrayList.add(chatModel);
+                                        contactsChatArrayListAll.add(chatModel);
                                     } else {
                                         followersChatArrayList.add(chatModel);
+                                        followersChatArrayListAll.add(chatModel);
                                     }
                                 }
                             }
@@ -165,11 +175,50 @@ public class MessagesFragment extends Fragment {
             }
         });
 
+        b.searchEditTextMessages.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (adapter != null)
+                    adapter.getFilter().filter(charSequence);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        b.closeSearchBar.setOnClickListener(view -> {
+            b.searchEditTextMessages.setText("");
+            b.searchLayout.setVisibility(View.GONE);
+
+            if (userModel.gender.equals(Constants.GENDER_FEMALE)) {
+                b.femaleTopHeader.setVisibility(View.VISIBLE);
+            }else {
+                b.maleHeader.setVisibility(View.VISIBLE);
+            }
+        });
+
+        b.addContactLayout.setOnClickListener(view -> {
+            b.searchLayout.setVisibility(View.VISIBLE);
+
+            b.maleHeader.setVisibility(View.GONE);
+            b.femaleTopHeader.setVisibility(View.GONE);
+        });
+
         return b.getRoot();
     }
 
     private ArrayList<ChatModel> followersChatArrayList = new ArrayList<>();
+    private ArrayList<ChatModel> followersChatArrayListAll = new ArrayList<>();
     private ArrayList<ChatModel> contactsChatArrayList = new ArrayList<>();
+    private ArrayList<ChatModel> contactsChatArrayListAll = new ArrayList<>();
+
     private ArrayList<ChatModel> deleteModelsArrayList = new ArrayList<>();
 
     private RecyclerView conversationRecyclerView;
@@ -202,7 +251,66 @@ public class MessagesFragment extends Fragment {
     }
 
     private class RecyclerViewAdapterMessages extends RecyclerView.Adapter
-            <RecyclerViewAdapterMessages.ViewHolderRightMessage> {
+            <RecyclerViewAdapterMessages.ViewHolderRightMessage> implements Filterable {
+
+        @Override
+        public Filter getFilter() {
+            return new Filter() {
+                @Override
+                protected FilterResults performFiltering(CharSequence constraint) {
+                    ArrayList<ChatModel> filteredList = new ArrayList<>();
+
+                    if (constraint == null
+                            || constraint.length() == 0
+                            || constraint.toString().trim().equals("")
+                            || constraint.toString() == null) {
+
+                        if (is_contact) {
+                            filteredList.addAll(contactsChatArrayListAll);
+                        } else {
+                            filteredList.addAll(followersChatArrayListAll);
+                        }
+                    } else {
+                        String filterPattern = constraint.toString().toLowerCase().trim();
+
+                        if (is_contact) {
+                            for (ChatModel item : contactsChatArrayListAll) {
+                                if (item.other_name != null)
+                                    if (item.other_name.toLowerCase().contains(filterPattern)) {
+                                        filteredList.add(item);
+                                    }
+                            }
+                        } else {
+                            for (ChatModel item : followersChatArrayListAll) {
+                                if (item.other_name != null)
+                                    if (item.other_name.toLowerCase().contains(filterPattern)) {
+                                        filteredList.add(item);
+                                    }
+                            }
+                        }
+                    }
+
+                    FilterResults results = new FilterResults();
+                    results.values = filteredList;
+
+                    return results;
+                }
+
+                @Override
+                protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                    if (is_contact) {
+                        contactsChatArrayListAll.clear();
+                        contactsChatArrayListAll.addAll((ArrayList<ChatModel>) filterResults.values);
+                        notifyDataSetChanged();
+                    } else {
+                        followersChatArrayListAll.clear();
+                        followersChatArrayListAll.addAll((ArrayList<ChatModel>) filterResults.values);
+                        notifyDataSetChanged();
+                    }
+                }
+            };
+
+        }
 
         @NonNull
         @Override

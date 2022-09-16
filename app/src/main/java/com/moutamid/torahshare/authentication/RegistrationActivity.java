@@ -315,7 +315,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 model.name = user.getDisplayName();
 
             model.email = user.getEmail();
-            model.gender = Constants.GENDER_MALE;
+            model.gender = getString(R.string.male);
+
             model.is_approved = false;
 
             model.uid = user.getUid();

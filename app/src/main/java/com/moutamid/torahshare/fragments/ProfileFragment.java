@@ -80,6 +80,9 @@ public class ProfileFragment extends Fragment {
             b.cameraIcon.setVisibility(View.GONE);
             b.profileImageView.setVisibility(View.VISIBLE);
         }
+        if (userModel.profile_url.equals(Constants.DEFAULT_PROFILE_URL))
+            userModel.profile_url = Constants.DEFAULT_PROFILE_URL_CAMERA;
+
         with(requireActivity().getApplicationContext())
                 .load(userModel.profile_url)
                 .diskCacheStrategy(DATA)
@@ -428,7 +431,7 @@ public class ProfileFragment extends Fragment {
             holder.videoView.pause();
             holder.videoView.seekTo(1);
             /*TODO holder.videoView.start();
-           */
+             */
 
             holder.videoView.setOnClickListener(view -> {
                 if (holder.playBtn.getVisibility() == View.GONE) {

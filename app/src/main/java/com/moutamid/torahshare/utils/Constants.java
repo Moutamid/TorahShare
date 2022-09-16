@@ -30,7 +30,8 @@ public class Constants {
     public static final String CONVERSATIONS = "conversations";
     public static final String SEPARATOR = "LrDEBoLokW-5mhaT3ys";
     public static final String CHAT_MODEL = "chat_model";
-    public static final String DEFAULT_PROFILE_URL = "https://firebasestorage.googleapis.com/v0/b/sweet-nutrition.appspot.com/o/Frame%2061.png?alt=media&token=005cac52-987d-4b49-9bce-8d14fe56b4aa";
+    public static final String DEFAULT_PROFILE_URL = "https://firebasestorage.googleapis.com/v0/b/sweet-nutrition.appspot.com/o/Frame%201888.png?alt=media&token=a9609231-27b3-4b53-854b-957455b6613d";
+    public static final String DEFAULT_PROFILE_URL_CAMERA = "https://firebasestorage.googleapis.com/v0/b/sweet-nutrition.appspot.com/o/Frame%2061.png?alt=media&token=005cac52-987d-4b49-9bce-8d14fe56b4aa";
     public static final String SPONSORED_ACCOUNTS = "sponsored_accounts";
     public static final String FOLLOWING = "following";
 

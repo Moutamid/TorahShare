@@ -11,9 +11,9 @@
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 7,
-      "versionName": "v1.0.5 Build: 26",
-      "outputFile": "TorahShare-v1.0.5-release.apk"
+      "versionCode": 13,
+      "versionName": "v1.0.11 Build: 32",
+      "outputFile": "TorahShare-v1.0.11-release.apk"
     }
   ],
   "elementType": "File"

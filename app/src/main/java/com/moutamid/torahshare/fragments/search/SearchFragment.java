@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import com.moutamid.torahshare.R;
 import com.moutamid.torahshare.activity.HomeActivity;
 import com.moutamid.torahshare.databinding.FragmentSearchBinding;
+import com.moutamid.torahshare.model.SponsoredAccountsModel;
 import com.moutamid.torahshare.utils.Constants;
 
 import java.util.Objects;
@@ -47,6 +48,23 @@ public class SearchFragment extends Fragment {
         sponsoredController = new SponsoredController(this, b);
         searchUsersController = new SearchUsersController(this, b);
         searchVideosController = new SearchVideosController(this, b);
+
+        SponsoredAccountsModel model = new SponsoredAccountsModel();
+//        public String name, bio, profile_url, uid, video_link_1,
+//            video_caption_1, video_link_2, video_caption_2, push_key;
+        model.name = "User test name";
+        model.bio = "Test bio";
+        model.profile_url = Constants.DEFAULT_PROFILE_URL;
+        model.uid = Constants.auth().getUid();
+        model.video_link_1 = "Uploaded video download link";
+        model.video_caption_1 = " test caption";
+        model.video_link_2 = "Uploaded video download link";
+        model.video_caption_2 = "test caption";
+        model.push_key = Constants.databaseReference().child(Constants.SPONSORED_ACCOUNTS).push().getKey();
+
+        Constants.databaseReference().child(Constants.SPONSORED_ACCOUNTS)
+                .child(model.push_key)
+                .setValue(model);
 
         b.filterCardView.setOnClickListener(view -> {
             if (b.filterTextview.getVisibility() == View.GONE) {

@@ -48,7 +48,11 @@
 
                     <RelativeLayout
                         android:id="@+id/gender_layout"
-                        style="@style/gender_layout_authentication"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_gender"
                         android:hint="@string/enter_your_nameee">
 
                         <LinearLayout
@@ -59,10 +63,9 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/bg_gender"
                                 android:paddingStart="17dp"
-                                android:paddingTop="17dp"
-                                android:paddingEnd="17dp">
+                                android:paddingTop="20dp"
+                                android:paddingEnd="20dp">
 
                                 <TextView
                                     android:id="@+id/gender_default_text"
@@ -111,6 +114,7 @@
                                     android:textSize="14sp"
                                     android:visibility="gone" />
                             </LinearLayout>
+
                         </LinearLayout>
 
                     </RelativeLayout>
@@ -217,8 +221,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/log_ine"
                             android:layout_marginStart="5dp"
+                            android:text="@string/log_ine"
                             android:textColor="@color/default_purple"
                             android:textStyle="bold" />
 
@@ -296,8 +300,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/sign_up"
                             android:layout_marginStart="5dp"
+                            android:text="@string/sign_up"
                             android:textColor="@color/default_purple"
                             android:textStyle="bold" />
 

@@ -99,28 +99,43 @@
                 app:cardCornerRadius="@dimen/default_corner_radius"
                 app:cardElevation="0dp">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
+                    android:orientation="vertical"
                     android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="20dp"
-                        android:layout_marginStart="20dp"
-                        android:text="@string/terms_and_conditions"
-                        android:textColor="@color/default_text_grey" />
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="20dp"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/terms_and_conditions"
+                            android:textColor="@color/default_text_grey" />
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="20dp"
+                            android:rotation="270"
+                            android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
                         android:layout_marginEnd="20dp"
-                        android:rotation="270"
-                        android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
+                        android:layout_marginStart="30dp"
+                        android:background="@color/default_edittext_grey" />
 
-                </RelativeLayout>
+                </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -133,28 +148,40 @@
                 app:cardBackgroundColor="@color/white"
                 app:cardElevation="0dp">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="20dp"
-                        android:layout_marginStart="20dp"
-                        android:text="@string/privacy_policy"
-                        android:textColor="@color/default_text_grey" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="20dp"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/privacy_policy"
+                            android:textColor="@color/default_text_grey" />
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="20dp"
+                            android:rotation="270"
+                            android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
                         android:layout_marginEnd="20dp"
-                        android:rotation="270"
-                        android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
-
-                </RelativeLayout>
+                        android:layout_marginStart="30dp"
+                        android:background="@color/default_edittext_grey" />
+                </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -168,28 +195,29 @@
                 app:cardCornerRadius="@dimen/default_corner_radius"
                 app:cardElevation="0dp">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="20dp"
-                        android:layout_marginStart="20dp"
-                        android:text="@string/disclaimer"
-                        android:textColor="@color/default_text_grey" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="20dp"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/disclaimer"
+                            android:textColor="@color/default_text_grey" />
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="20dp"
-                        android:rotation="270"
-                        android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="20dp"
+                            android:rotation="270"
+                            android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
 
-                </RelativeLayout>
+                    </RelativeLayout>
+
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -208,26 +236,41 @@
                 app:cardCornerRadius="@dimen/default_corner_radius"
                 app:cardElevation="0dp">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="20dp"
-                        android:layout_marginStart="20dp"
-                        android:text="@string/no_contact_option"
-                        android:textColor="@color/default_text_grey" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <CheckBox
-                        android:id="@+id/noContactOptionCheckBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="20dp"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/no_contact_option"
+                            android:textColor="@color/default_text_grey" />
 
-                </RelativeLayout>
+                        <CheckBox
+                            android:id="@+id/noContactOptionCheckBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/default_purple"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true" />
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="30dp"
+                        android:background="@color/default_edittext_grey" />
+                </LinearLayout>
+
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -296,11 +339,11 @@
                         android:id="@+id/languageSwitch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:trackTint="@color/default_purple"
-                        app:thumbTint="@color/white"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginEnd="20dp" />
+                        android:layout_marginEnd="20dp"
+                        app:thumbTint="@color/white"
+                        app:trackTint="@color/default_purple" />
 
                 </RelativeLayout>
 
