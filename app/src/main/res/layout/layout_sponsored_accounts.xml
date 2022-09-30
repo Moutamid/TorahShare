@@ -100,10 +100,16 @@
                 app:cardCornerRadius="@dimen/default_corner_radius"
                 app:cardElevation="0dp">
 
-                <VideoView
+                <!--<VideoView
                     android:id="@+id/videoView1_sponsored_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp" />
+                    android:layout_height="100dp" />-->
+
+                <ImageView
+                    android:id="@+id/thumbnail_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop" />
 
                 <ImageView
                     android:id="@+id/videoPlayBtn1_sponsored_layout"
@@ -146,10 +152,15 @@
                 app:cardCornerRadius="@dimen/default_corner_radius"
                 app:cardElevation="0dp">
 
-                <VideoView
-                    android:id="@+id/videoView2_sponsored_layout"
+                <!-- <VideoView
+                     android:id="@+id/videoView2_sponsored_layout"
+                     android:layout_width="match_parent"
+                     android:layout_height="100dp" />-->
+                <ImageView
+                    android:id="@+id/thumbnail_2"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp" />
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop" />
 
                 <ImageView
                     android:id="@+id/videoPlayBtn2_sponsored_layout"

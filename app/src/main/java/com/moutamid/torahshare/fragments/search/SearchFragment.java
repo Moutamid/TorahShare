@@ -24,18 +24,10 @@ import java.util.Objects;
 
 public class SearchFragment extends Fragment {
 
-//    private boolean isKeyboardOpen = false;
-
     public SearchFragment() {
     }
 
     public FragmentSearchBinding b;
-
-    /*@Override
-    public void onResume() {
-        super.onResume();
-        Constants.checkLanguage(requireActivity());
-    }*/
 
     SponsoredController sponsoredController;
     SearchUsersController searchUsersController;
@@ -49,9 +41,7 @@ public class SearchFragment extends Fragment {
         searchUsersController = new SearchUsersController(this, b);
         searchVideosController = new SearchVideosController(this, b);
 
-        SponsoredAccountsModel model = new SponsoredAccountsModel();
-//        public String name, bio, profile_url, uid, video_link_1,
-//            video_caption_1, video_link_2, video_caption_2, push_key;
+        /*SponsoredAccountsModel model = new SponsoredAccountsModel();
         model.name = "User test name";
         model.bio = "Test bio";
         model.profile_url = Constants.DEFAULT_PROFILE_URL;
@@ -64,7 +54,7 @@ public class SearchFragment extends Fragment {
 
         Constants.databaseReference().child(Constants.SPONSORED_ACCOUNTS)
                 .child(model.push_key)
-                .setValue(model);
+                .setValue(model);*/
 
         b.filterCardView.setOnClickListener(view -> {
             if (b.filterTextview.getVisibility() == View.GONE) {

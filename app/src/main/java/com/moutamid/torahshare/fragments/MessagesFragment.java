@@ -145,7 +145,8 @@ public class MessagesFragment extends Fragment {
 
                             initRecyclerView();
 
-                        } else toast("No data!");
+                        }
+//                        else toast("No data!");
                     }
 
                     @Override

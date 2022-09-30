@@ -17,16 +17,20 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.khizar1556.mkvideoplayer.MKPlayerActivity;
 import com.moutamid.torahshare.R;
 import com.moutamid.torahshare.activity.ProfileActivity;
+import com.moutamid.torahshare.activity.VideoPlayerActivity;
 import com.moutamid.torahshare.databinding.FragmentSearchBinding;
 import com.moutamid.torahshare.model.FollowModel;
 import com.moutamid.torahshare.model.SponsoredAccountsModel;
@@ -123,19 +127,39 @@ public class SponsoredController {
                     .diskCacheStrategy(DATA)
                     .into(holder.profile);
 
+             with(fragment.requireActivity().getApplicationContext())
+                    .asBitmap()
+                    .load(model.thumbnail_url_1)
+                    .apply(new RequestOptions()
+                            .placeholder(lighterGrey)
+                            .error(lighterGrey)
+                    )
+                    .diskCacheStrategy(DATA)
+                    .into(holder.thumbnail1);
+
+             with(fragment.requireActivity().getApplicationContext())
+                    .asBitmap()
+                    .load(model.thumbnail_url_2)
+                    .apply(new RequestOptions()
+                            .placeholder(lighterGrey)
+                            .error(lighterGrey)
+                    )
+                    .diskCacheStrategy(DATA)
+                    .into(holder.thumbnail2);
+
             holder.name.setText(model.name);
             holder.bio.setText(model.bio);
 
             holder.caption1.setText(model.video_caption_1);
             holder.caption2.setText(model.video_caption_2);
-
+/*
             // VIDEO VIEW 1
             Uri uri = Uri.parse(model.video_link_1);
             holder.videoView1.setVideoURI(uri);
             holder.videoView1.pause();
             holder.videoView1.seekTo(1);
-            /*TODO holder.videoView1.start();
-          */
+            //TODO holder.videoView1.start();
+
 
             holder.videoView1.setOnClickListener(view -> {
                 if (holder.playBtn1.getVisibility() == View.GONE) {
@@ -171,8 +195,8 @@ public class SponsoredController {
             holder.videoView2.setVideoURI(uri2);
             holder.videoView2.pause();
             holder.videoView2.seekTo(1);
-            /*TODO holder.videoView2.start();
-            */
+            *//*TODO holder.videoView2.start();
+             *//*
 
             holder.videoView2.setOnClickListener(view -> {
                 if (holder.playBtn2.getVisibility() == View.GONE) {
@@ -202,7 +226,7 @@ public class SponsoredController {
                     holder.videoView2.start();
                 }
             });
-
+ */
             holder.unFollowBtn.setVisibility(View.GONE);
             holder.followBtn.setVisibility(View.VISIBLE);
             for (int i = 0; i < followingList.size(); i++) {
@@ -262,6 +286,33 @@ public class SponsoredController {
                         .putExtra(Constants.PARAMS, model.uid));
             });
 
+            holder.videoViewLayout1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+//                    fragment.startActivity(new Intent(fragment.requireActivity(),
+//                            VideoPlayerActivity.class)
+//                            .putExtra(Constants.PARAMS, model.video_link_1));
+                    MKPlayerActivity
+                            .configPlayer(fragment.requireActivity())
+                            .setFullScreenOnly(true)
+                            .play(model.video_link_1);
+
+                }
+            });
+            holder.videoViewLayout2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+//                    fragment.startActivity(new Intent(fragment.requireActivity(),
+//                            VideoPlayerActivity.class)
+//                            .putExtra(Constants.PARAMS, model.video_link_2));
+                    MKPlayerActivity
+                            .configPlayer(fragment.requireActivity())
+                            .setFullScreenOnly(true)
+                            .play(model.video_link_2);
+
+                }
+            });
+
         }
 
         @Override
@@ -276,9 +327,10 @@ public class SponsoredController {
             CircleImageView profile;
             TextView name, bio, caption1, caption2, unFollowBtn;
             MaterialButton followBtn;
-            VideoView videoView1, videoView2;
-            ImageView playBtn1, playBtn2;
+            //            VideoView videoView1, videoView2;
+            ImageView playBtn1, playBtn2, thumbnail1, thumbnail2;
             RelativeLayout parent;
+            MaterialCardView videoViewLayout1, videoViewLayout2;
 
             public ViewHolderRightMessage(@NonNull View v) {
                 super(v);
@@ -290,10 +342,14 @@ public class SponsoredController {
                 caption1 = v.findViewById(R.id.caption1_sponsored_layout);
                 caption2 = v.findViewById(R.id.caption2_sponsored_layout);
                 followBtn = v.findViewById(R.id.followBtn_sponsored_layout);
-                videoView1 = v.findViewById(R.id.videoView1_sponsored_layout);
-                videoView2 = v.findViewById(R.id.videoView2_sponsored_layout);
+//                videoView1 = v.findViewById(R.id.videoView1_sponsored_layout);
+//                videoView2 = v.findViewById(R.id.videoView2_sponsored_layout);
                 playBtn1 = v.findViewById(R.id.videoPlayBtn1_sponsored_layout);
                 playBtn2 = v.findViewById(R.id.videoPlayBtn2_sponsored_layout);
+                thumbnail1 = v.findViewById(R.id.thumbnail_1);
+                thumbnail2 = v.findViewById(R.id.thumbnail_2);
+                videoViewLayout1 = v.findViewById(R.id.videoView1Layout);
+                videoViewLayout2 = v.findViewById(R.id.videoView2Layout);
 
             }
         }

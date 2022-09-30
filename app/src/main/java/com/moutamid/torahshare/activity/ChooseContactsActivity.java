@@ -93,7 +93,8 @@ public class ChooseContactsActivity extends AppCompatActivity {
 
                             initRecyclerView();
 
-                        } else toast("No data!");
+                        }
+//                        else toast("No data!");
                     }
 
                     @Override

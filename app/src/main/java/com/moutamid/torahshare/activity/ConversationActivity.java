@@ -52,6 +52,7 @@ import com.moutamid.torahshare.model.FollowModel;
 import com.moutamid.torahshare.model.MessageModel;
 import com.moutamid.torahshare.model.MessageReportModel;
 import com.moutamid.torahshare.model.PostModel;
+import com.moutamid.torahshare.model.SponsoredAccountsModel;
 import com.moutamid.torahshare.model.UserModel;
 import com.moutamid.torahshare.utils.Constants;
 import com.moutamid.torahshare.utils.Stash;
