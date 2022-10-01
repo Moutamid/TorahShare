@@ -124,7 +124,7 @@ public class MessagesFragment extends Fragment {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
+                        if (snapshot.exists() && isAdded()) {
                             followersChatArrayList.clear();
                             contactsChatArrayList.clear();
 
@@ -424,7 +424,7 @@ public class MessagesFragment extends Fragment {
                     .addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.exists()) {
+                            if (snapshot.exists() && isAdded()) {
                                 UserModel model = snapshot.getValue(UserModel.class);
                                 chatModel.other_name = model.name;
                                 chatModel.other_profile = model.profile_url;

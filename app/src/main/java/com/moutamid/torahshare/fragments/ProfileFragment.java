@@ -150,7 +150,7 @@ public class ProfileFragment extends Fragment {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
+                        if (snapshot.exists() && isAdded()) {
 
                             postsArraylist.clear();
                             for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
@@ -298,7 +298,7 @@ public class ProfileFragment extends Fragment {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
+                        if (snapshot.exists() && isAdded()) {
                             UserModel userModel = (UserModel) snapshot.getValue(UserModel.class);
 
                             ArrayList<FollowModel> followersArrayList = new ArrayList<>();

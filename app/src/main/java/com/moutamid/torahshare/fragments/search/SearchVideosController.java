@@ -43,7 +43,7 @@ public class SearchVideosController {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
+                        if (snapshot.exists() && fragment.isAdded()) {
 
                             searchVideosArrayList.clear();
                             searchVideosArrayListAll.clear();

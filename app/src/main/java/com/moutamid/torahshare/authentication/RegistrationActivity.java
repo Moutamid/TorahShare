@@ -65,7 +65,6 @@ public class RegistrationActivity extends AppCompatActivity {
             mypopupWindow.setWidth(b.genderLayout.getMeasuredWidth());
 
             mypopupWindow.showAsDropDown(b.genderLayout, 0, 0);//-253
-//            mypopupWindow.showAtLocation(b.genderLayout, Gravity.CENTER, 30, 30);
 
             /*if (b.genderMaleTextview.getVisibility() == View.GONE) {
 

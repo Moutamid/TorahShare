@@ -3,6 +3,7 @@ package com.moutamid.torahshare.fragments.search;
 import static com.moutamid.torahshare.utils.Stash.toast;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -57,7 +60,11 @@ public class SearchFragment extends Fragment {
                 .setValue(model);*/
 
         b.filterCardView.setOnClickListener(view -> {
-            if (b.filterTextview.getVisibility() == View.GONE) {
+            mypopupWindow.setWidth(view.getMeasuredWidth());
+
+            mypopupWindow.showAsDropDown(view, 0, 0);//-253
+
+            /*if (b.filterTextview.getVisibility() == View.GONE) {
                 // SHOW FILTER OPTIONS
                 if (b.filterSelectedTextview.getText().toString().equals(Constants.FILTER_USER))
                     b.filterTextview.setText(Constants.FILTER_VIDEOS);
@@ -69,32 +76,41 @@ public class SearchFragment extends Fragment {
                 // HIDE FILTER OPTIONS
                 b.filterTextview.setVisibility(View.GONE);
                 b.filterArrow.setRotation(0);
-            }
+            }*/
         });
 
-        b.filterTextview.setOnClickListener(view -> {
+        LayoutInflater inflater1 = (LayoutInflater)
+                requireActivity().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View pop_up_view = inflater1.inflate(R.layout.popup_search, null);
+
+        pop_up_view.findViewById(R.id.userTextViewGenderPopUp).setOnClickListener(view1 -> {
+            if (mypopupWindow.isShowing()) mypopupWindow.dismiss();
+
+            b.filterSelectedTextview.setText(Constants.FILTER_USER);
+
+        });
+
+        pop_up_view.findViewById(R.id.videoTextViewGenderPopUp).setOnClickListener(view1 -> {
+            if (mypopupWindow.isShowing()) mypopupWindow.dismiss();
+
+            b.filterSelectedTextview.setText(Constants.FILTER_VIDEOS);
+
+        });
+
+        mypopupWindow = new PopupWindow(pop_up_view,
+                b.filterCardView.getMeasuredWidth(),
+                RelativeLayout.LayoutParams.WRAP_CONTENT, true);
+
+        mypopupWindow.getContentView().setOnClickListener(v -> {
+            if (mypopupWindow.isShowing()) mypopupWindow.dismiss();
+        });
+
+        /*b.filterTextview.setOnClickListener(view -> {
             b.filterSelectedTextview.setText(b.filterTextview.getText().toString());
             b.filterTextview.setVisibility(View.GONE);
             b.filterArrow.setRotation(0);
         });
-
-     /*   b.searchEt.setOnClickListener(view -> {
-//            isKeyboardOpen = true;
-            requireActivity().findViewById(R.id.bottom_bar_imageview)
-                    .setVisibility(View.GONE);
-        });
-
-        b.searchEt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (b) {
-                    toast("true");
-                    requireActivity().findViewById(R.id.bottom_bar_imageview)
-                            .setVisibility(View.GONE);
-                }
-            }
-        });*/
-
+*/
         b.searchEt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -179,5 +195,14 @@ public class SearchFragment extends Fragment {
 
         return b.getRoot();
     }
+    PopupWindow mypopupWindow;
 
+   /* @Override
+    public void onBackPressed() {
+        if (mypopupWindow.isShowing()) {
+            mypopupWindow.dismiss();
+            return;
+        }
+            super.onBackPressed();
+    }*/
 }

@@ -83,7 +83,7 @@ public class SponsoredController {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
+                        if (snapshot.exists() && fragment.isAdded()) {
                             accountsModelArrayList.clear();
 
                             for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
@@ -127,7 +127,7 @@ public class SponsoredController {
                     .diskCacheStrategy(DATA)
                     .into(holder.profile);
 
-             with(fragment.requireActivity().getApplicationContext())
+            with(fragment.requireActivity().getApplicationContext())
                     .asBitmap()
                     .load(model.thumbnail_url_1)
                     .apply(new RequestOptions()
@@ -137,7 +137,7 @@ public class SponsoredController {
                     .diskCacheStrategy(DATA)
                     .into(holder.thumbnail1);
 
-             with(fragment.requireActivity().getApplicationContext())
+            with(fragment.requireActivity().getApplicationContext())
                     .asBitmap()
                     .load(model.thumbnail_url_2)
                     .apply(new RequestOptions()

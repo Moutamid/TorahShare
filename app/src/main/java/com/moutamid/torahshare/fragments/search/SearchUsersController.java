@@ -52,7 +52,7 @@ public class SearchUsersController {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
+                        if (snapshot.exists() && fragment.isAdded()) {
 
                             searchUserArrayList.clear();
                             searchUserArrayListAll.clear();
