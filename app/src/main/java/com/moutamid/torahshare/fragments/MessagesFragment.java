@@ -32,6 +32,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.moutamid.torahshare.R;
 import com.moutamid.torahshare.activity.ConversationActivity;
+import com.moutamid.torahshare.activity.HomeActivity;
 import com.moutamid.torahshare.databinding.FragmentMessagesBinding;
 import com.moutamid.torahshare.model.ChatModel;
 import com.moutamid.torahshare.model.UserModel;
@@ -206,10 +207,11 @@ public class MessagesFragment extends Fragment {
         });
 
         b.addContactLayout.setOnClickListener(view -> {
-            b.searchLayout.setVisibility(View.VISIBLE);
+            ((HomeActivity)requireActivity()).showFirst();
+            /*b.searchLayout.setVisibility(View.VISIBLE);
 
             b.maleHeader.setVisibility(View.GONE);
-            b.femaleTopHeader.setVisibility(View.GONE);
+            b.femaleTopHeader.setVisibility(View.GONE);*/
         });
 
         return b.getRoot();

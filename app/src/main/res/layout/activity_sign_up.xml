@@ -46,46 +46,19 @@
                         style="@style/small_title_authentication"
                         android:text="@string/gender" />
 
-                    <RelativeLayout
-                        android:id="@+id/gender_layout"
+                    <!--<RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="15dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/bg_gender"
-                        android:hint="@string/enter_your_nameee">
+>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingStart="17dp"
-                                android:paddingTop="20dp"
-                                android:paddingEnd="20dp">
 
-                                <TextView
-                                    android:id="@+id/gender_default_text"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerVertical="true"
-                                    android:text="@string/select"
-                                    android:textSize="14sp" />
 
-                                <ImageView
-                                    android:id="@+id/gender_arrow"
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_centerVertical="true"
-                                    android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
-
-                            </RelativeLayout>
-
-                            <LinearLayout
+                            &lt;!&ndash;<LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:elevation="5dp"
@@ -114,8 +87,38 @@
                                     android:textSize="14sp"
                                     android:visibility="gone" />
                             </LinearLayout>
-
+&ndash;&gt;
                         </LinearLayout>
+
+                    </RelativeLayout>-->
+
+                    <RelativeLayout
+                        android:id="@+id/gender_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_gender"
+                        android:paddingStart="17dp"
+                        android:paddingTop="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="15dp">
+
+                        <TextView
+                            android:id="@+id/gender_default_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="@string/select"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:id="@+id/gender_arrow"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
 
                     </RelativeLayout>
 

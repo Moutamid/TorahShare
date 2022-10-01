@@ -88,7 +88,7 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/about_application" />
 
-            <com.google.android.material.card.MaterialCardView
+            <com.github.captain_miao.optroundcardview.OptRoundCardView
                 android:id="@+id/termsBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,12 +97,21 @@
                 android:padding="17dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/default_corner_radius"
-                app:cardElevation="0dp">
+                app:cardElevation="0dp"
+
+                app:optRoundCardBackgroundColor="@color/white"
+                app:optRoundCardElevation="0dp"
+                app:optRoundCardLeftBottomCorner="false"
+                app:optRoundCardLeftTopCorner="true"
+                app:optRoundCardRightBottomCorner="false"
+                app:optRoundCardRightTopCorner="true"
+                app:optRoundCardCornerRadius="@dimen/default_corner_radius"
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
 
                     <RelativeLayout
@@ -131,27 +140,36 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginEnd="20dp"
                         android:layout_marginStart="30dp"
                         android:background="@color/default_edittext_grey" />
 
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+            </com.github.captain_miao.optroundcardview.OptRoundCardView>
 
-            <com.google.android.material.card.MaterialCardView
+            <com.github.captain_miao.optroundcardview.OptRoundCardView
                 android:id="@+id/privacyPolicyBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:padding="17dp"
                 app:cardBackgroundColor="@color/white"
-                app:cardElevation="0dp">
+                app:cardElevation="0dp"
+
+                app:optRoundCardBackgroundColor="@color/white"
+                app:optRoundCardElevation="0dp"
+                app:optRoundCardLeftBottomCorner="false"
+                app:optRoundCardLeftTopCorner="false"
+                app:optRoundCardRightBottomCorner="false"
+                app:optRoundCardRightTopCorner="false"
+                app:optRoundCardCornerRadius="0dp"
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -178,14 +196,13 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginEnd="20dp"
                         android:layout_marginStart="30dp"
                         android:background="@color/default_edittext_grey" />
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+            </com.github.captain_miao.optroundcardview.OptRoundCardView>
 
-            <com.google.android.material.card.MaterialCardView
+            <com.github.captain_miao.optroundcardview.OptRoundCardView
                 android:id="@+id/disclaimerBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -193,45 +210,61 @@
                 android:padding="17dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/default_corner_radius"
-                app:cardElevation="0dp">
+                app:cardElevation="0dp"
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                app:optRoundCardBackgroundColor="@color/white"
+                app:optRoundCardElevation="0dp"
+                app:optRoundCardLeftBottomCorner="true"
+                app:optRoundCardLeftTopCorner="false"
+                app:optRoundCardRightBottomCorner="true"
+                app:optRoundCardRightTopCorner="false"
+                app:optRoundCardCornerRadius="@dimen/default_corner_radius"
+                >
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginVertical="20dp"
-                            android:layout_marginStart="20dp"
-                            android:text="@string/disclaimer"
-                            android:textColor="@color/default_text_grey" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginEnd="20dp"
-                            android:rotation="270"
-                            android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="20dp"
+                        android:layout_marginStart="20dp"
+                        android:text="@string/disclaimer"
+                        android:textColor="@color/default_text_grey" />
 
-                    </RelativeLayout>
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="20dp"
+                        android:rotation="270"
+                        android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
+
+                </RelativeLayout>
 
 
-            </com.google.android.material.card.MaterialCardView>
+            </com.github.captain_miao.optroundcardview.OptRoundCardView>
 
             <TextView
                 style="@style/small_title_authentication"
                 android:layout_marginTop="20dp"
                 android:text="@string/privacy" />
 
-            <com.google.android.material.card.MaterialCardView
+            <com.github.captain_miao.optroundcardview.OptRoundCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
                 android:padding="17dp"
+                app:optRoundCardBackgroundColor="@color/white"
+                app:optRoundCardElevation="0dp"
+                app:optRoundCardLeftBottomCorner="false"
+                app:optRoundCardLeftTopCorner="true"
+                app:optRoundCardRightBottomCorner="false"
+                app:optRoundCardRightTopCorner="true"
+                app:optRoundCardCornerRadius="@dimen/default_corner_radius"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/default_corner_radius"
                 app:cardElevation="0dp">
@@ -257,31 +290,39 @@
                             android:id="@+id/noContactOptionCheckBox"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:buttonTint="@color/default_purple"
                             android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true" />
+                            android:layout_centerVertical="true"
+                            android:buttonTint="@color/default_purple" />
 
                     </RelativeLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginEnd="20dp"
                         android:layout_marginStart="30dp"
                         android:background="@color/default_edittext_grey" />
                 </LinearLayout>
 
 
-            </com.google.android.material.card.MaterialCardView>
+            </com.github.captain_miao.optroundcardview.OptRoundCardView>
 
-            <com.google.android.material.card.MaterialCardView
+            <com.github.captain_miao.optroundcardview.OptRoundCardView
                 android:id="@+id/changePasswordBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:padding="17dp"
                 app:cardBackgroundColor="@color/white"
-                app:cardElevation="0dp">
+                app:cardElevation="0dp"
+
+                app:optRoundCardBackgroundColor="@color/white"
+                app:optRoundCardElevation="0dp"
+                app:optRoundCardLeftBottomCorner="true"
+                app:optRoundCardLeftTopCorner="false"
+                app:optRoundCardRightBottomCorner="true"
+                app:optRoundCardRightTopCorner="false"
+                app:optRoundCardCornerRadius="@dimen/default_corner_radius"
+                >
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -306,7 +347,7 @@
 
                 </RelativeLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+            </com.github.captain_miao.optroundcardview.OptRoundCardView>
 
             <TextView
                 style="@style/small_title_authentication"

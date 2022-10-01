@@ -2,16 +2,23 @@ package com.moutamid.torahshare.authentication;
 
 import static com.moutamid.torahshare.utils.Stash.toast;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -55,7 +62,12 @@ public class RegistrationActivity extends AppCompatActivity {
         controller = new RegistrationController(this, b);
 
         b.genderLayout.setOnClickListener(view -> {
-            if (b.genderMaleTextview.getVisibility() == View.GONE) {
+            mypopupWindow.setWidth(b.genderLayout.getMeasuredWidth());
+
+            mypopupWindow.showAsDropDown(b.genderLayout, 0, 0);//-253
+//            mypopupWindow.showAtLocation(b.genderLayout, Gravity.CENTER, 30, 30);
+
+            /*if (b.genderMaleTextview.getVisibility() == View.GONE) {
 
                 b.genderArrow.setRotation(180);
 
@@ -66,10 +78,10 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 b.genderMaleTextview.setVisibility(View.GONE);
                 b.genderFemaleTextview.setVisibility(View.GONE);
-            }
+            }*/
         });
 
-        b.genderMaleTextview.setOnClickListener(view -> {
+        /*b.genderMaleTextview.setOnClickListener(view -> {
             b.genderDefaultText.setText(getString(R.string.male));
 
             b.genderArrow.setRotation(0);
@@ -84,8 +96,34 @@ public class RegistrationActivity extends AppCompatActivity {
 
             b.genderMaleTextview.setVisibility(View.GONE);
             b.genderFemaleTextview.setVisibility(View.GONE);
+        });*/
+
+
+        LayoutInflater inflater = (LayoutInflater)
+                getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View pop_up_view = inflater.inflate(R.layout.popup_gender, null);
+
+        pop_up_view.findViewById(R.id.maleTextViewGenderPopUp).setOnClickListener(view1 -> {
+            if (mypopupWindow.isShowing()) mypopupWindow.dismiss();
+
+            b.genderDefaultText.setText(getString(R.string.male));
+
         });
 
+        pop_up_view.findViewById(R.id.femaleTextViewGenderPopUp).setOnClickListener(view1 -> {
+            if (mypopupWindow.isShowing()) mypopupWindow.dismiss();
+
+            b.genderDefaultText.setText(getString(R.string.female));
+
+        });
+
+        mypopupWindow = new PopupWindow(pop_up_view,
+                b.genderLayout.getMeasuredWidth(),
+                RelativeLayout.LayoutParams.WRAP_CONTENT, true);
+
+        mypopupWindow.getContentView().setOnClickListener(v -> {
+            if (mypopupWindow.isShowing()) mypopupWindow.dismiss();
+        });
 
         b.passwordEtSignUp.addTextChangedListener(new TextWatcher() {
             @Override
@@ -206,8 +244,14 @@ public class RegistrationActivity extends AppCompatActivity {
 
     }
 
+    PopupWindow mypopupWindow;
+
     @Override
     public void onBackPressed() {
+        if (mypopupWindow.isShowing()) {
+            mypopupWindow.dismiss();
+            return;
+        }
         if (b.backBtn.getVisibility() == View.VISIBLE) {
             b.backBtn.setVisibility(View.GONE);
             b.cardLogin.setVisibility(View.VISIBLE);

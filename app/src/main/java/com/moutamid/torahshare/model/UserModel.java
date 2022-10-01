@@ -6,7 +6,7 @@ public class UserModel {
     public String number, bio, profile_url;
     public int followers_count, following_count;
 
-    public boolean is_approved;
+    public boolean is_approved, IS_CONTACT_CHECKED;
 
     public UserModel() {
     }

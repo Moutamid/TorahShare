@@ -4,8 +4,7 @@
 
     <solid android:color="@color/default_edittext_grey" />
     <corners
-        android:topLeftRadius="@dimen/default_corner_radius"
-        android:topRightRadius="@dimen/default_corner_radius"/>
+        android:radius="@dimen/default_corner_radius"/>
 
 
 </shape>

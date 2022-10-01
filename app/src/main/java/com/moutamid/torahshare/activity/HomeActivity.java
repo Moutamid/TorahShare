@@ -33,7 +33,9 @@ import com.moutamid.torahshare.fragments.MessagesFragment;
 import com.moutamid.torahshare.fragments.ProfileFragment;
 import com.moutamid.torahshare.fragments.search.SearchFragment;
 import com.moutamid.torahshare.model.ContactRequestModel;
+import com.moutamid.torahshare.model.FollowModel;
 import com.moutamid.torahshare.model.UserModel;
+import com.moutamid.torahshare.startup.AppContext;
 import com.moutamid.torahshare.utils.Constants;
 import com.moutamid.torahshare.utils.Stash;
 
@@ -147,10 +149,15 @@ public class HomeActivity extends AppCompatActivity {
                         }
                     }
                 });
+
     }
 
     public ImageView bottomBar() {
         return b.bottomBarImageview;
+    }
+
+    public void showFirst(){
+        viewPager.setCurrentItem(0);
     }
 
     private static final String TAG = "HomeActivity";

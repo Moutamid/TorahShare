@@ -168,4 +168,6 @@ dependencies {
     implementation 'com.karumi:dexter:5.0.0'
 
     implementation 'com.github.khizar1556.MKVideoPlayer:mkvideoplayer:0.1.5'
+
+    implementation 'com.github.captain-miao:optroundcardview:1.0.0'
 }

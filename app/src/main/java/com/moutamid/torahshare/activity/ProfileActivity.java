@@ -26,6 +26,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.bumptech.glide.request.RequestOptions;
@@ -81,6 +82,8 @@ public class ProfileActivity extends AppCompatActivity {
                         if (snapshot.exists()) {
 
                             userModel = snapshot.getValue(UserModel.class);
+                            userModel.followers_count = (int) snapshot.child(Constants.FOLLOWERS).getChildrenCount();
+                            userModel.following_count = (int) snapshot.child(Constants.FOLLOWING).getChildrenCount();
 
                             Constants.databaseReference().child(Constants.USERS)
                                     .child(Constants.auth().getUid())
@@ -89,17 +92,25 @@ public class ProfileActivity extends AppCompatActivity {
                                     .addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                            if (snapshot.exists()){
+                                            if (snapshot.exists()) {
                                                 b.followBtnProfile.setVisibility(View.GONE);
                                                 b.followingBtnProfile.setVisibility(View.VISIBLE);
 
                                                 setValuesOnViews();
+                                                progressDialog.dismiss();
+                                            } else {
+                                                b.followBtnProfile.setVisibility(View.VISIBLE);
+                                                b.followingBtnProfile.setVisibility(View.GONE);
+
+                                                setValuesOnViews();
+                                                progressDialog.dismiss();
                                             }
                                         }
 
                                         @Override
                                         public void onCancelled(@NonNull DatabaseError error) {
-
+                                            progressDialog.dismiss();
+                                            Toast.makeText(ProfileActivity.this, error.toException().getMessage(), Toast.LENGTH_SHORT).show();
                                         }
                                     });
                         }
@@ -107,7 +118,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
+                        Toast.makeText(ProfileActivity.this, error.toException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -199,8 +210,12 @@ public class ProfileActivity extends AppCompatActivity {
 //    --------------------------------------- OTHER RECYCLERVIEW--------------------
 
     private void setValuesOnViews() {
-        if (userModel.gender.equals(Constants.GENDER_FEMALE))
+        if (userModel.IS_CONTACT_CHECKED)
             b.contactBtn.setVisibility(View.GONE);
+/*
+if (userModel.gender.equals(Constants.GENDER_FEMALE))
+            b.contactBtn.setVisibility(View.GONE);
+*/
 
         with(getApplicationContext())
                 .load(userModel.profile_url)
@@ -440,7 +455,7 @@ public class ProfileActivity extends AppCompatActivity {
             holder.videoView.pause();
             holder.videoView.seekTo(1);
             /*TODO holder.videoView.start();
-           */
+             */
 
             holder.videoView.setOnClickListener(view -> {
                 if (holder.playBtn.getVisibility() == View.GONE) {

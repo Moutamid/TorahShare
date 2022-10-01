@@ -71,17 +71,17 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    // FEMALE
+                    // ON
                     Constants.databaseReference().child(Constants.USERS)
                             .child(Constants.auth().getUid())
-                            .child("gender")
-                            .setValue(Constants.GENDER_FEMALE);
+                            .child(Constants.IS_CONTACT_CHECKED)
+                            .setValue(true);
                 } else {
-                    // MALE
+                    // OFF
                     Constants.databaseReference().child(Constants.USERS)
                             .child(Constants.auth().getUid())
-                            .child("gender")
-                            .setValue(Constants.GENDER_MALE);
+                            .child(Constants.IS_CONTACT_CHECKED)
+                            .setValue(false);
                 }
             }
         });

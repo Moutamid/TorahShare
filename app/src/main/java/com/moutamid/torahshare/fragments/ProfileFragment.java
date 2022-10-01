@@ -44,6 +44,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.moutamid.torahshare.R;
 import com.moutamid.torahshare.activity.FollowListActivity;
+import com.moutamid.torahshare.activity.HomeActivity;
 import com.moutamid.torahshare.activity.settings.SettingsActivity;
 import com.moutamid.torahshare.model.FollowModel;
 import com.moutamid.torahshare.model.PostModel;
@@ -80,6 +81,7 @@ public class ProfileFragment extends Fragment {
             b.cameraIcon.setVisibility(View.GONE);
             b.profileImageView.setVisibility(View.VISIBLE);
         }
+
         if (userModel.profile_url.equals(Constants.DEFAULT_PROFILE_URL))
             userModel.profile_url = Constants.DEFAULT_PROFILE_URL_CAMERA;
 
@@ -280,8 +282,6 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-//        Constants.checkLanguage(requireActivity());
-
         userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
         if (userModel != null) {
             if (userModel.name != null)
@@ -293,6 +293,56 @@ public class ProfileFragment extends Fragment {
             b.followingTextview.setText(userModel.following_count + "");
         }
 
+        Constants.databaseReference().child(Constants.USERS)
+                .child(Constants.auth().getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            UserModel userModel = (UserModel) snapshot.getValue(UserModel.class);
+
+                            ArrayList<FollowModel> followersArrayList = new ArrayList<>();
+                            ArrayList<FollowModel> followingArrayList = new ArrayList<>();
+
+                            if (snapshot.child(Constants.FOLLOWERS).exists()) {
+                                for (DataSnapshot dataSnapshot : snapshot.child(Constants.FOLLOWERS).getChildren()) {
+                                    FollowModel model = dataSnapshot.getValue(FollowModel.class);
+                                    model.uid = dataSnapshot.getKey();
+                                    model.value = true;
+                                    followersArrayList.add(model);
+                                }
+                                Stash.put(Constants.FOLLOWERS_LIST, followersArrayList);
+                            }
+
+                            if (snapshot.child(Constants.FOLLOWING).exists()) {
+                                for (DataSnapshot dataSnapshot : snapshot.child(Constants.FOLLOWING).getChildren()) {
+                                    FollowModel model = dataSnapshot.getValue(FollowModel.class);
+                                    model.uid = dataSnapshot.getKey();
+                                    model.value = true;
+                                    followingArrayList.add(model);
+                                }
+                                Stash.put(Constants.FOLLOWING_LIST, followingArrayList);
+                            }
+
+                            userModel.followers_count = followersArrayList.size();
+                            userModel.following_count = followingArrayList.size();
+
+                            Stash.put(Constants.CURRENT_USER_MODEL, userModel);
+
+                            b.nameTextview.setText(userModel.name);
+                            b.bioTextview.setText(userModel.bio);
+
+                            b.followersTextview.setText(userModel.followers_count + "");
+                            b.totalCountTextView.setText(userModel.followers_count + "");
+                            b.followingTextview.setText(userModel.following_count + "");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(requireActivity(), "ERROR: " + error.toException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private ProgressDialog progressDialog;
