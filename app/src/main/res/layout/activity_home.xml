@@ -11,7 +11,7 @@
 
     <view
         android:id="@+id/main_view_pager"
-        class="com.moutamid.torahshare.activity.HomeActivity$NonSwipableViewPager"
+        class="com.moutamid.torahsharee.activity.HomeActivity$NonSwipableViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="75dp" />

@@ -5,7 +5,7 @@ apply plugin: 'com.google.gms.google-services'
 // Apply the Crashlytics Gradle plugin
 apply plugin: 'com.google.firebase.crashlytics'
 android {
-    compileSdk 31
+    compileSdk 34
 
     /*defaultConfig {
         applicationId "com.moutamid.torahshare"
@@ -53,7 +53,7 @@ android {
         defaultConfig {
             minSdk 21
             targetSdk 31
-            applicationId "com.moutamid.torahshare" // 3: change to your package name
+            applicationId "com.moutamid.torahsharee" // 3: change to your package name
             versionCode versionProps['VERSION_NUMBER'].toInteger()
             versionName "${mVersionName} Build: ${versionProps['VERSION_BUILD']}"
             multiDexEnabled true
@@ -140,18 +140,18 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'*/
 //    implementation 'com.github.florent37:camerafragment:1.0.10'
 
-    //TODO: DELET COMMENTS AND CHECK CAMERA KIT SO THAT WE CAN RECORD VIDEO
+    //TODO: DELETE COMMENTS AND CHECK CAMERA KIT SO THAT WE CAN RECORD VIDEO
 
 //    implementation project(':camerakit');
     implementation "dev.priyankvasa.android:cameraview-ex:3.5.5-alpha"
     /*implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.0"*/
-    implementation 'com.arsvechkarev:timerx:2.3.2'
+    implementation 'com.github.arsvechkarev:TimerX:3.1.0'
 
     /*implementation 'com.github.mabbas007:TagsEditText:1.0.5'
     implementation 'com.github.anonymous-ME:TagsEditText:0.5.0'*/
     implementation "com.github.qiugang:EditTag:1.2.4-beta2"
 
-    implementation "androidx.tonyodev.fetch2:xfetch2:3.1.6"
+    implementation "com.github.tonyofrancis.Fetch:fetch2:3.3.0"
 
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
 

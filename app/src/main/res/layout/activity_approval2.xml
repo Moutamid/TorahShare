@@ -167,7 +167,7 @@
                 <include layout="@layout/logo_layout" />
 
                 <TextView
-                    style="@style/textview_title_authentication"
+                    style="@style/textview_title_authentication         "
                     android:layout_marginTop="20dp"
                     android:text="@string/approval_forme" />
 

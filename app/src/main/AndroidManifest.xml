@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.moutamid.torahshare">
+    package="com.moutamid.torahsharee">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -15,7 +15,7 @@
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".startup.AppContext"
+        android:name="com.moutamid.torahsharee.startup.AppContext"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -25,63 +25,63 @@
         android:theme="@style/Theme.TorahShare"
         tools:replace="android:supportsRtl">
         <activity
-            android:name=".activity.VideoPlayerActivity"
+            android:name="com.moutamid.torahsharee.activity.VideoPlayerActivity"
             android:screenOrientation="landscape"
             android:exported="false" />
         <activity
-            android:name=".activity.WomanApprovalActivity"
+            android:name="com.moutamid.torahsharee.activity.WomanApprovalActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.UploadPostPreviewActivity"
+            android:name="com.moutamid.torahsharee.activity.UploadPostPreviewActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.addbutton.ApprovalActivity2"
+            android:name="com.moutamid.torahsharee.activity.addbutton.ApprovalActivity2"
             android:exported="false" />
         <activity
-            android:name=".activity.UploadPostActivity"
+            android:name="com.moutamid.torahsharee.activity.UploadPostActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.ChooseContactsActivity"
+            android:name="com.moutamid.torahsharee.activity.ChooseContactsActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.ContactRequestsActivity"
+            android:name="com.moutamid.torahsharee.activity.ContactRequestsActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.ProfileActivity"
+            android:name="com.moutamid.torahsharee.activity.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.settings.ChangePasswordActivity"
+            android:name="com.moutamid.torahsharee.activity.settings.ChangePasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.FollowListActivity"
+            android:name="com.moutamid.torahsharee.activity.FollowListActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.ConversationActivity"
+            android:name="com.moutamid.torahsharee.activity.ConversationActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.settings.TermsActivity"
+            android:name="com.moutamid.torahsharee.activity.settings.TermsActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.settings.SettingsActivity"
+            android:name="com.moutamid.torahsharee.activity.settings.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.approval.ApprovalActivity"
+            android:name="com.moutamid.torahsharee.activity.approval.ApprovalActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.HomeActivity"
+            android:name="com.moutamid.torahsharee.activity.HomeActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".activity.settings.EditProfileActivity"
+            android:name="com.moutamid.torahsharee.activity.settings.EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".authentication.RegistrationActivity"
+            android:name="com.moutamid.torahsharee.authentication.RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.moutamid.torahsharee.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".startup.SplashActivity"
+            android:name="com.moutamid.torahsharee.startup.SplashActivity"
             android:exported="true"
             android:noHistory="true"
             android:theme="@style/SplashTheme">
