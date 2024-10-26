@@ -60,18 +60,14 @@ public class SearchUsersController {
                                 SearchModel model1 = dataSnapshot.getValue(SearchModel.class);
                                 if (model1 != null) {
                                     if (model1.bio != null)
-                                        if (model1.bio.equals(Constants.NULL)) {
-
-                                        } else {
+                                        if (!model1.bio.equals(Constants.NULL)) {
                                             model1.uid = dataSnapshot.getKey();
-
                                             if (model1.uid != null) {
-                                                if (model1.uid.equals(userModel.uid)) {
-                                                    // FILTERING OWN USER MODEL FROM LIST
-                                                } else {
+                                                if (!model1.uid.equals(userModel.uid)) {
                                                     searchUserArrayList.add(model1);
                                                     searchUserArrayListAll.add(model1);
                                                 }
+
                                             }
                                         }
                                 }

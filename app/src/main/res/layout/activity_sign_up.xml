@@ -257,6 +257,7 @@
                     <EditText
                         android:id="@+id/emailEtLogin"
                         style="@style/edittext_authentication"
+                        android:text="moutamid@xyz.com"
                         android:hint="@string/enter_your_emailq" />
 
                     <TextView
@@ -266,6 +267,7 @@
                     <EditText
                         android:id="@+id/passwordEtLogin"
                         style="@style/edittext_authentication"
+                        android:text="123456789"
                         android:hint="@string/enter_your_password" />
 
                     <TextView
