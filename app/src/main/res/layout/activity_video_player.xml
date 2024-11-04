@@ -6,9 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".activity.VideoPlayerActivity">
 
-    <VideoView
+    <androidx.media3.ui.PlayerView
+        android:id="@+id/player_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/videoViewPlayerActivity"/>
+        app:show_subtitle_button="true"
+        app:use_controller="true" />
 
 </RelativeLayout>

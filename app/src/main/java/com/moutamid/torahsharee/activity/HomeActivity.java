@@ -32,6 +32,7 @@ import com.moutamid.torahsharee.fragments.MessagesFragment;
 import com.moutamid.torahsharee.fragments.ProfileFragment;
 import com.moutamid.torahsharee.fragments.search.SearchFragment;
 import com.moutamid.torahsharee.model.ContactRequestModel;
+import com.moutamid.torahsharee.model.PostModel;
 import com.moutamid.torahsharee.model.UserModel;
 import com.moutamid.torahsharee.utils.Constants;
 import com.moutamid.torahsharee.utils.Stash;
@@ -41,6 +42,7 @@ import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventList
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
@@ -67,6 +69,22 @@ public class HomeActivity extends AppCompatActivity {
             return;
         }
 
+        PostModel dummyPost = new PostModel();
+
+        // Setting dummy data
+//        dummyPost.name = "Sunset";
+//        dummyPost.date = "2024-11-04";
+//        dummyPost.caption = "Enjoying the beautiful sunset!";
+//        dummyPost.video_link = "https://firebasestorage.googleapis.com/v0/b/recover-projects-2.appspot.com/o/videos%2Fprimary%3ADCIM%2FCamera%2FVID_20241023_165145.mp41729684335065?alt=media&token=f341e973-aafc-4d3c-adad-b0b2850bb82a";
+//        dummyPost.profile_link = "https://firebasestorage.googleapis.com/v0/b/recover-projects-2.appspot.com/o/profile_icon.jpg?alt=media&token=0b817f6f-47ea-4fd7-a584-626bc7212827";
+//        dummyPost.my_uid = "bosnWAWIWibXOvZEsePgqqTAY5G2";
+//        dummyPost.share_count = 45;
+//        dummyPost.comment_count = 0;
+//        dummyPost.tagsList = Arrays.asList("sunset", "nature", "photography");
+//        dummyPost.thumbnailUrl = "https://en.wikipedia.org/wiki/File:Anatomy_of_a_Sunset-2.jpg";
+//        dummyPost.push_key = Constants.databaseReference().child(Constants.PUBLIC_POSTS).push().getKey();
+//
+//        Constants.databaseReference().child(Constants.PUBLIC_POSTS).push().setValue(dummyPost);
 
         viewPager = findViewById(R.id.main_view_pager);
 
@@ -203,13 +221,10 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
-
         if (viewPager.getCurrentItem() == 0) {
             super.onBackPressed();
         } else
             viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
-
     }
 
     public static class NonSwipableViewPager extends ViewPager {

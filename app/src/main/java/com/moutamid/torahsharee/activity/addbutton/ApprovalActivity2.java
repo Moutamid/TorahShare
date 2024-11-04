@@ -62,16 +62,13 @@ public class ApprovalActivity2 extends AppCompatActivity {
         if (Stash.getBoolean("allowed")) {
             b.screen1.setVisibility(View.GONE);
             b.screen6.setVisibility(View.VISIBLE);
-
         }
-
 */
         b.getApprovedBtn.setOnClickListener(view -> {
             b.screen1.setVisibility(View.GONE);
             b.screen2.setVisibility(View.VISIBLE);
 
             initVideoPlayer();
-
         });
 
         b.nextBtn.setOnClickListener(view -> {

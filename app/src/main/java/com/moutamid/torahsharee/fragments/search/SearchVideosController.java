@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.moutamid.torahsharee.R;
 import com.moutamid.torahsharee.activity.ProfileActivity;
+import com.moutamid.torahsharee.activity.VideoPlayerActivity;
 import com.moutamid.torahsharee.databinding.FragmentSearchBinding;
 import com.moutamid.torahsharee.model.PostModel;
 import com.moutamid.torahsharee.utils.Constants;
@@ -108,40 +109,41 @@ public class SearchVideosController {
                         .putExtra(Constants.PARAMS, model.my_uid));
             });
 
-            Uri uri = Uri.parse(model.video_link);
+//            Uri uri = Uri.parse(model.video_link);
+//
+//            viewHolderVideo.videoView.setVideoURI(uri);
+//            viewHolderVideo.videoView.pause();
+//            viewHolderVideo.videoView.seekTo(1);
+//            viewHolderVideo.videoView.start();
 
-            viewHolderVideo.videoView.setVideoURI(uri);
-            viewHolderVideo.videoView.pause();
-            viewHolderVideo.videoView.seekTo(1);
-            /*TODO viewHolderVideo.videoView.start();
-            */
-
-            viewHolderVideo.videoView.setOnClickListener(view -> {
-                if (viewHolderVideo.playBtn.getVisibility() == View.GONE) {
-                    viewHolderVideo.playBtn.setVisibility(View.VISIBLE);
-                    new Handler().postDelayed(() -> {
-                        viewHolderVideo.playBtn.setVisibility(View.GONE);
-                    }, 3000);
-                } else {
-                    viewHolderVideo.playBtn.setVisibility(View.GONE);
-                }
-            });
+//            viewHolderVideo.videoView.setOnClickListener(view -> {
+//                if (viewHolderVideo.playBtn.getVisibility() == View.GONE) {
+//                    viewHolderVideo.playBtn.setVisibility(View.VISIBLE);
+//                    new Handler().postDelayed(() -> {
+//                        viewHolderVideo.playBtn.setVisibility(View.GONE);
+//                    }, 3000);
+//                } else {
+//                    viewHolderVideo.playBtn.setVisibility(View.GONE);
+//                }
+//            });
 
             viewHolderVideo.playBtn.setOnClickListener(view -> {
-                if (viewHolderVideo.videoView.isPlaying()) {
-                    // IS PLAYING
-                    viewHolderVideo.playBtn.setImageResource(R.drawable.ic_play_btn);
-                    viewHolderVideo.videoView.pause();
+                fragment.requireContext().startActivity(new Intent(fragment.requireContext(), VideoPlayerActivity.class).putExtra(Constants.PARAMS, model.video_link));
 
-                } else {
-                    // PAUSED OR NOT STARTED
-                    viewHolderVideo.playBtn.setImageResource(R.drawable.ic_pause_btn);
-                    new Handler().postDelayed(() -> {
-                        viewHolderVideo.playBtn.setVisibility(View.GONE);
-                    }, 3000);
-
-                    viewHolderVideo.videoView.start();
-                }
+//                if (viewHolderVideo.videoView.isPlaying()) {
+//                    // IS PLAYING
+//                    viewHolderVideo.playBtn.setImageResource(R.drawable.ic_play_btn);
+//                    viewHolderVideo.videoView.pause();
+//
+//                } else {
+//                    // PAUSED OR NOT STARTED
+//                    viewHolderVideo.playBtn.setImageResource(R.drawable.ic_pause_btn);
+//                    new Handler().postDelayed(() -> {
+//                        viewHolderVideo.playBtn.setVisibility(View.GONE);
+//                    }, 3000);
+//
+//                    viewHolderVideo.videoView.start();
+//                }
             });
 
         }

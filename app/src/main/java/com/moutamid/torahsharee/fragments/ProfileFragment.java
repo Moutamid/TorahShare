@@ -43,6 +43,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.moutamid.torahsharee.R;
 import com.moutamid.torahsharee.activity.FollowListActivity;
+import com.moutamid.torahsharee.activity.VideoPlayerActivity;
 import com.moutamid.torahsharee.activity.settings.SettingsActivity;
 import com.moutamid.torahsharee.model.FollowModel;
 import com.moutamid.torahsharee.model.PostModel;
@@ -472,41 +473,42 @@ public class ProfileFragment extends Fragment {
             holder.comment_count.setText(postModel.comment_count + "");
 
             holder.minutes.setText(postModel.date);
-
+/*
             Uri uri = Uri.parse(postModel.video_link);
 
             holder.videoView.setVideoURI(uri);
             holder.videoView.pause();
             holder.videoView.seekTo(1);
-            /*TODO holder.videoView.start();
+            TODO holder.videoView.start();
              */
-
-            holder.videoView.setOnClickListener(view -> {
-                if (holder.playBtn.getVisibility() == View.GONE) {
-                    holder.playBtn.setVisibility(View.VISIBLE);
-                    new Handler().postDelayed(() -> {
-                        holder.playBtn.setVisibility(View.GONE);
-                    }, 3000);
-                } else {
-                    holder.playBtn.setVisibility(View.GONE);
-                }
-            });
+//
+//            holder.videoView.setOnClickListener(view -> {
+//                if (holder.playBtn.getVisibility() == View.GONE) {
+//                    holder.playBtn.setVisibility(View.VISIBLE);
+//                    new Handler().postDelayed(() -> {
+//                        holder.playBtn.setVisibility(View.GONE);
+//                    }, 3000);
+//                } else {
+//                    holder.playBtn.setVisibility(View.GONE);
+//                }
+//            });
 
             holder.playBtn.setOnClickListener(view -> {
-                if (holder.videoView.isPlaying()) {
-                    // IS PLAYING
-                    holder.playBtn.setImageResource(R.drawable.ic_play_btn);
-                    holder.videoView.pause();
-
-                } else {
-                    // PAUSED OR NOT STARTED
-                    holder.playBtn.setImageResource(R.drawable.ic_pause_btn);
-                    new Handler().postDelayed(() -> {
-                        holder.playBtn.setVisibility(View.GONE);
-                    }, 3000);
-
-                    holder.videoView.start();
-                }
+                requireContext().startActivity(new Intent(requireContext(), VideoPlayerActivity.class).putExtra(Constants.PARAMS, postModel.video_link));
+//                if (holder.videoView.isPlaying()) {
+//                    // IS PLAYING
+//                    holder.playBtn.setImageResource(R.drawable.ic_play_btn);
+//                    holder.videoView.pause();
+//
+//                } else {
+//                    // PAUSED OR NOT STARTED
+//                    holder.playBtn.setImageResource(R.drawable.ic_pause_btn);
+//                    new Handler().postDelayed(() -> {
+//                        holder.playBtn.setVisibility(View.GONE);
+//                    }, 3000);
+//
+//                    holder.videoView.start();
+//                }
             });
 
         }

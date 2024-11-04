@@ -283,7 +283,7 @@ public class Stash {
 
     }
 
-    public static void toast(String data){
+    public static void toast(String data) {
         Toast.makeText(instance, data, Toast.LENGTH_SHORT).show();
     }
 

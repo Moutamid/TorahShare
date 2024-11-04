@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -79,7 +80,6 @@ public class ProfileActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
-
                             userModel = snapshot.getValue(UserModel.class);
                             userModel.followers_count = (int) snapshot.child(Constants.FOLLOWERS).getChildrenCount();
                             userModel.following_count = (int) snapshot.child(Constants.FOLLOWING).getChildrenCount();
@@ -448,40 +448,40 @@ if (userModel.gender.equals(Constants.GENDER_FEMALE))
 
             holder.minutes.setText(postModel.date);
 
-            Uri uri = Uri.parse(postModel.video_link);
+//            Uri uri = Uri.parse(postModel.video_link);
+//
+//            holder.videoView.setVideoURI(uri);
+//            holder.videoView.pause();
+//            holder.videoView.seekTo(1);
+//            holder.videoView.start();
 
-            holder.videoView.setVideoURI(uri);
-            holder.videoView.pause();
-            holder.videoView.seekTo(1);
-            /*TODO holder.videoView.start();
-             */
-
-            holder.videoView.setOnClickListener(view -> {
-                if (holder.playBtn.getVisibility() == View.GONE) {
-                    holder.playBtn.setVisibility(View.VISIBLE);
-                    new Handler().postDelayed(() -> {
-                        holder.playBtn.setVisibility(View.GONE);
-                    }, 3000);
-                } else {
-                    holder.playBtn.setVisibility(View.GONE);
-                }
-            });
+//            holder.videoView.setOnClickListener(view -> {
+//                if (holder.playBtn.getVisibility() == View.GONE) {
+//                    holder.playBtn.setVisibility(View.VISIBLE);
+//                    new Handler().postDelayed(() -> {
+//                        holder.playBtn.setVisibility(View.GONE);
+//                    }, 3000);
+//                } else {
+//                    holder.playBtn.setVisibility(View.GONE);
+//                }
+//            });
 
             holder.playBtn.setOnClickListener(view -> {
-                if (holder.videoView.isPlaying()) {
-                    // IS PLAYING
-                    holder.playBtn.setImageResource(R.drawable.ic_play_btn);
-                    holder.videoView.pause();
-
-                } else {
-                    // PAUSED OR NOT STARTED
-                    holder.playBtn.setImageResource(R.drawable.ic_pause_btn);
-                    new Handler().postDelayed(() -> {
-                        holder.playBtn.setVisibility(View.GONE);
-                    }, 3000);
-
-                    holder.videoView.start();
-                }
+                startActivity(new Intent(ProfileActivity.this, VideoPlayerActivity.class).putExtra(Constants.PARAMS, postModel.video_link));
+//                if (holder.videoView.isPlaying()) {
+//                    // IS PLAYING
+//                    holder.playBtn.setImageResource(R.drawable.ic_play_btn);
+//                    holder.videoView.pause();
+//
+//                } else {
+//                    // PAUSED OR NOT STARTED
+//                    holder.playBtn.setImageResource(R.drawable.ic_pause_btn);
+//                    new Handler().postDelayed(() -> {
+//                        holder.playBtn.setVisibility(View.GONE);
+//                    }, 3000);
+//
+//                    holder.videoView.start();
+//                }
             });
 
         }

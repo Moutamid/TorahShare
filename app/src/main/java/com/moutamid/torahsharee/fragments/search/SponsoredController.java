@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,9 +23,9 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
-import com.khizar1556.mkvideoplayer.MKPlayerActivity;
 import com.moutamid.torahsharee.R;
 import com.moutamid.torahsharee.activity.ProfileActivity;
+import com.moutamid.torahsharee.activity.VideoPlayerActivity;
 import com.moutamid.torahsharee.databinding.FragmentSearchBinding;
 import com.moutamid.torahsharee.model.FollowModel;
 import com.moutamid.torahsharee.model.SponsoredAccountsModel;
@@ -283,26 +284,26 @@ public class SponsoredController {
             holder.videoViewLayout1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    fragment.startActivity(new Intent(fragment.requireActivity(),
-//                            VideoPlayerActivity.class)
-//                            .putExtra(Constants.PARAMS, model.video_link_1));
-                    MKPlayerActivity
-                            .configPlayer(fragment.requireActivity())
-                            .setFullScreenOnly(true)
-                            .play(model.video_link_1);
-
+                    Toast.makeText(fragment.requireActivity(), model.video_link_1, Toast.LENGTH_SHORT).show();
+                    fragment.startActivity(new Intent(fragment.requireActivity(),
+                            VideoPlayerActivity.class)
+                            .putExtra(Constants.PARAMS, model.video_link_1));
+//                    MKPlayerActivity
+//                            .configPlayer(fragment.requireActivity())
+//                            .setFullScreenOnly(true)
+//                            .play(model.video_link_1);
                 }
             });
             holder.videoViewLayout2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    fragment.startActivity(new Intent(fragment.requireActivity(),
-//                            VideoPlayerActivity.class)
-//                            .putExtra(Constants.PARAMS, model.video_link_2));
-                    MKPlayerActivity
-                            .configPlayer(fragment.requireActivity())
-                            .setFullScreenOnly(true)
-                            .play(model.video_link_2);
+                    fragment.startActivity(new Intent(fragment.requireActivity(),
+                            VideoPlayerActivity.class)
+                            .putExtra(Constants.PARAMS, model.video_link_2));
+//                    MKPlayerActivity
+//                            .configPlayer(fragment.requireActivity())
+//                            .setFullScreenOnly(true)
+//                            .play(model.video_link_2);
 
                 }
             });

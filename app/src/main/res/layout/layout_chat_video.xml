@@ -40,20 +40,29 @@
             app:cardCornerRadius="@dimen/default_corner_radius"
             app:cardElevation="0dp">
 
-            <VideoView
-                android:id="@+id/videoViewMcg"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/videoPlayBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_play_btn" />
+                <VideoView
+                    android:id="@+id/videoViewMcg"
+                    android:layout_width="match_parent"
+                    android:adjustViewBounds="true"
+                    android:layout_height="200dp" />
+
+                <ImageView
+                    android:id="@+id/videoPlayBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_play_btn" />
+
+
+            </RelativeLayout>
 
         </com.google.android.material.card.MaterialCardView>
+
 
         <ImageView
             android:id="@+id/menuBtn_video_mcg"

@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.moutamid.torahsharee.R;
 import com.moutamid.torahsharee.databinding.FragmentSearchBinding;
+import com.moutamid.torahsharee.model.SponsoredAccountsModel;
 import com.moutamid.torahsharee.utils.Constants;
 
 public class SearchFragment extends Fragment {
@@ -148,44 +149,27 @@ public class SearchFragment extends Fragment {
             b.sponsoredRecyclerview.setVisibility(View.VISIBLE);
         });
 
-        /*SponsoredAccountsModel model = new SponsoredAccountsModel();
-        model.name = "Test user 1";
+/*
+        SponsoredAccountsModel model = new SponsoredAccountsModel();
+        model.name = "Moutamid Waseem";
         model.bio = "Video creator at TorahShare";
 
-        model.profile_url = "https://firebasestorage.googleapis.com/v0/b/sweet-nutrition.appspot.com/o/profileImages%2FJeUgraaok9XsDzaEy8keaS89Hfg1image%3A598658?alt=media&token=cc1a8ff6-9762-4bea-98a0-033e971e0376";
-        model.video_link_1 = "https://firebasestorage.googleapis.com/v0/b/sweet-nutrition.appspot.com/o/huitxbozybaymildmqwi.mp4?alt=media&token=e6900e45-6987-4a86-a913-8fa50e453aff";
+        model.profile_url = "https://firebasestorage.googleapis.com/v0/b/recover-projects-2.appspot.com/o/profile_icon.jpg?alt=media&token=0b817f6f-47ea-4fd7-a584-626bc7212827";
+        model.video_link_1 = "https://firebasestorage.googleapis.com/v0/b/recover-projects-2.appspot.com/o/videos%2Fprimary%3ADCIM%2FCamera%2FVID_20241023_165145.mp41729684335065?alt=media&token=f341e973-aafc-4d3c-adad-b0b2850bb82a";
         model.video_caption_1 = "So here it is our best video";
-        model.video_link_2 = "https://firebasestorage.googleapis.com/v0/b/sweet-nutrition.appspot.com/o/huitxbozybaymildmqwi.mp4?alt=media&token=e6900e45-6987-4a86-a913-8fa50e453aff";
+        model.video_link_2 = "https://firebasestorage.googleapis.com/v0/b/recover-projects-2.appspot.com/o/videos%2Fprimary%3ADCIM%2FCamera%2FVID_20241023_165145.mp41729684388282?alt=media&token=19e414b9-1b5d-484a-81c4-c615dee60d38";
         model.video_caption_2 = "We are glad to share it";
 
-        model.uid = "tRnOyVr8YnbauO8cv7UW1THPgT52";
+        model.uid = "bosnWAWIWibXOvZEsePgqqTAY5G2";
 
-        SponsoredAccountsModel model2 = new SponsoredAccountsModel();
-        model2.name = "Test user 2";
-        model2.bio = "Video creator at TorahShare";
-
-        model2.profile_url = "https://firebasestorage.googleapis.com/v0/b/sweet-nutrition.appspot.com/o/profileImages%2FJeUgraaok9XsDzaEy8keaS89Hfg1image%3A598658?alt=media&token=cc1a8ff6-9762-4bea-98a0-033e971e0376";
-        model2.uid = "";
-        model2.video_link_1 = "https://firebasestorage.googleapis.com/v0/b/sweet-nutrition.appspot.com/o/huitxbozybaymildmqwi.mp4?alt=media&token=e6900e45-6987-4a86-a913-8fa50e453aff";
-        model2.video_caption_1 = "So here it is our best video";
-        model2.video_link_2 = "https://firebasestorage.googleapis.com/v0/b/sweet-nutrition.appspot.com/o/huitxbozybaymildmqwi.mp4?alt=media&token=e6900e45-6987-4a86-a913-8fa50e453aff";
-        model2.video_caption_2 = "We are glad to share it";
-
-        model2.uid = "01pFAFCCZMbZrnpdNw1Lnsr3wjW2";
-
-        Constants.databaseReference().child(Constants.SPONSORED_ACCOUNTS).push()
+                Constants.databaseReference().child(Constants.SPONSORED_ACCOUNTS).push()
                 .setValue(model);
-        Constants.databaseReference().child(Constants.SPONSORED_ACCOUNTS).push()
-                .setValue(model2);*/
 
+*/
         sponsoredController.fetchSponsors();
-
         searchUsersController.fetchUsersList();
-
         searchVideosController.fetchVideosList();
-
         b.filterCardView.requestFocus();
-
         return b.getRoot();
     }
     PopupWindow mypopupWindow;

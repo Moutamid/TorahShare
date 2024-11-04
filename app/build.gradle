@@ -167,7 +167,12 @@ dependencies {
     // Dexter Permission Library
     implementation 'com.karumi:dexter:5.0.0'
 
-    implementation 'com.github.khizar1556.MKVideoPlayer:mkvideoplayer:0.1.5'
+//    implementation 'com.github.khizar1556.MKVideoPlayer:mkvideoplayer:0.1.5'
+// Instead using MK Video player we are using exo player now
+
+    implementation 'androidx.media3:media3-exoplayer:1.4.1'
+    implementation 'androidx.media3:media3-exoplayer-dash:1.4.1'
+    implementation 'androidx.media3:media3-ui:1.4.1'
 
     implementation 'com.github.captain-miao:optroundcardview:1.0.0'
 }
