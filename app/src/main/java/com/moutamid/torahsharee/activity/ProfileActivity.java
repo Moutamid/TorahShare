@@ -157,7 +157,7 @@ public class ProfileActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         //linearLayoutManager.setReverseLayout(true);
         commentsRecyclerView.setLayoutManager(linearLayoutManager);
-        commentsRecyclerView.setHasFixedSize(true);
+//        commentsRecyclerView.setHasFixedSize(true);
         commentsRecyclerView.setNestedScrollingEnabled(false);
 
         commentsRecyclerView.setAdapter(commentsAdapter);
@@ -404,7 +404,7 @@ if (userModel.gender.equals(Constants.GENDER_FEMALE))
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ProfileActivity.this);
         linearLayoutManager.setReverseLayout(true);
         conversationRecyclerView.setLayoutManager(linearLayoutManager);
-        conversationRecyclerView.setHasFixedSize(true);
+//        conversationRecyclerView.setHasFixedSize(true);
         conversationRecyclerView.setNestedScrollingEnabled(false);
 
         conversationRecyclerView.setAdapter(adapter);

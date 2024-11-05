@@ -102,7 +102,7 @@ public class ApprovalActivity2 extends AppCompatActivity {
                 model.religion = religionStr;
                 model.video1 = VIDEO_LINK_1;
                 model.video2 = VIDEO_LINK_2;
-                model.uid = Constants.auth().getUid();
+                model.uid = Constants.auth().getCurrentUser().getUid();
 
                 Constants.databaseReference()
                         .child(Constants.ADMIN)
@@ -116,6 +116,11 @@ public class ApprovalActivity2 extends AppCompatActivity {
                 UserModel userModel = (UserModel) Stash.getObject(Constants.CURRENT_USER_MODEL, UserModel.class);
                 b.emailTextView.setText(" " + userModel.email + "");
                 Stash.put("isDone", true);
+
+                Constants.databaseReference().child(Constants.USERS)
+                        .child(Constants.auth().getCurrentUser().getUid())
+                        .child(Constants.IS_APPROVED).setValue(true);
+
             }
 
         });

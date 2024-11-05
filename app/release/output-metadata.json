@@ -4,16 +4,16 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.moutamid.torahshare",
+  "applicationId": "com.moutamid.torahsharee",
   "variantName": "release",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 72,
-      "versionName": "v1.0.70 Build: 91",
-      "outputFile": "TorahShare-v1.0.70-release.apk"
+      "versionCode": 147,
+      "versionName": "v1.0.145 Build: 166",
+      "outputFile": "TorahShare-v1.0.145-release.apk"
     }
   ],
   "elementType": "File"
