@@ -166,10 +166,8 @@ public class ConversationActivity extends AppCompatActivity {
 
         b.sendBtn.setOnClickListener(view -> {
             String message = b.messageEt.getText().toString();
-
             if (message.isEmpty())
                 return;
-
             sendMessage(message);
             b.messageEt.setText("");
         });
@@ -621,12 +619,12 @@ public class ConversationActivity extends AppCompatActivity {
         chatModel.last_message = mcg;
         chatModel.time = Stash.getDate();
         Constants.databaseReference().child(Constants.CHATS)
-                .child(Constants.auth().getUid()).child(chatModel.chat_id)
+                .child(Constants.auth().getCurrentUser().getUid()).child(chatModel.chat_id)
                 .setValue(chatModel);
 
         // // THIS WILL UPDATE LAST MESSAGE TO OTHER USER MODEL
         ChatModel other_chatModel = new ChatModel();
-        other_chatModel.other_uid = Constants.auth().getUid();
+        other_chatModel.other_uid = Constants.auth().getCurrentUser().getUid();
         other_chatModel.last_message = mcg;
         other_chatModel.time = chatModel.time;
         other_chatModel.chat_id = chatModel.chat_id;
@@ -634,8 +632,8 @@ public class ConversationActivity extends AppCompatActivity {
         other_chatModel.is_contact = chatModel.is_contact;
         other_chatModel.other_profile = myUserModel.profile_url;
         Constants.databaseReference().child(Constants.CHATS)
-                .child(chatModel.other_uid).child(chatModel.chat_id)
-                .setValue(chatModel);
+                .child(chatModel.other_uid).child(other_chatModel.chat_id)
+                .setValue(other_chatModel);
 
         // THIS WILL ADD A ENTRY OF MESSAGE TO CONVERSATION OF THAT USER AND MINE AS WELL
         MessageModel messageModel = new MessageModel();

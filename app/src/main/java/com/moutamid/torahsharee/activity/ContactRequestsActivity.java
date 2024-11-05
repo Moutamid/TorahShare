@@ -106,26 +106,28 @@ public class ContactRequestsActivity extends AppCompatActivity {
             chatModel.other_uid = contactRequestModel.requester_uid;
             chatModel.last_message = "Request accepted. Send your first message!";
             chatModel.time = Stash.getDate();
-            chatModel.chat_id = Constants.databaseReference().push().getKey();
+            chatModel.chat_id = contactRequestModel.chatID;
             chatModel.other_name = other_userModel.name;
             chatModel.is_contact = true;
             chatModel.other_profile = other_userModel.profile_url;
+
             Constants.databaseReference().child(Constants.CHATS)
                     .child(Constants.auth().getUid()).child(chatModel.chat_id)
                     .setValue(chatModel);
 
             // OTHER USER MODEL
             ChatModel other_chatModel = new ChatModel();
-            other_chatModel.other_uid = Constants.auth().getUid();
+            other_chatModel.other_uid = Constants.auth().getCurrentUser().getUid();
             other_chatModel.last_message = "Request accepted. Send your first message!";
             other_chatModel.time = chatModel.time;
-            other_chatModel.chat_id = chatModel.chat_id;
+            other_chatModel.chat_id = contactRequestModel.chatID;
             other_chatModel.other_name = myUserModel.name;
             other_chatModel.is_contact = true;
             other_chatModel.other_profile = myUserModel.profile_url;
+
             Constants.databaseReference().child(Constants.CHATS)
-                    .child(contactRequestModel.requester_uid).child(chatModel.chat_id)
-                    .setValue(chatModel);
+                    .child(contactRequestModel.requester_uid).child(other_chatModel.chat_id)
+                    .setValue(other_chatModel);
 
             Constants.databaseReference().child(Constants.USERS)
                     .child(Constants.auth().getUid())

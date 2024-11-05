@@ -47,6 +47,7 @@ import com.moutamid.torahsharee.utils.Constants;
 import com.moutamid.torahsharee.utils.Stash;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -71,9 +72,10 @@ public class ProfileActivity extends AppCompatActivity {
         progressDialog.show();
 
         String other_uid = getIntent().getStringExtra(Constants.PARAMS);
+        b.contactBtn.setVisibility(View.VISIBLE);
 
-        if (Stash.getBoolean(other_uid + Constants.CONTACT_REQUESTS))
-            b.contactBtn.setVisibility(View.GONE);
+//        if (Stash.getBoolean(other_uid + Constants.CONTACT_REQUESTS))
+//            b.contactBtn.setVisibility(View.GONE);
 
         Constants.databaseReference().child(Constants.USERS).child(other_uid)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -209,8 +211,8 @@ public class ProfileActivity extends AppCompatActivity {
 //    --------------------------------------- OTHER RECYCLERVIEW--------------------
 
     private void setValuesOnViews() {
-        if (userModel.IS_CONTACT_CHECKED)
-            b.contactBtn.setVisibility(View.GONE);
+//        if (userModel.IS_CONTACT_CHECKED)
+//            b.contactBtn.setVisibility(View.GONE);
 /*
 if (userModel.gender.equals(Constants.GENDER_FEMALE))
             b.contactBtn.setVisibility(View.GONE);
@@ -305,6 +307,7 @@ if (userModel.gender.equals(Constants.GENDER_FEMALE))
                 requestModel.requester_mcg = text;
                 requestModel.push_key = Constants.databaseReference().child(Constants.USERS)
                         .child(userModel.uid).child(Constants.CONTACT_REQUESTS).push().getKey();
+                requestModel.chatID = UUID.randomUUID().toString();
 
                 ProgressDialog progressDialog;
                 progressDialog = new ProgressDialog(ProfileActivity.this);

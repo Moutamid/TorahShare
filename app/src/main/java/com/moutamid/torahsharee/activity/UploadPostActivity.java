@@ -472,8 +472,8 @@ public class UploadPostActivity extends AppCompatActivity implements LifecycleOw
                 return;
             }
 
-            if (!contactsCheckBox.isChecked() || !followersCheckBox.isChecked())
-                return;
+//            if (!contactsCheckBox.isChecked() || !followersCheckBox.isChecked())
+//                return;
 
             PostModel postModel = new PostModel();
             postModel.name = myUserModel.name;
