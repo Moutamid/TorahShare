@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -415,6 +416,7 @@ if (userModel.gender.equals(Constants.GENDER_FEMALE))
         //    }
     }
 
+    private static final String TAG = "ProfileActivity";
     private class RecyclerViewAdapterMessages extends Adapter
             <RecyclerViewAdapterMessages.ViewHolderRightMessage> {
 
@@ -429,6 +431,7 @@ if (userModel.gender.equals(Constants.GENDER_FEMALE))
         public void onBindViewHolder(@NonNull final RecyclerViewAdapterMessages.ViewHolderRightMessage holder, int position) {
             PostModel postModel = postsArraylist.get(position);
 
+            Log.d(TAG, "onBindViewHolder: " + postModel.thumbnailUrl);
             with(getApplicationContext())
                     .asBitmap()
                     .load(postModel.profile_link)
@@ -438,6 +441,13 @@ if (userModel.gender.equals(Constants.GENDER_FEMALE))
                     )
                     .diskCacheStrategy(DATA)
                     .into(holder.profile);
+
+            with(getApplicationContext())
+                    .asBitmap()
+                    .load(postModel.thumbnailUrl)
+                    .placeholder(lighterGrey)
+                    .diskCacheStrategy(DATA)
+                    .into(holder.thumb);
 
             holder.name.setText(postModel.name);
 
@@ -500,7 +510,7 @@ if (userModel.gender.equals(Constants.GENDER_FEMALE))
             CircleImageView profile;
             TextView name, time, caption, share_count, comment_count, minutes;
             MaterialCardView parent;
-            VideoView videoView;
+            ImageView thumb;
             ImageView playBtn;
 
             public ViewHolderRightMessage(@NonNull View v) {
@@ -513,7 +523,7 @@ if (userModel.gender.equals(Constants.GENDER_FEMALE))
                 comment_count = v.findViewById(R.id.comments_count_post);
                 minutes = v.findViewById(R.id.minutes_post);
                 parent = v.findViewById(R.id.parent_post);
-                videoView = v.findViewById(R.id.videoView);
+                thumb = v.findViewById(R.id.thumb);
                 playBtn = v.findViewById(R.id.videoPlayBtn);
 
             }

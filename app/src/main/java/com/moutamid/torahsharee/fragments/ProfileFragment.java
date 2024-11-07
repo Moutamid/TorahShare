@@ -9,9 +9,11 @@ import static com.moutamid.torahsharee.R.color.lighterGrey;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +30,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -438,6 +444,8 @@ public class ProfileFragment extends Fragment {
         return noOfColumns;
     }*/
 
+    private static final String TAG = "ProfileFragment";
+
     private class RecyclerViewAdapterMessages extends RecyclerView.Adapter
             <RecyclerViewAdapterMessages.ViewHolderRightMessage> {
 
@@ -461,6 +469,24 @@ public class ProfileFragment extends Fragment {
                     )
                     .diskCacheStrategy(DATA)
                     .into(holder.profile);
+
+            Log.d(TAG, "onBindViewHolder:  " + postModel.thumbnailUrl);
+
+            with(requireActivity().getApplicationContext())
+                    .load(postModel.thumbnailUrl)
+                    .addListener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            Log.d(TAG, "onLoadFailed: " + e.getMessage());
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            return false;
+                        }
+                    })
+                    .into(holder.thumb);
 
             holder.name.setText(postModel.name);
 
@@ -524,7 +550,7 @@ public class ProfileFragment extends Fragment {
             CircleImageView profile;
             TextView name, time, caption, share_count, comment_count, minutes;
             MaterialCardView parent;
-            VideoView videoView;
+            ImageView thumb;
             ImageView playBtn;
 
             public ViewHolderRightMessage(@NonNull View v) {
@@ -537,7 +563,7 @@ public class ProfileFragment extends Fragment {
                 comment_count = v.findViewById(R.id.comments_count_post);
                 minutes = v.findViewById(R.id.minutes_post);
                 parent = v.findViewById(R.id.parent_post);
-                videoView = v.findViewById(R.id.videoView);
+                thumb = v.findViewById(R.id.thumb);
                 playBtn = v.findViewById(R.id.videoPlayBtn);
 
             }
